@@ -21,6 +21,8 @@ class DishesController < ApplicationController
   end
 
   def update
+    @dish.update dishes_params
+    redirect_to root_path
   end
 
   def destroy
