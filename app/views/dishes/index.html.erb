@@ -1,0 +1,13 @@
+<h2> This should be the menu index </h2>
+<p> Menu description goes here </p>
+
+<%= link_to "Add New Dish", new_dish_path %>
+<center>
+  <% @dishes.each do |dish| %>
+    <div class="well">
+      <h4><%= link_to dish.name, dish_path(dish) %> </h4>
+      <p><%= dish.description %></p>
+      <p><%= dish.price %></p>
+    </div>
+  <% end %>
+</center>

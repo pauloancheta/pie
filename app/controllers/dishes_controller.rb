@@ -1,4 +1,4 @@
-def DishesController < ApplicationController
+class DishesController < ApplicationController
   before_action :dish_id, only: [:show, :edit, :update, :destroy]
   def index
     @dishes = Dish.all
@@ -9,9 +9,9 @@ def DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new
+    @dish = Dish.new dishes_params
     @dish.save
-    redirect_to dish_path(@dish)
+    redirect_to root_path
   end
 
   def show
