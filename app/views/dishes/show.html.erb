@@ -2,10 +2,12 @@
 <p><%= @dish.description %></p>
 <p><%= @dish.price %></p>
 
+
+<!-- Should only be shown to restaurant owner -->
 <%= link_to "Add Recipe or Ingredients", new_dish_recipe_path(@dish) %>
 <br>
 <% if @recipes != nil %>
   <% @recipes.each do |r| %>
-    <%= r.name %> <br>
+    <%= link_to r.name, dish_recipe_path(@dish, r) %> <br>
   <% end %>
 <% end %>

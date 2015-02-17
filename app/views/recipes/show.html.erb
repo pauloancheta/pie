@@ -1,0 +1,22 @@
+<!-- should only be shown to restaurant owner -->
+<h2><%= @recipe.name %></h2>
+<br>
+<%= link_to "Add Ingredients", new_recipe_ingredient_path(@recipe) %>
+<% if @recipe.ingredients.present? %>
+  <h4>Ingredients</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>category</th>
+      </tr>
+    <tbody>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td><%= ingredient.name %></td>
+          <td><%= ingredient.category %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
