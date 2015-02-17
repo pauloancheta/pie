@@ -2,4 +2,10 @@
 <p><%= @dish.description %></p>
 <p><%= @dish.price %></p>
 
-<%= link_to "Recipes goes here" %>
+<%= link_to "Add Recipe or Ingredients", new_dish_recipe_path(@dish) %>
+<br>
+<% if @recipes != nil %>
+  <% @recipes.each do |r| %>
+    <%= r.name %> <br>
+  <% end %>
+<% end %>

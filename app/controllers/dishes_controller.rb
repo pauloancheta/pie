@@ -10,19 +10,26 @@ class DishesController < ApplicationController
 
   def create
     @dish = Dish.new dishes_params
-    @dish.save
-    redirect_to root_path
+    if @dish.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
+    @recipes = @dish.recipes.all
   end
 
   def edit
   end
 
   def update
-    @dish.update dishes_params
-    redirect_to root_path
+    if @dish.update dishes_params
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def destroy
