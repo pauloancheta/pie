@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'dishes#index'
+  
+  root 'menus#index'
+
+  resources :menus
   
   resources :dishes do
     resources :recipes
