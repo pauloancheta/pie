@@ -11,8 +11,7 @@ class RecipesController < ApplicationController
 
   def create
     @dish = Dish.find params[:dish_id]
-    @recipe = Recipe.new recipe_params
-    @recipe.dish_id = @dish.id
+    @recipe = @dish.recipes.new recipe_params
     if @recipe.save
       redirect_to dish_path(@dish)
     else
