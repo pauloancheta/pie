@@ -1,20 +1,19 @@
 class RecipesController < ApplicationController
   before_action :recipe_id, only: [:show, :edit, :update, :destroy]
+  before_action :dish_id
   def index
-    @recipes = Recipe.all
+    @recipes = @dish.recipes.all
   end
 
   def new
-    @dish = Dish.find params[:dish_id]
-    @recipe = Recipe.new
+    @recipe = @dish.recipes.new
   end
 
   def create
-    @dish = Dish.find params[:dish_id]
-    @recipe = @dish.recipes.new recipe_params
-    if @recipe.save
+    if @dish.recipes.create(recipe_params)
       redirect_to dish_path(@dish)
     else
+      flash[:alert] = @dish.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -40,11 +39,15 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipe).permit(:name, :dish_id)
+    params.require(:recipe).permit(:name)
   end
 
   def recipe_id
     @recipe = Recipe.find params[:id]
+  end
+
+  def dish_id
+    @dish = Dish.find params[:dish_id]
   end
 
 end
