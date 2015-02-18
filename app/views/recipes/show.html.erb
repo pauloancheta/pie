@@ -9,12 +9,18 @@
       <tr>
         <th>name</th>
         <th>category</th>
+        <th></th><!-- Empty header to place EDIT and Delete in one td -->
       </tr>
     <tbody>
       <% @recipe.ingredients.each do |ingredient| %>
         <tr>
           <td><%= ingredient.name %></td>
           <td><%= ingredient.category %></td>
+          <td>
+            <%= link_to "EDIT", edit_recipe_ingredient_path(ingredient.recipe_id, ingredient) %>
+            |
+            <%= link_to "DELETE", recipe_ingredient_path(ingredient.recipe_id, ingredient), method: :delete %>
+          </td>
         </tr>
       <% end %>
     </tbody>

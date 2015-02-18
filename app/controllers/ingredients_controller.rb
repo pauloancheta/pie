@@ -1,15 +1,15 @@
 class IngredientsController < ApplicationController
-  before_action :recipe_id, only: [:create, :update, :destroy]
+  before_action :recipe_id, only: [:new, :create, :edit, :update, :destroy]
   before_action :ingredient_id, only: [:edit, :update, :destroy]
   def new
-    @ingredient = Ingredient.new
+    @ingredient = @recipe.ingredients.new
   end
 
   def create
     @recipe = Recipe.find params[:recipe_id]
-    @ingredient = Ingredient.new ingredient_params
+    @ingredient = @recipe.ingredients.new ingredient_params
     if @ingredient.save
-      redirect_to dish_recipe_path(@recipe.dish_id, @recipe.id)
+      redirect_to dish_recipe_path(@recipe.dish_id, @recipe)
     else
       render :new
     end
@@ -19,8 +19,8 @@ class IngredientsController < ApplicationController
   end
 
   def update
-    if @ingredient.update
-      redirect_to dish_recipe_path(@recipe.dish_id, @recipe_id)
+    if @ingredient.update ingredient_params
+      redirect_to dish_recipe_path(@recipe.dish_id, @recipe)
     else
       render :edit
     end
@@ -28,16 +28,16 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient.destroy
-    redirect_to dish_path(@recipe.dish_id)
+    redirect_to dish_recipe_path(@recipe.dish_id, @recipe)
   end
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:title, :category, :recipe_id)
+    params.require(:ingredient).permit(:name, :category, :recipe_id)
   end
 
   def recipe_id
-    @recipe = Recipe.find params[:params_id]
+    @recipe = Recipe.find params[:recipe_id]
   end
 
   def ingredient_id

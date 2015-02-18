@@ -2,10 +2,11 @@ class DishesController < ApplicationController
   before_action :dish_id, only: [:show, :edit, :update, :destroy]
   def index
     @dishes = Dish.all
+    @dish = Dish.new
   end
 
   def new
-    @dish = Dish.new
+
   end
 
   def create
@@ -19,6 +20,7 @@ class DishesController < ApplicationController
 
   def show
     @recipes = @dish.recipes.all
+    @recipe = Recipe.new
   end
 
   def edit

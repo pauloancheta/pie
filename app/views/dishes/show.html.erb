@@ -4,7 +4,12 @@
 
 
 <!-- Should only be shown to restaurant owner -->
-<%= link_to "Add Recipe or Ingredients", new_dish_recipe_path(@dish) %>
+<a id="addRecipe">Add Recipe</a>
+<div id="recipeForm" style="display:none;">
+  <%= render '/recipes/new' %>
+</div>
+
+
 <br>
 <% if @recipes != nil %>
   <% @recipes.each do |r| %>

@@ -1,7 +1,12 @@
 <h2> This should be the menu index </h2>
 <p> Menu description goes here </p>
 
-<%= link_to "Add New Dish", new_dish_path %>
+<a id="addDish">Add New Dish</a>
+
+<div id="newDishForm" style="display:none;">
+  <%= render "dishes/new" %>
+</div>
+
 <center>
   <% @dishes.each do |dish| %>
     <div class="well">
