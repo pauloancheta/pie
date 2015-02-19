@@ -7,8 +7,7 @@ class IngredientsController < ApplicationController
 
   def create
     @recipe = Recipe.find params[:recipe_id]
-    @ingredient = @recipe.ingredients.new ingredient_params
-    if @ingredient.save
+    if @recipe.ingredients.create ingredient_params
       redirect_to dish_recipe_path(@recipe.dish_id, @recipe)
     else
       render :new
@@ -33,7 +32,7 @@ class IngredientsController < ApplicationController
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:name, :category, :recipe_id)
+    params.require(:ingredient).permit(:name, :category)
   end
 
   def recipe_id
