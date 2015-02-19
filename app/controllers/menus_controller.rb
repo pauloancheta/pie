@@ -12,11 +12,16 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new menu_params
-    if @menu.save
-      redirect_to menus_path
+    if current_user.is_admin
+      if @menu.save
+        redirect_to menus_path
+      else
+        render :new
+      end 
     else
-      render :new
-    end 
+      flash[:alert] = "You dont have permissions to create a menu"
+      redirect_to root_path
+    end
   end 
 
   def show 
