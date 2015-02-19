@@ -10,19 +10,24 @@
 
 <div class="container container-fluid">
 
-  <%= link_to "Home", root_path %> |
-  <%= link_to "Lorem Ipsum" %> |
-  <%= link_to "Lorem Ipsum" %> |
-  <% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
-  
+<ul class="nav nav-tabs">
+  <li class="presentation"><%= link_to "Home", root_path %> </li>
+    
+    <% if current_user %>
+      <!-- Signed in as <%#= current_user.name %> -->
+      <li class="presentation"><%= link_to "Logout", '/logout' %></li>
+    <% else %>
+      <li class="presentation"><%= link_to 'Login', '/login' %></li>
+      <li class="presentation"><%= link_to 'Signup', '/signup' %></li>
+    <% end %>
+
+    
+</ul>
+
   <div class="container">
     <%= yield %>
   </div>
-</div>
+
 
 </body>
 </html>

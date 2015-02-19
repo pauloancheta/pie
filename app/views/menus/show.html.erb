@@ -1,0 +1,24 @@
+<h2><%= @menu.name %><h2>
+  <h3>Display dishes here</h3>
+
+<a id="addDish">Add New Dish</a>
+
+<div id="newDishForm" style="display:none;">
+  <%= render "dishes/new" %>
+</div>
+
+
+<center>
+  <% @menu.dishes.each do |dish| %>
+    <div class="well">
+      <h4><%= link_to dish.name, menu_dish_path(@menu, dish) %> </h4>
+      <p><%= dish.description %></p>
+      <p><%= dish.price %></p>
+
+      <hr>
+        <%= link_to "EDIT", edit_menu_dish_path(@menu, dish) %> |
+        <%= link_to "DELETE", menu_dish_path(@menu, dish), method: :delete %>
+      <hr>
+    </div>
+  <% end %>
+</center>

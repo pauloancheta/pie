@@ -1,18 +1,11 @@
 class DishesController < ApplicationController
   before_action :dish_id, only: [:show, :edit, :update, :destroy]
-  def index
-    @dishes = Dish.all
-    @dish = Dish.new
-  end
-
-  def new
-
-  end
+  before_action :menu_id
 
   def create
-    @dish = Dish.new dishes_params
-    if @dish.save
-      redirect_to root_path
+    @menu = Menu.find params[:menu_id]
+    if @menu.dishes.create(dishes_params)
+      redirect_to menu_path(@menu)
     else
       render :new
     end
@@ -28,7 +21,7 @@ class DishesController < ApplicationController
 
   def update
     if @dish.update dishes_params
-      redirect_to root_path
+      redirect_to menu_path(@menu, @dish)
     else
       render :edit
     end
@@ -36,7 +29,7 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-    redirect_to dishes_path
+    redirect_to menu_path(@menu)
   end
 
   private
@@ -46,5 +39,9 @@ class DishesController < ApplicationController
 
   def dish_id
     @dish = Dish.find params[:id]
+  end
+
+  def menu_id
+    @menu = Menu.find params[:menu_id]
   end
 end

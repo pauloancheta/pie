@@ -1,0 +1,10 @@
+<h1>Menus</h1>
+
+<%= link_to "New Menu", new_menu_path %><br><br>
+
+<% @menus.each do |menu| %> 
+  <%= link_to menu.name, menu_path(menu) %><br>
+  <%= link_to "Edit", edit_menu_path(menu) %>
+  |
+  <%= link_to "Delete", menu_path(menu), method: :delete, data: {confirm: "Are you sure?"} %><hr>
+<% end %>

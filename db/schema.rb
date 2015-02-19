@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20150219010602) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "dish_recipes", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "dish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "dish_recipes", ["dish_id"], name: "index_dish_recipes_on_dish_id", using: :btree
+  add_index "dish_recipes", ["recipe_id"], name: "index_dish_recipes_on_recipe_id", using: :btree
+
   create_table "dishes", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
@@ -34,14 +44,27 @@ ActiveRecord::Schema.define(version: 20150219010602) do
 
   add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
 
-  create_table "recipes", force: :cascade do |t|
-    t.string   "name"
+  create_table "menu_dishes", force: :cascade do |t|
+    t.integer  "menu_id"
     t.integer  "dish_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "recipes", ["dish_id"], name: "index_recipes_on_dish_id", using: :btree
+  add_index "menu_dishes", ["dish_id"], name: "index_menu_dishes_on_dish_id", using: :btree
+  add_index "menu_dishes", ["menu_id"], name: "index_menu_dishes_on_menu_id", using: :btree
+
+  create_table "menus", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -54,6 +77,9 @@ ActiveRecord::Schema.define(version: 20150219010602) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "dish_recipes", "dishes"
+  add_foreign_key "dish_recipes", "recipes"
   add_foreign_key "ingredients", "recipes"
-  add_foreign_key "recipes", "dishes"
+  add_foreign_key "menu_dishes", "dishes"
+  add_foreign_key "menu_dishes", "menus"
 end

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  root 'dishes#index'
-  
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
@@ -10,7 +7,13 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  resources :dishes do
+  root 'menus#index'
+
+  resources :menus do
+    resources :dishes
+  end
+  
+  resources :dishes, only: [] do
     resources :recipes
   end
 
