@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   
   root 'menus#index'
 
-  resources :menus
+  resources :menus do
+    resources :dishes
+  end
   
-  resources :dishes do
+  resources :dishes, only: [] do
     resources :recipes
   end
 
