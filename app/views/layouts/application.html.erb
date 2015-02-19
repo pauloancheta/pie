@@ -7,11 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="container container-fluid">
+
 <ul class="nav nav-tabs">
   <li class="presentation"><%= link_to "Home", root_path %> </li>
-  <li class="presentation"><%= link_to "Lorem Ipsum" %> </li>
-  <li class="presentation"><%= link_to "Lorem Ipsum" %></li>
+    
+    <% if current_user %>
+      <!-- Signed in as <%#= current_user.name %> -->
+      <li class="presentation"><%= link_to "Logout", '/logout' %></li>
+    <% else %>
+      <li class="presentation"><%= link_to 'Login', '/login' %></li>
+      <li class="presentation"><%= link_to 'Signup', '/signup' %></li>
+    <% end %>
+
+    
 </ul>
+
   <div class="container">
     <%= yield %>
   </div>
