@@ -12,6 +12,7 @@
 
 <ul class="nav nav-tabs">
   <li class="presentation"><%= link_to "Home", root_path %> </li>
+
     
     <% if current_user %>
       <!-- Signed in as <%#= current_user.name %> -->
@@ -23,7 +24,7 @@
 
     
 </ul>
-
+  <%= flash[:alert] || flash[:notice] %>
   <div class="container">
     <%= yield %>
   </div>
