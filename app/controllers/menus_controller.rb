@@ -20,6 +20,8 @@ class MenusController < ApplicationController
   end 
 
   def show 
+    @dish = Dish.new
+    @dishes = @menu.dishes.all
   end 
 
 
