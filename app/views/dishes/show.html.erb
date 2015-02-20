@@ -9,17 +9,20 @@
   <%= render '/recipes/new' %>
 </div>
 
+ 
 
 <hr>
 <% if @recipes != nil %>
   <% @recipes.each do |r| %>
     <h3><%= link_to r.name, dish_recipe_path(@dish, r) %></h3><br>
-      <div class="well">
-        <% r.ingredients.each do |i| %>
+    <%#= render '/ingredients/new' %>
+      <% r.ingredients.each do |i| %>
+        <div class="well">
           <p><strong>Ingredient: </strong><%= i.name %></p>
           <p><strong>Category: </strong><%= i.category %></p>
-          <hr>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
   <% end %>
 <% end %>
+
+

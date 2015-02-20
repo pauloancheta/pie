@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
 
   def create
     if @dish.recipes.create(recipe_params)
-      redirect_to menu_dish_path(@dish)
+      redirect_to menu_dish_path(@dish.menus.first, @dish)
     else
       flash[:alert] = @dish.errors.full_messages.join(', ')
       render :new
@@ -38,6 +38,7 @@ class RecipesController < ApplicationController
   end
 
   private
+
   def recipe_params
     params.require(:recipe).permit(:name)
   end
