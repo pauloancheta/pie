@@ -1,9 +1,11 @@
+<%= simple_form_for @preference do |p| %>
 <p>Add a list of ingredients that you dont like:</p>
-
+  
+  
 
 <p>Current diet that you follow?</p>
-<%= simple_form_for @preference do |p| %>
-  <%= p.input :recipe_id %>  
+
   <%= p.input :diet, as: :radio_buttons, collection:["vegetarian", "pesquitarian", "anything goes"] %>
   <%= p.submit %>
   <% end %>
+  
