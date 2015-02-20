@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   before_action :recipe_id, only: [:new, :create, :edit, :update, :destroy]
   before_action :ingredient_id, only: [:edit, :update, :destroy]
-  
+  before_action :authenticate_user!
   def new
     @ingredient = @recipe.ingredients.new
   end

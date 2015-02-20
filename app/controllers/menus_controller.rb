@@ -1,7 +1,6 @@
 class MenusController < ApplicationController
-
   before_action :menu_id, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index 
     @menus = Menu.all
   end 
