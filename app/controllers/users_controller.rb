@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     user.name.capitalize!
     user.is_admin = false
     if user.save
+      UserMailer.welcome_email(user).deliver
       session[:user_id] = user.id
       flash[:alert] = "Registration successful"
       redirect_to '/'
