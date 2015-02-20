@@ -11,9 +11,16 @@
 <center>
   <% @menu.dishes.each do |dish| %>
     <div class="well">
-      <h4><%= link_to dish.name, menu_dish_path(@menu, dish) %> </h4>
-      <p><%= dish.description %></p>
-      <p><%= dish.price %></p>
+      <% current_user.recipe.ingredients.each do |i| %>
+        <% if dish.ingredients.map(&:name).join(' ').include?(i.name) %>
+          <h3> dude, your allergic to this dish</h3>
+          <% break %>
+        <% else %>
+          <h4><%= link_to dish.name, menu_dish_path(@menu, dish) %> </h4>
+          <p><%= dish.description %></p>
+          <p><%= dish.price %></p>
+        <% end %>
+      <% end %>
 
       <hr>
         <%= link_to "EDIT", edit_menu_dish_path(@menu, dish) %> |

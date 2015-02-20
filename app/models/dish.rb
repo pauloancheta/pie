@@ -5,6 +5,9 @@ class Dish < ActiveRecord::Base
   has_many :menu_dishes, dependent: :destroy
   has_many :menus, through: :menu_dishes
 
+  #added to make it easier to sesarch for all the ingredients of a dish
+  has_many :ingredients, through: :recipes
+
   validates :name, :price, presence: true
   # validates :name, uniqueness: { scope: :menu_dish }
   validates :description, length: {maximum: 100}
