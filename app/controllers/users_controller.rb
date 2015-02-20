@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     user.name.strip!
+    user.name.capitalize!
     user.is_admin = false
     if user.save
       session[:user_id] = user.id

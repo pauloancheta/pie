@@ -1,7 +1,9 @@
 <h1>Login</h1>
 
-<%= form_tag '/login' do %>
+<%= form_tag '/login', :class => 'form-' do %>
   <p>Email: <%= text_field_tag :email %></p>
   <p>Password: <%= password_field_tag :password %></p> 
   <%= submit_tag "Submit" %>
 <% end %>
+
+<h3><%= link_to 'Sign Up?', signup_path %></h3>
