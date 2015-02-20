@@ -1,12 +1,14 @@
 class PreferencesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   def index
-    @user = User.find params[:user_id]
-    @preferences = @user.preferences.all
+    if current_user.preference.present?
+      @preferences = current_user.preference
+    end
   end
 
   def new
     @preference = Preference.new
+    @preference.user_id = current_user.id
   end
 
   def create
