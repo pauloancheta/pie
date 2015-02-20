@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :recipe_id, only: [:show, :edit, :update, :destroy]
   before_action :dish_id
+  before_action :authenticate_user!
   def index
     @recipes = @dish.recipes.all
   end
