@@ -6,6 +6,7 @@ class Recipe < ActiveRecord::Base
   has_many :inclusions, dependent: :destroy
   has_many :ingredients, through: :inclusions
 
+  belongs_to :preferences
 
   validates :name, presence: true
 end
