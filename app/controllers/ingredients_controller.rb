@@ -7,10 +7,16 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    if @recipe.ingredients.create ingredient_params
-      redirect_to menu_dish_path(@dish.menus.first, @dish)
+    if current_user.is_admin == false
+      @ingredient = current_user.recipe.ingredients.create ingredient_params
+      @ingredient.save
+      redirect_to preference_path(current_user.preference.id)
     else
-      render :new
+      if @recipe.ingredients.create ingredient_params
+          redirect_to menu_dish_path(@dish.menus.first, @dish)
+      else
+        render :new
+      end
     end
   end
 

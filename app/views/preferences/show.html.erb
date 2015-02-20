@@ -1,0 +1,24 @@
+<h2>Preferences for: <%= current_user.name %></h2>
+
+  <%= simple_form_for [current_user.recipe, @ingredient] do |i| %>
+    <%= i.input :name %>
+    <%= i.submit %>
+  <% end %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.recipe.ingredients.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

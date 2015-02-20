@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   end
 
   
-  resources :preferences
+  resources :preferences, only: [:show, :edit, :update]
   
 end

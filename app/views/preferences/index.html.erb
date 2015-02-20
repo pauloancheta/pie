@@ -1,9 +1,0 @@
-<%= link_to "make a preference",  new_preference_path %>
-
-
-<% if current_user.preference.present? %>
-  <p>Welcome, <%= User.find(@preferences.user_id).name %>!</p>
-  <p>Food that you dont like: <br>
-        <%= Recipe.find(@preferences.recipe_id).ingredients.map(&:name).join(', ') %></p>
-  <p>Diet: <%= @preferences.diet %></p>
-<% end %>
