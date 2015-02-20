@@ -19,6 +19,7 @@ group :development do
   gem 'interactive_editor'
   gem 'awesome_print'
   gem 'rails-erd'
+  gem 'letter_opener'
 end
 
 group :development, :test do
