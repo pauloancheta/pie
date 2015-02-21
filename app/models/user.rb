@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
   has_many :favourited_users, through: :favourites
 
   has_many :inverse_favourites, class_name: 'Favourites', foreign_key: 'favourited_user_id'
