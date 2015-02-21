@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :favourites
+  has_many :favourited_users, through: :favourites
+
+  has_many :inverse_favourites, class_name: 'Favourites', foreign_key: 'favourited_user_id'
+  has_many :inverse_favourited_users, through: :inverse_favourites, source: :user
+
   has_many :menus
 
   has_one :preference
