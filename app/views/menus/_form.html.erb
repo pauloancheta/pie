@@ -1,4 +1,4 @@
-<%= simple_form_for @menu do |m| %> 
+<%= simple_form_for [current_user, @menu] do |m| %> 
   <%= m.input :name %>
   <%= m.submit %>
 <% end %>

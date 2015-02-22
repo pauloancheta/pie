@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = User.all.where(is_admin: true)
+    if current_user.is_admin
+      redirect_to user_menus_path(current_user)
+    else
+      @restaurants = User.all.where(is_admin: true)
+    end
   end
 
 end
