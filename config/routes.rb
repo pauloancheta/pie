@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # get 'users/:id/menus' => 'users#menu', as: 'restaurant_menu'
 
   resources :menus, only: [] do
-    resources :dishes, only: [:create, :destroy]
+    resources :dishes
   end
   resources :dishes, only: [] do
     resources :recipes

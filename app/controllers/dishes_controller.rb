@@ -1,11 +1,10 @@
 class DishesController < ApplicationController
   before_action :dish_id, only: [:show, :edit, :update, :destroy]
-  before_action :menu_id
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def create
-    @menu = Menu.find params[:menu_id]
+    @menu = Menu.find params[:id]
     if @menu.dishes.create(dishes_params)
-      redirect_to menu_path(@menu)
+      redirect_to user_menu_path(current_user, @menu)
     else
       render :new
     end
@@ -20,6 +19,7 @@ class DishesController < ApplicationController
   end
 
   def update
+    @menu = Menu.find params[:menu_id]
     if @dish.update dishes_params
       redirect_to menu_path(@menu, @dish)
     else

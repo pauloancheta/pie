@@ -9,7 +9,7 @@
 
   <% @menus.each do |menu| %> 
     <h3><%= link_to menu.name, user_menu_path(@user, menu) %></h3>
-    <% if current_user.is_admin %>
+    <% if current_user.id == menu.user_id %>
       <%= link_to "Edit", edit_user_menu_path(@user, menu) %>
       |
       <%= link_to "Delete", user_menu_path(@user, menu), method: :delete %><hr>

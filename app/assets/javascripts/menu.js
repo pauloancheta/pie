@@ -9,4 +9,8 @@ $(document).ready(function() {
   $('.addMenu').on('click', function() {
     $('.menuForm').fadeToggle();
   });
+
+  $('.showRecipe').on('click', function() {
+    $('.recipe').fadeToggle();
+  });
 });
