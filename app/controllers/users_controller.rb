@@ -11,7 +11,14 @@ class UsersController < ApplicationController
     user.is_admin = false
     if user.save
       #this uses a private method to create an empty preference and recipe(allergy)
-      default_preference
+      r = Recipe.new
+      r.name = "Allergy for user #{user.id}"
+      r.save!
+
+      p = Preference.new
+      p.user_id = user.id
+      p.recipe_id = r.id
+      p.save
 
       UserMailer.welcome_email(user).deliver 
 
@@ -30,17 +37,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :address, :phone_number, :email, :password, :password_confirmation, :is_admin)
   end
 
-  def default_preference
-    if user.is_admin == false
-      r = Recipe.new
-      r.name = "Allergy for user #{user.id}"
-      r.save!
-
-      p = Preference.new
-      p.user_id = user.id
-      p.recipe_id = r.id
-      p.save
-    end
-  end
 end
 

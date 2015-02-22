@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
   has_secure_password
+  # before_validation :default_value
 
-  has_many :menus
+  has_many :menus, dependent: :destroy
 
-  has_one :preference
+  has_one :preference, dependent: :destroy
   has_one :recipe, through: :preference
   
-  validates :name, :address, :phone_number, :email, :password, :password_confirmation, presence: true
+  validates :name, :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
@@ -22,4 +23,8 @@ class User < ActiveRecord::Base
 
     false
   end
+
+  # def default_value
+  #   is_admin = false
+  # end
 end
