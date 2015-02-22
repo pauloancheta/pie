@@ -3,10 +3,10 @@ class MenusController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index 
     @menus = Menu.all
+    @menu = Menu.new
   end 
 
   def new
-    @menu = Menu.new
   end
 
   def create

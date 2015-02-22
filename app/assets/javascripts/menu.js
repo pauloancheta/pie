@@ -5,4 +5,8 @@ $(document).ready(function() {
   $('.presentation').on('mouseleave', function() {
     $(this).removeClass('active');
   });
+
+  $('.addMenu').on('click', function() {
+    $('.menuForm').fadeToggle();
+  });
 });

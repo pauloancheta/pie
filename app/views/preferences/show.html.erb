@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% current_user.recipe.ingredients.each do |i| %>
+    <% @ingredients.each do |i| %>
     <tr>
       <td><%= i.name %></td>
       <td></td>

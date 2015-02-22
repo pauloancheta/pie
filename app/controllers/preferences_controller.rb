@@ -2,7 +2,8 @@ class PreferencesController < ApplicationController
   # before_action :authenticate_user!
   def show
     @preference = Preference.find params[:id]
-    @ingredient = current_user.recipe.ingredients.new
+    @ingredients = current_user.recipe.ingredients
+    @ingredient = @ingredients.new
   end
 
   private
