@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :inverse_favourites, class_name: 'Favourites', foreign_key: 'favourited_user_id'
   has_many :inverse_favourited_users, through: :inverse_favourites, source: :user
 
-  has_many :menus
+  # has_many :menus
 
   has_many :menus, dependent: :destroy
 
