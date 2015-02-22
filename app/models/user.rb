@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
   has_secure_password
   # before_validation :default_value
 
+  has_many :dishes
+
+  has_many :likes
+  has_many :liked_dishes, through: :likes, source: :dish
+
   has_many :favourites, dependent: :destroy
   has_many :favourited_users, through: :favourites
 
