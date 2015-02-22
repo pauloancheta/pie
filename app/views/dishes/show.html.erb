@@ -4,10 +4,12 @@
 
 
 <!-- Should only be shown to restaurant owner -->
-<a id="addRecipe">Add Recipe</a>
-<div id="recipeForm" style="display:none;">
-  <%= render '/recipes/new' %>
-</div>
+<% if current_user.is_admin %>
+  <a class="addRecipe">Add Recipe</a>
+  <div class="recipeForm" style="display:none;">
+    <%= render '/recipes/new' %>
+  </div>
+<% end %>
 
  
 

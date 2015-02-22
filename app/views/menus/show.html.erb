@@ -1,11 +1,12 @@
 <h2><%= @menu.name %><h2>
   <h3>Display dishes here</h3>
 
-<a id="addDish">Add New Dish</a>
-
-<div id="newDishForm" style="display:none;">
-  <%= render "dishes/new" %>
-</div>
+<% if current_user.is_admin %>
+  <a class="addDish">Add New Dish</a>
+  <div class="dishForm" style="display:none;">
+    <%= render "dishes/new" %>
+  </div>
+<% end %>
 
 
 <center>
