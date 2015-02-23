@@ -7,29 +7,22 @@
   </div>
 <% end %>
 
-<div class="row">
-  <div class="col-md-6">
-    <center>
-      <% @menu.dishes.each do |dish| %>
-        <% if current_user.allergic_to?(dish) %>
-          <div class="well allergy">
-        <% else %>
-          <div class="well">
-        <% end %>
 
-            <h4><a class="showRecipe" id="<%= dish.id %>"><%= dish.name %></a></h4>
-            <p><%= dish.description %></p>
-            <p><%= dish.price %></p>
+<table class="table table-striped">
+  <% @menu.dishes.each do |dish| %>
+    <% if current_user.allergic_to?(dish) %>
+      <tr class="allergy">
+    <% else %>
+      <tr class="showRecipe">
+    <% end %>
+    
+        <td><%= dish.name %></td>
+        <td><%= dish.description%></td>
+        <td><%= dish.price %></td>
+        <td><%= link_to "EDIT" %></td>
+        <td><%= link_to "DELETE" %></td>
+      </tr>
 
-            <% if current_user.id == @menu.user_id %>
-            <%= link_to "EDIT" %> |
-            <%= link_to "DELETE" %>
-            <% end %>
-        </div>
-      <% end %>
-    </center>
-  </div>
-  <div class="col-md-6 recipe" style="display:none;">
-    <%#= render '' %>
-  </div>
-</div>
+   
+  <% end %>
+</table>
