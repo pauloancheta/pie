@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#addDish').on('click', function() {
-    $('#newDishForm').fadeToggle();
+  $('.addDish').on('click', function() {
+    $('.dishForm').fadeToggle();
   });
 });

@@ -2,18 +2,20 @@ class MenusController < ApplicationController
   before_action :menu_id, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index 
-    @menus = Menu.all
+    @user = User.find params[:user_id]
+    @menus = @user.menus.all
+    @menu = Menu.new
   end 
 
   def new
-    @menu = Menu.new
   end
 
   def create
-    @menu = Menu.new menu_params
+    @user = User.find params[:user_id]
+    @menu = current_user.menus.new menu_params
     if current_user.is_admin
       if @menu.save
-        redirect_to menus_path
+        redirect_to user_menus_path(@user)
       else
         render :new
       end 
@@ -33,16 +35,18 @@ class MenusController < ApplicationController
   end 
 
   def update
+    @user = User.find params[:user_id]
     if @menu.update menu_params
-      redirect_to menus_path
+      redirect_to user_menus_path(@user)
     else
       render :edit
     end
   end 
 
   def destroy
+    @user = User.find params[:user_id]
     @menu.destroy
-    redirect_to menus_path
+    redirect_to user_menus_path(@user)
   end 
 
 

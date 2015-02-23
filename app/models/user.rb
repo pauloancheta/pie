@@ -2,18 +2,19 @@ class User < ActiveRecord::Base
   has_secure_password
   # before_validation :default_value
 
+  #not being used or not supposed to be used?
   has_many :dishes
 
   has_many :likes
   has_many :liked_dishes, through: :likes, source: :dish
 
-  has_many :favourites, dependent: :destroy
+  has_many :favourites
   has_many :favourited_users, through: :favourites
 
   has_many :inverse_favourites, class_name: 'Favourites', foreign_key: 'favourited_user_id'
   has_many :inverse_favourited_users, through: :inverse_favourites, source: :user
 
-  has_many :menus
+  # has_many :menus
 
   has_many :menus, dependent: :destroy
 
@@ -37,6 +38,9 @@ class User < ActiveRecord::Base
   #   false
   # end
 
+  def favourite_for(user)
+    favourites.where(user: user).first
+  end
   # def default_value
   #   is_admin = false
   # end
