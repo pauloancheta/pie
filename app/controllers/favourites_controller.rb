@@ -1,11 +1,15 @@
 class FavouritesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_user
 
   def create
-    @favourite = @user.favourites.new
-    @favourite.user = current_user
-    @favourite.save
+    @favourite = current_user.favourites.build(:favourited_user_id => params[:favourited_user_id])
+    if @favourite.save
+      flash[:notice] = 'Added to favourites'
+      redirect_to root_path
+    else
+      flash[:alert] = 'Unable to favourite'
+      redirect_to root_path
+    end
   end
   
   def destroy 
@@ -13,8 +17,8 @@ class FavouritesController < ApplicationController
 
   private
 
-  def find_user
-    @user = User.find params[:id]
+  def find_favouriting_user
+    @user = Favourite.find params[:user_id]
   end
 
 end

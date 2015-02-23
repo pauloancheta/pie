@@ -1,3 +1,5 @@
 <% @restaurants.each do |restaurant| %>
   <%= link_to restaurant.name, user_menus_path(restaurant) %>
+  <%= link_to "Favourite This Restaurant", user_favourites_path(current_user,:favourited_user_id => restaurant.id), method: :post, class: "btn btn-info btn-xs" %>
 <% end %>
+
