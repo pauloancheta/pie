@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   root 'restaurants#index'
 
-  resources :users, only:[] do 
+  resources :users, only:[] do
+    resources :favourites, only:[:create, :destroy] 
     resources :menus
   end
   # get 'users/:id/menus' => 'users#menu', as: 'restaurant_menu'

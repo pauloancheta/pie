@@ -11,6 +11,6 @@ $(document).ready(function() {
   });
 
   $('.showRecipe').on('click', function() {
-    $('.recipe').fadeToggle();
+    $(this).find('.recipe').fadeToggle();
   });
 });

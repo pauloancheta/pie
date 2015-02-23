@@ -1,4 +1,5 @@
 class Dish < ActiveRecord::Base
+  # not being used?
   belongs_to :user
 
   has_many :likes
