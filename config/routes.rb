@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  # root 'menus#index'
+  get '/dishes/:dish_id/add_recipe/:id' => 'recipes#add_recipe', as: :add_recipe 
 
   root 'restaurants#index'
 
@@ -15,19 +15,16 @@ Rails.application.routes.draw do
     resources :favourites, only:[:create, :destroy] 
     resources :menus
   end
-  # get 'users/:id/menus' => 'users#menu', as: 'restaurant_menu'
 
   resources :menus, only: [] do
     resources :dishes
   end
-  resources :dishes, only: [] do
-    resources :recipes
-  end
-  resources :recipes, only: [] do
-    resources :ingredients, only: [:new, :create, :destroy]
-  end
-
+  
+  resources :recipes do
+    resources :ingredients
+  end 
   
   resources :preferences, only: [:show, :edit, :update]
   
 end
+

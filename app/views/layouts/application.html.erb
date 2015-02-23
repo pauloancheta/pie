@@ -15,8 +15,7 @@
       <% if current_user.is_admin != true %>
         <%= link_to "Preferences", preference_path(current_user.preference.id) %>
       <% else %>
-        <%# TODO: Fix link_to for recipes, so admin can add recipes etc %>
-        <%= link_to 'Recipes', root_path %>
+        <%= link_to 'Recipes', recipes_path %>
       <% end %>
       <%= link_to "Logout", '/logout' %>
     <% else %>
