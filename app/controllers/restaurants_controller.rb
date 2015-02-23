@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
       redirect_to user_menus_path(current_user)
     else
       @restaurants = User.all.where(is_admin: true)
+      @favourites = current_user.favourite_for(current_user)
     end
   end
 
