@@ -1,7 +1,9 @@
 class DishesController < ApplicationController
+  
   before_action :dish_id, only: [:show, :edit, :update, :destroy]
   before_action :menu_id
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  
   def create
     @menu = Menu.find params[:menu_id]
     if @menu.dishes.create(dishes_params)
@@ -12,7 +14,7 @@ class DishesController < ApplicationController
   end
 
   def show
-    @recipes = @dish.recipes.all
+    @recipes = Recipe.all
     @recipe = Recipe.new
   end
 

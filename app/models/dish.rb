@@ -17,3 +17,5 @@ class Dish < ActiveRecord::Base
   # validates :name, uniqueness: { scope: :menu_dish }
   validates :description, length: {maximum: 100}
 end
+
+

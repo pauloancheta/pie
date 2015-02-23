@@ -11,13 +11,13 @@
 <center>
   <% @menu.dishes.each do |dish| %>
     <div class="well">
-      <% if current_user.allergic_to?(dish) %>
-        <h3> dude, your allergic to this dish</h3>
-      <% else %>
+      <%# if current_user.allergic_to?(dish) %>
+        <!-- <h3> dude, your allergic to this dish</h3> -->
+      <%# else %>
         <h4><%= link_to dish.name, menu_dish_path(@menu, dish) %> </h4>
         <p><%= dish.description %></p>
         <p><%= dish.price %></p>
-      <% end %>
+      <%# end %>
       <hr>
         <%= link_to "EDIT", edit_menu_dish_path(@menu, dish) %> |
         <%= link_to "DELETE", menu_dish_path(@menu, dish), method: :delete %>

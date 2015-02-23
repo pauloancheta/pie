@@ -1,28 +1,19 @@
-<h4><%= @dish.name %></h4>
-<p><%= @dish.description %></p>
-<p><%= @dish.price %></p>
+<div class="col-md-6">
+  <h2>Dish</h2><hr>
+  <h4><%= @dish.name %></h4>
+  <p><%= @dish.description %></p>
+  <p><%= @dish.price %></p><hr>
 
-
-<!-- Should only be shown to restaurant owner -->
-<a id="addRecipe">Add Recipe</a>
-<div id="recipeForm" style="display:none;">
-  <%= render '/recipes/new' %>
+  <% @dish.recipes.each do |dr| %>
+    <li><%= dr.name %></li>
+  <% end %>
 </div>
 
- 
+<div class="col-md-6">
+  <h2>Add from list of recipes</h2><hr>
 
-<hr>
-<% if @recipes != nil %>
   <% @recipes.each do |r| %>
-    <h3><%= link_to r.name, dish_recipe_path(@dish, r) %></h3><br>
-    <%#= render '/ingredients/new' %>
-      <% r.ingredients.each do |i| %>
-        <div class="well">
-          <p><strong>Ingredient: </strong><%= i.name %></p>
-          <p><strong>Category: </strong><%= i.category %></p>
-        </div>
-      <% end %>
+    <p><%= r.name %></p>
+      <p><%= link_to "Add recipe to #{@dish.name}", add_recipe_path(@dish, r) %></p><hr>
   <% end %>
-<% end %>
-
-
+</div>

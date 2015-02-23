@@ -7,17 +7,15 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+  get '/dishes/:dish_id/add_recipe/:id' => 'recipes#add_recipe', as: :add_recipe 
+
   root 'menus#index'
 
   resources :menus do
     resources :dishes
   end
   
-  resources :dishes, only: [] do
-    resources :recipes
-  end
-
-  resources :recipes, only: [] do
+  resources :recipes do
     resources :ingredients
   end
 
@@ -25,3 +23,4 @@ Rails.application.routes.draw do
   resources :preferences, only: [:show, :edit, :update]
   
 end
+

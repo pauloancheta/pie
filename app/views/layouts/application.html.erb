@@ -11,13 +11,14 @@
 <div class="container container-fluid">
 
 <ul class="nav nav-tabs">
-  <li class="presentation"><%= link_to "Home", root_path %> </li>
+  <li class="presentation"><%= link_to "Menus", root_path %> </li>
+  <li class="presentation"><%= link_to "Recipes", recipes_path %> </li>
 
     
     <% if current_user %>
       <!-- Signed in as <%#= current_user.name %> -->
       <li class="presentation"><%= link_to "Logout", '/logout' %></li>
-      <li class="presentation"><%= link_to "Preferences", preference_path(current_user.preference.id) %></li>
+      <!-- <li class="presentation"><%#= link_to "Preferences", preference_path(current_user.preference.id) %></li> -->
     <% else %>
       <li class="presentation"><%= link_to 'Login', '/login' %></li>
       <li class="presentation"><%= link_to 'Signup', '/signup' %></li>
