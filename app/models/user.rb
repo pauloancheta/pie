@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   # before_validation :default_value
 
+  #not being used or not supposed to be used?
   has_many :dishes
 
   has_many :likes
