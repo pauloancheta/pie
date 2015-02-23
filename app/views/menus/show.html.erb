@@ -23,6 +23,7 @@
         <% if current_user.id == @menu.user_id %>
           <%= link_to "EDIT" %> |
           <%= link_to "DELETE" %>
+        <% end %>
       </div>
           <% if dish.recipes.length >= 1 %>
             <div class="recipe" style="display: none;">
@@ -32,7 +33,6 @@
               <% end %>
             </div>
           <% end %>
-        <% end %>
 
     </div>
   <% end %>

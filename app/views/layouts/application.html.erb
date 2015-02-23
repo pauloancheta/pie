@@ -12,7 +12,12 @@
   <%= link_to image_tag('pie_logo.jpg'), root_path, class: "logo" %>
   <div class="menu_button">
     <% if user_signed_in? %>
-      <%= link_to "Preferences", preference_path(current_user.preference.id) %>
+      <% if current_user.is_admin != true %>
+        <%= link_to "Preferences", preference_path(current_user.preference.id) %>
+      <% else %>
+        <%# TODO: Fix link_to for recipes, so admin can add recipes etc %>
+        <%= link_to 'Recipes', root_path %>
+      <% end %>
       <%= link_to "Logout", '/logout' %>
     <% else %>
       <%= link_to 'Login', '/login' %>
