@@ -8,28 +8,26 @@
 </head>
 <body>
 
-<div class="container container-fluid">
-
-<ul class="nav nav-tabs">
-  <li class="presentation"><%= link_to "Home", root_path %> </li>
-
-    
-    <% if current_user %>
-      <!-- Signed in as <%#= current_user.name %> -->
-      <li class="presentation"><%= link_to "Logout", '/logout' %></li>
-      <li class="presentation"><%= link_to "Preferences", preference_path(current_user.preference.id) %></li>
+<div class="menu">
+  <%= link_to image_tag('pie_logo.jpg'), root_path, class: "logo" %>
+  <div class="menu_button">
+    <% if user_signed_in? %>
+      <%= link_to "Preferences", preference_path(current_user.preference.id) %>
+      <%= link_to "Logout", '/logout' %>
     <% else %>
-      <li class="presentation"><%= link_to 'Login', '/login' %></li>
-      <li class="presentation"><%= link_to 'Signup', '/signup' %></li>
+      <%= link_to 'Login', '/login' %>
+      <%= link_to 'Signup', '/signup' %>
     <% end %>
+  </div>
+</div>
 
-    
-</ul>
+<div class="container container-fluid">
+  
   <%= flash[:alert] || flash[:notice] %>
   <div class="container">
     <%= yield %>
   </div>
-
+</div>
 
 </body>
 </html>
