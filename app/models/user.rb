@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :liked_dishes, through: :likes, source: :dish
 
-  has_many :favourites, dependent: :destroy
+  has_many :favourites
   has_many :favourited_users, through: :favourites
 
   has_many :inverse_favourites, class_name: 'Favourites', foreign_key: 'favourited_user_id'
@@ -38,6 +38,9 @@ class User < ActiveRecord::Base
     false
   end
 
+  def favourite_for(user)
+    favourites.where(user: user).first
+  end
   # def default_value
   #   is_admin = false
   # end

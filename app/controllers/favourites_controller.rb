@@ -13,12 +13,17 @@ class FavouritesController < ApplicationController
   end
   
   def destroy 
+    @restaurant = User.find params[:id]
+    @favourite = current_user.favourites.where(user_id: current_user, favourited_user_id: @restaurant).first
+    @favourite.destroy 
+    flash[:notice] = 'Removed from favourites'
+    redirect_to root_path
   end
 
   private
 
-  def find_favouriting_user
-    @user = Favourite.find params[:user_id]
+  def find_favourited_user
+    @user = current_user.favourited_users
   end
 
 end
