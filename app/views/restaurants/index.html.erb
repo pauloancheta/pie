@@ -1,13 +1,21 @@
 <% @restaurants.each do |restaurant| %>
-  <%= link_to restaurant.name, user_menus_path(restaurant) %>
-  <% if !current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>
-    <%= link_to "Favourite This Restaurant", 
-      user_favourites_path(current_user,favourited_user_id: restaurant.id), 
-      method: :post, class: "btn btn-info btn-xs" %>
-  <% else %>
-    <%= link_to "Favourited", 
-    user_favourite_path(current_user, restaurant.id), 
-    method: :delete, class: "btn btn-success btn-xs" %>
-  <% end %>
+  <div class="restaurant_card">
+    <div class="darken"> </div>
+    <div class="restaurant_logo">
+      <%= link_to restaurant.name, user_menus_path(restaurant) %>
+    </div>
+
+    <div class="restaurant_info">
+      <% if !current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>
+        <%= link_to "Favourite This Restaurant", 
+          user_favourites_path(current_user,favourited_user_id: restaurant.id), 
+          method: :post, class: "btn btn-info btn-xs" %>
+      <% else %>
+        <%= link_to "Favourited", 
+        user_favourite_path(current_user, restaurant.id), 
+        method: :delete, class: "btn btn-success btn-xs" %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
