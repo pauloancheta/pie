@@ -1,0 +1,43 @@
+
+.restaurant_card {
+  margin-top: 20px;
+  width: 800px;
+  height: 100px;
+  position: relative;
+  background-color: #383838;
+
+  .darken {
+    width: 600px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline;
+    position: absolute;
+    z-index: 0
+  }
+
+  .restaurant_logo {
+    background-image: url("http://www.bookme.ie/img/2.jpg");
+    background-position: center;
+    background-size: 600px;
+    width: 600px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+
+    a {
+      padding: 30px;
+      position: absolute;
+      margin-left: -40px;
+      text-decoration: none;
+      font-size: 2em;
+      color: #CCC;
+    }
+  }
+
+  .restaurant_info {
+    display: inline-block;
+    bottom: 0px;
+    position: absolute;
+    margin-left: 55px;
+  }
+}
