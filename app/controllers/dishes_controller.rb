@@ -2,7 +2,7 @@ class DishesController < ApplicationController
   before_action :dish_id, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def create
-    @menu = Menu.find params[:id]
+    @menu = Menu.find params[:menu_id]
     if @menu.dishes.create(dishes_params)
       redirect_to user_menu_path(current_user, @menu)
     else
