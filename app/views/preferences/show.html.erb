@@ -7,7 +7,7 @@
   <% end %>
 
   <%= simple_form_for @preference do |d| %>
-    <%= d.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Hindu", "Halal"] %>
+    <%= d.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Muslim", "Dairy-free", "Gluten-free"] %>
     <%= d.submit %>
   <% end %>
 </div>

@@ -9,7 +9,7 @@
 
 <center>
   <% @menu.dishes.each do |dish| %>
-    <% if current_user.allergic_to?(dish) %>
+    <% if current_user.allergic_to?(dish) || current_user.diet_restriction?(dish) %>
       <div class="well allergy showRecipe">
     <% else %>
       <div class="well showRecipe">

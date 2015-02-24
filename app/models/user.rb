@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   def allergic_to?(dish)
     allergies = recipe.ingredients.map(&:name)
     ingredients = dish.ingredients.map(&:name)
+    
 
     allergies.each do |allergy|
       if ingredients.include?(allergy)
@@ -35,13 +36,67 @@ class User < ActiveRecord::Base
       end
     end
 
-    false
+    return false
   end
 
   def favourite_for(user)
     favourites.where(user: user).first
   end
-  # def default_value
-  #   is_admin = false
-  # end
+
+  def diet_restriction?(user)
+    ingredient_categories = recipe.ingredients.map(&:category)
+
+    case self.preference.diet
+    when "Vegan"
+      ["Poultry", "Beef", "Pork", "Seafood", "Dairy/Eggs"].each do |vegan|
+        if ingredient_categories.include?(vegan)
+          return true
+        end
+      end
+    when "Vegetarian"
+      ["Poultry", "Beef", "Pork", "Seafood"].each do |vegetarian|
+        if ingredient_categories.include?(vegetarian)
+          return true
+        end
+      end
+    when "Pesquitarian"
+      ["Poultry", "Beef", "Pork"].each do |pesq|
+        if ingredient_categories.include?(pesq)
+          return true
+        end
+      end
+    when "Muslim"
+      if ingredient_categories.include?("Pork")
+        return true
+      end
+    when "Dairy-free"
+      if ingredient_categories.include?("Dairy/Eggs")
+        return true
+      end
+    when "Gluten-free"
+      if ingredient_categories.include?("Grains/Wheat")
+        return true
+      end
+    else
+      false
+    end
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
