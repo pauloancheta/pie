@@ -5,28 +5,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    user.name.strip!
-    user.name.capitalize!
-    # commented out for is_admin checkbox
-    # user.is_admin = false
-    if user.save
-      # The following code creates an empty recipe and preference for
-      # a user, so they don't have to create them, just edit them. 
-       if user.is_admin != true
-        r = Recipe.new
-        r.name = "Allergy for user #{user.id}"
-        r.save!
+    @user = User.new(user_params)
+    user_name_format(@user)
+    @user.is_admin = false
+    if @user.save
+      initialize_non_admin(@user) 
 
-        p = Preference.new
-        p.user_id = user.id
-        p.recipe_id = r.id
-        p.save
-      end
+      UserMailer.welcome_email(@user).deliver 
 
-      UserMailer.welcome_email(user).deliver 
-
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
       redirect_to '/'
     else
@@ -77,6 +64,24 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :address, :phone_number, :email, :password, :password_confirmation, :is_admin)
+  end
+
+  def user_name_format(user)
+    user.name.strip!
+    user.name.capitalize!
+  end
+
+  def initialize_non_admin(user)
+    if user.is_admin != true
+      r = Recipe.new
+      r.name = "Allergy for user #{user.id}"
+      r.save!
+
+      p = Preference.new
+      p.user_id = user.id
+      p.recipe_id = r.id
+      p.save
+    end
   end
 
 end

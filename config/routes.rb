@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :menus
   end
 
-  resources :menus, only: [] do
+  resources :menus, only:[] do
     resources :dishes
   end
   
