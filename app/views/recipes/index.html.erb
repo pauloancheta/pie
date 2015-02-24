@@ -6,24 +6,20 @@
 </div><hr>
 
 
-<% @recipes.each do |r| %>
-  <h3><%= r.name %></h3>
-  <p><%= link_to "Edit Recipe", edit_recipe_path(r) %></p>
-  <p><%= link_to "Delete Recipe", recipe_path(r), method: :delete %></p>
-  <p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
+  <% @recipes.each do |r| %>
+    <h3><%= r.name %></h3>
+    <p><%= link_to "Edit Recipe", edit_recipe_path(r) %></p>
+    <p><%= link_to "Delete Recipe", recipe_path(r), method: :delete %></p>
+    <p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
 
-<!--   <a id="addIngredient">Add an ingredient</a>
-  <div id="ingredientsForm" style="display:none;">
-    <%#= render 'ingredients/form' %>
-  </div> -->
+      <% r.ingredients.each do |i| %>
+        <div class="well">
+          <h4>Recipe Ingredients</h4>
+            <p><strong>Ingredient: </strong><%= i.name %></p>
+            <p><strong>Category: </strong><%= i.category %></p>
+            <p><%= link_to "Edit Ingredients", edit_recipe_ingredient_path(r, i) %></p>
+            <p><%= link_to "Delete Ingredients", recipe_ingredient_path(r, i), method: :delete %></p>
+        </div>
+      <% end %>
+  <% end %>
 
-    <% r.ingredients.each do |i| %>
-      <div class="well">
-        <h4>Recipe Ingredients</h4>
-          <p><strong>Ingredient: </strong><%= i.name %></p>
-          <p><strong>Category: </strong><%= i.category %></p>
-          <p><%= link_to "Edit Ingredients", edit_recipe_ingredient_path(r, i) %></p>
-          <p><%= link_to "Delete Ingredients", recipe_ingredient_path(r, i), method: :delete %></p>
-      </div>
-    <% end %>
-<% end %>
