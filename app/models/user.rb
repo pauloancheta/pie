@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_one :preference, dependent: :destroy
   has_one :recipe, through: :preference
 
-  has_many :recipes, through: :menus
+  has_many :recipes
   
   validates :name, :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: true

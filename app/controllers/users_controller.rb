@@ -5,15 +5,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    user_name_format
-    user.is_admin = false
-    if user.save
-      initialize_non_admin  
+    @user = User.new(user_params)
+    user_name_format(@user)
+    @user.is_admin = false
+    if @user.save
+      initialize_non_admin(@user) 
 
-      UserMailer.welcome_email(user).deliver 
+      UserMailer.welcome_email(@user).deliver 
 
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
       redirect_to '/'
     else
@@ -33,12 +33,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :address, :phone_number, :email, :password, :password_confirmation, :is_admin)
   end
 
-  def user_name_format
+  def user_name_format(user)
     user.name.strip!
     user.name.capitalize!
   end
 
-  def initialize_non_admin
+  def initialize_non_admin(user)
     if user.is_admin != true
       r = Recipe.new
       r.name = "Allergy for user #{user.id}"
