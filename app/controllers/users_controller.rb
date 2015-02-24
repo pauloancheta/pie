@@ -34,6 +34,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    if @user.update user_params
+      @user.name.strip!
+      @user.name.capitalize!
+      @user.save!
+      flash[:notice] = "Profile Updated!"
+      render :show  
+    else
+      flash[:alert] = "Error in updating your profile"
+      render :show
+    end
+  end
+
+  def show
+    @user = User.find(session[:user_id])
+  end
+
   def menu
     @user = User.find params[:id]
     @menus = @user.menus
