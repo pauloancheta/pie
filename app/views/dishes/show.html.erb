@@ -3,7 +3,7 @@
   <h4><%= @dish.name %></h4>
   <p><%= @dish.description %></p>
   <p><%= @dish.price %></p><hr>
-
+  
   <% @dish.recipes.each do |dr| %>
     <li><%= dr.name %></li>
   <% end %>
