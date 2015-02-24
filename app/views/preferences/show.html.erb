@@ -1,17 +1,24 @@
 <h2>Preferences for: <%= current_user.name %></h2>
-
+<a class="edit_preference">Edit preferences</a>
+<div class="preference_form hidden">
   <%= simple_form_for [current_user.recipe, @ingredient] do |i| %>
     <%= i.input :name %>
     <%= i.submit %>
   <% end %>
 
-  <%#= r.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Hindu", "Halal"] %>
+  <%= simple_form_for @preference do |d| %>
+    <%= d.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Hindu", "Halal"] %>
+    <%= d.submit %>
+  <% end %>
+</div>
 
+<h3>Diet:</h3>
+<%= current_user.preference.diet %>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th></th>
+      <th>Food that you dont like:</th>
       <th></th>
     </tr>
   </thead>
@@ -19,7 +26,7 @@
     <% @ingredients.each do |i| %>
     <tr>
       <td><%= i.name %></td>
-      <td></td>
+      <td><%= link_to "Delete" %></td>
     </tr>
     <% end %>
   </tbody>

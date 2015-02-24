@@ -1,3 +1,9 @@
+$pie_background_color: #edecec;
+
 body {
-  background-color: #edecec;
+  background-color: $pie_background_color;
+}
+
+.hidden {
+  display: none;
 }
