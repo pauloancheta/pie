@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     user_name_format(@user)
-    @user.is_admin = false
     if @user.save
       initialize_non_admin(@user) 
 
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       flash[:alert] = "Error! You may have entered entered an invalid email or password."
-      redirect_to '/signup'
+      redirect_to new_user_path
     end
   end
 
