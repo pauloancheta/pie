@@ -1,0 +1,14 @@
+<%= simple_form_for @user do |f| %>
+  <div class="is-admin-checkbox">
+    <%= f.input :is_admin, as: :boolean, checked_value: true, unchecked_value: false %>
+  </div>
+  <%= f.input :name %>
+  <div class="address-div">
+    <%= f.input :address %>
+  </div>
+  <%= f.input :phone_number %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.button :submit %>
+<% end %>
