@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(session[:user_id])
+  end
+
   def edit
     @user = User.find(session[:user_id])
   end
@@ -52,8 +56,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def destroy
     @user = User.find(session[:user_id])
+    if @user.destroy
+      flash[:alert] = "Account deleted successfully!"
+      redirect_to '/logout'
+    else 
+      flash[:alert] = "Error in deleting your account"
+      render :show
+    end
   end
 
   def menu
