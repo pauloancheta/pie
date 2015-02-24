@@ -6,22 +6,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    user.name.strip!
-    user.name.capitalize!
+    user_name_format
     user.is_admin = false
     if user.save
-      # The following code creates an empty recipe and preference for
-      # a user, so they don't have to create them, just edit them. 
-       if user.is_admin != true
-        r = Recipe.new
-        r.name = "Allergy for user #{user.id}"
-        r.save!
-
-        p = Preference.new
-        p.user_id = user.id
-        p.recipe_id = r.id
-        p.save
-      end
+      initialize_non_admin  
 
       UserMailer.welcome_email(user).deliver 
 
@@ -43,6 +31,24 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :address, :phone_number, :email, :password, :password_confirmation, :is_admin)
+  end
+
+  def user_name_format
+    user.name.strip!
+    user.name.capitalize!
+  end
+
+  def initialize_non_admin
+    if user.is_admin != true
+      r = Recipe.new
+      r.name = "Allergy for user #{user.id}"
+      r.save!
+
+      p = Preference.new
+      p.user_id = user.id
+      p.recipe_id = r.id
+      p.save
+    end
   end
 
 end

@@ -14,12 +14,12 @@ class User < ActiveRecord::Base
   has_many :inverse_favourites, class_name: 'Favourites', foreign_key: 'favourited_user_id'
   has_many :inverse_favourited_users, through: :inverse_favourites, source: :user
 
-  # has_many :menus
-
   has_many :menus, dependent: :destroy
 
   has_one :preference, dependent: :destroy
   has_one :recipe, through: :preference
+
+  has_many :recipes, through: :menus
   
   validates :name, :email, :password, :password_confirmation, presence: true
   validates :email, uniqueness: true
