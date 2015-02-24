@@ -4,4 +4,7 @@
 <p><%= @user.address %></p>
 <p><%= @user.phone_number %></p>
 <p><%= @user.email %></p>
+<% if @user.is_admin == true %>
+ <p><%= @user.name %> has admin status.<p>
+<% end %>
 <p><%= link_to "Delete Account", user_path(@user), method: :delete %><p>

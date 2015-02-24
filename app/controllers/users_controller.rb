@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     user.name.strip!
     user.name.capitalize!
-    user.is_admin = false
+    # commented out for is_admin checkbox
+    # user.is_admin = false
     if user.save
       # The following code creates an empty recipe and preference for
       # a user, so they don't have to create them, just edit them. 
