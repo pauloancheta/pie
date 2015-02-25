@@ -6,3 +6,8 @@
   <p>Phone:<%= restaurant.phone_number %></p>
   <hr>
 <% end %>
+
+<% if @user.favourited_users.length < 1 %>
+  <%# if user has no favourites, displays a message %>
+  <p>You haven't added any restaurants to your favourites yet!</p>
+<% end %>
