@@ -10,4 +10,8 @@ class RestaurantsController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def favourite
+    @user = User.find(session[:user_id])
+  end
 end
