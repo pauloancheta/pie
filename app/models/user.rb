@@ -25,6 +25,18 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  def favourite_for(user)
+    favourites.where(user: user).first
+  end
+
+  def self.search(search)
+    if search
+      where("name ILIKE '%#{search}%' ")
+    else
+      unscoped
+    end
+  end
+
   def allergic_to?(dish)
     allergies = recipe.ingredients.map(&:name)
     ingredients = dish.ingredients.map(&:name)
@@ -39,64 +51,41 @@ class User < ActiveRecord::Base
     return false
   end
 
-  def favourite_for(user)
-    favourites.where(user: user).first
-  end
-
   def diet_restriction?(user)
-    ingredient_categories = recipe.ingredients.map(&:category)
+    vegan_array = ["Poultry", "Beef", "Pork", "Seafood", "Dairy/Eggs"]
+    vegetarian_array = ["Poultry", "Beef", "Pork", "Seafood"]
+    pesq_array = ["Poultry", "Beef", "Pork"]
+    muslim_array = ["Pork"]
+    dairy_array = ["Dairy/Eggs"]
+    gluten_array = ["Grains/Wheat"]
+
 
     case self.preference.diet
     when "Vegan"
-      ["Poultry", "Beef", "Pork", "Seafood", "Dairy/Eggs"].each do |vegan|
-        if ingredient_categories.include?(vegan)
-          return true
-        end
-      end
+      return check_ingredients(vegan_array)
     when "Vegetarian"
-      ["Poultry", "Beef", "Pork", "Seafood"].each do |vegetarian|
-        if ingredient_categories.include?(vegetarian)
-          return true
-        end
-      end
+      return check_ingredients(vegetarian_array)
     when "Pesquitarian"
-      ["Poultry", "Beef", "Pork"].each do |pesq|
-        if ingredient_categories.include?(pesq)
-          return true
-        end
-      end
+      return check_ingredients(pesq_array)
     when "Muslim"
-      if ingredient_categories.include?("Pork")
-        return true
-      end
+      return check_ingredients(muslim_array)
     when "Dairy-free"
-      if ingredient_categories.include?("Dairy/Eggs")
-        return true
-      end
+      return check_ingredients(dairy_array)
     when "Gluten-free"
-      if ingredient_categories.include?("Grains/Wheat")
-        return true
-      end
+      return check_ingredients(gluten_array)
     else
       false
     end
   end
 
+  def check_ingredients(ingredient_array)
+    ingredient_categories = recipe.ingredients.map(&:category)  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ingredient_array.each do |ingredient|
+      if ingredient_categories.include?(ingredient)
+        return true
+      end
+    end
+  end
 
 end

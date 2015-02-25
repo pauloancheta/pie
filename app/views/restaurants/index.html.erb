@@ -1,3 +1,10 @@
+<%= form_tag root_path, :method => 'get' do %>
+  <p style="margin-top:10px;">
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <% @restaurants.each do |restaurant| %>
   <div class="restaurant_card">
     <div class="darken"> </div>
