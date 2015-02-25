@@ -21,8 +21,8 @@
         <p><%= dish.price %></p>
 
         <% if current_user.id == @menu.user_id %>
-          <%= link_to "EDIT" %> |
-          <%= link_to "DELETE" %>
+          <%= link_to "EDIT", edit_menu_dish_path(@menu, dish) %> |
+          <%= link_to "DELETE", menu_dish_path(@menu, dish), method: :delete %>
         <% end %>
       </div>
     </div>

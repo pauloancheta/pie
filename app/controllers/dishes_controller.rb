@@ -18,20 +18,24 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @menu = Menu.find params[:menu_id]
   end
 
   def update
+    @user = current_user
     @menu = Menu.find params[:menu_id]
     if @dish.update dishes_params
-      redirect_to menu_path(@menu, @dish)
+      redirect_to user_menu_path(@user, @menu)
     else
       render :edit
     end
   end
 
   def destroy
+    @menu = Menu.find params[:menu_id]
+    @user = current_user
     @dish.destroy
-    redirect_to menu_path(@menu)
+    redirect_to user_menu_path(@user, @menu)
   end
 
   private
