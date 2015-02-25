@@ -1,0 +1,8 @@
+<h1>Favourited Restaurants</h1>
+
+<% @user.favourited_users.each do |restaurant| %>
+  <p>Name: <%= restaurant.name %></p>
+  <p>Address: <%= restaurant.address %></p>
+  <p>Phone:<%= restaurant.phone_number %></p>
+  <hr>
+<% end %>
