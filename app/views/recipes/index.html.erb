@@ -6,20 +6,32 @@
 </div><hr>
 
 
-  <% @recipes.each do |r| %>
-    <h3><%= r.name %></h3>
-    <p><%= link_to "Edit Recipe", edit_recipe_path(r) %></p>
-    <p><%= link_to "Delete Recipe", recipe_path(r), method: :delete %></p>
-    <p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% @recipes.each_with_index do |r, index| %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= index+1 %>" aria-expanded="true" aria-controls="collapseOne">
+            <h3><%= r.name %></h3>
+            </a>
+        </h4>
+      </div>
+      <div id="collapseOne<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <p><%= link_to "Edit Recipe", edit_recipe_path(r) %></p>
+          <p><%= link_to "Delete Recipe", recipe_path(r), method: :delete %></p>
+          <p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
 
-      <% r.ingredients.each do |i| %>
-        <div class="well">
-          <h4>Recipe Ingredients</h4>
-            <p><strong>Ingredient: </strong><%= i.name %></p>
-            <p><strong>Category: </strong><%= i.category %></p>
-            <p><%= link_to "Edit Ingredients", edit_recipe_ingredient_path(r, i) %></p>
-            <p><%= link_to "Delete Ingredients", recipe_ingredient_path(r, i), method: :delete %></p>
+          <% r.ingredients.each do |i| %>
+            <div class="well">
+              <h4>Recipe Ingredients</h4>
+                <p><strong>Ingredient: </strong><%= i.name %></p>
+                <p><strong>Category: </strong><%= i.category %></p>
+                <p><%= link_to "Edit Ingredients", edit_recipe_ingredient_path(r, i) %></p>
+                <p><%= link_to "Delete Ingredients", recipe_ingredient_path(r, i), method: :delete %></p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-  <% end %>
-
+      </div>
+    </div>
+<% end %>
