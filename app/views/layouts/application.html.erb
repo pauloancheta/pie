@@ -15,6 +15,7 @@
       <% if current_user.is_admin != true %>
         <%= link_to "Preferences", preference_path(current_user.preference.id) %>
       <% else %>
+        <%= link_to "View My Menus", user_menus_path(current_user) %>
         <%= link_to 'Recipes', recipes_path %>
       <% end %>
       <%= link_to "Logout", '/logout' %>

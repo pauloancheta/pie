@@ -25,6 +25,18 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  def favourite_for(user)
+    favourites.where(user: user).first
+  end
+
+  def self.search(search)
+    if search
+      where("name ILIKE '%#{search}%' ")
+    else
+      unscoped
+    end
+  end
+
   def allergic_to?(dish)
     allergies = recipe.ingredients.map(&:name)
     ingredients = dish.ingredients.map(&:name)
@@ -37,10 +49,6 @@ class User < ActiveRecord::Base
     end
 
     return false
-  end
-
-  def favourite_for(user)
-    favourites.where(user: user).first
   end
 
   def diet_restriction?(user)
