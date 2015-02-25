@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:alert] = "Logged In"
-      redirect_to '/'
+      if user.is_admin
+        redirect_to user_menus_path(user)
+      else 
+        redirect_to root_path
+      end
     else
       flash[:alert] = "Wrong email or password"
       redirect_to '/login'
