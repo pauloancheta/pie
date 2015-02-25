@@ -11,41 +11,16 @@
   <% @recipes.each_with_index do |r, index| %>
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= index+1 %>" aria-expanded="true" aria-controls="collapseOne">
-            <div id= "recipeRow" class="row">
-              <div class="col-md-8"><h3><%= r.name %></h3></div>
-                <div id="recipeLink">
-                  <div class="col-md-2"><p><%= link_to "Edit #{r.name} Recipe", edit_recipe_path(r) %></p></div>
-                  <div class="col-md-2"><p><%= link_to "Delete #{r.name} Recipe", recipe_path(r), method: :delete %></p></div>
-                </div>
-            </div>
-            </a>
-        </h4>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= index+1 %>" aria-expanded="true" aria-controls="collapseOne">
+          <div id= "recipeRow" class="row">
+            <%= render '/recipes/show', r: r %>
+          </div>
+        </a>
       </div>
 
       <div id="collapseOne<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
-
-          <!-- Recipe ingredient table begins -->
-          <h4><%= r.name %> Ingredients</h4>
-            <table class="table table-striped" style="width:100%">
-              <tr>
-                <th>Ingredient</th>
-                <th>Category</th> 
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-              <% r.ingredients.each do |i| %>
-                <tr>
-                  <td><%= i.name %></td>
-                  <td><%= i.category %></td> 
-                  <td><%= link_to "Edit #{i.name}", edit_recipe_ingredient_path(r, i) %></td>
-                  <td><%= link_to "Delete #{i.name}", recipe_ingredient_path(r, i), method: :delete %></td>
-                </tr>
-              <% end %>
-            </table>
+          <%= render 'ingredients/index', r: r %>
         </div>
       </div>
     </div>

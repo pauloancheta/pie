@@ -1,0 +1,22 @@
+<p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
+
+<!-- Recipe ingredient table begins -->
+<h4><%= r.name %> Ingredients</h4>
+
+<table class="table table-striped" style="width:100%">
+  <tr>
+    <th>Ingredient</th>
+    <th>Category</th> 
+    <th></th>
+  </tr>
+  <% r.ingredients.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td><%= i.category %></td> 
+      <td>
+        <%= link_to "Edit", edit_recipe_ingredient_path(r, i), class: "btn btn-default" %>
+        <%= link_to "Delete", recipe_ingredient_path(r, i), method: :delete, class: "btn btn-default"  %>
+      </td>
+    </tr>
+  <% end %>
+</table>
