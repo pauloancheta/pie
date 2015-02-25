@@ -13,8 +13,7 @@ class DishesController < ApplicationController
   end
 
   def show
-    @recipes = Recipe.all
-    @recipe = Recipe.new
+    @recipes = current_user.recipes.all
   end
 
   def edit
