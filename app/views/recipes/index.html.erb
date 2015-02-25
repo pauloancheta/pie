@@ -13,13 +13,13 @@
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= index+1 %>" aria-expanded="true" aria-controls="collapseOne">
             <h3><%= r.name %></h3>
+            <p><%= link_to "Edit Recipe", edit_recipe_path(r) %></p>
+            <p><%= link_to "Delete Recipe", recipe_path(r), method: :delete %></p>
             </a>
         </h4>
       </div>
       <div id="collapseOne<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <p><%= link_to "Edit Recipe", edit_recipe_path(r) %></p>
-          <p><%= link_to "Delete Recipe", recipe_path(r), method: :delete %></p>
           <p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
 
           <% r.ingredients.each do |i| %>

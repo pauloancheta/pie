@@ -7,17 +7,19 @@
   <div id="droppable" class="ui-widget-header">
       <p>Drop here</p>
   </div> 
-  
-  <% @dish.recipes.each do |dr| %>
-    <li><%= dr.name %></li>
-  <% end %>
+    
+    <div class="recipe-list">
+      <% @dish.recipes.each do |dr| %>
+        <li><%= dr.name %></li>
+      <% end %>
+    </div>
 </div>
 
 
 <div class="col-md-6">
   <h2>Add from list of recipes</h2><hr>
   <% @recipes.each do |r| %>
-    <div id="draggable" class="ui-widget-content draggable">
+    <div id="draggable" class="ui-widget-content draggable" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>">
       <p><%= r.name %></p>
         <p><%= link_to "Add recipe to #{@dish.name}", add_recipe_path(@dish, r) %></p>
     </div>
@@ -30,10 +32,13 @@ $(function() {
   $( ".draggable" ).draggable();
   $( "#droppable" ).droppable({
     drop: function( event, ui ) {
-      $( this )
-        .addClass( "ui-state-highlight" )
-        .find( "p" )
-          .html( "Dropped!" );
+      var recipeId = $(ui.draggable).data('recipe-id'),
+          name     = $(ui.draggable).data('name');
+
+
+      $('.recipe-list').append("<li>" + name + "</li>");
+
+      // $.post('/add-recipe-path-for-this-thing', {recipe_id: recipeId});
     }
   });
 });
