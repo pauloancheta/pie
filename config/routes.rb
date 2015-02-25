@@ -4,14 +4,17 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+  # get '/signup' => 'users#new'
+  # get '/edit_user/:id' => 'users#edit'
+  # post '/edit_user/:id' => 'users#update'
+  # post '/users' => 'users#create'
+
 
   get '/dishes/:dish_id/add_recipe/:id' => 'recipes#add_recipe', as: :add_recipe 
 
   root 'restaurants#index'
 
-  resources :users, only:[] do
+  resources :users do
     resources :favourites, only:[:create, :destroy] 
     resources :menus
   end

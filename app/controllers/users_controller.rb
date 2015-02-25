@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     user_name_format(@user)
-    @user.is_admin = false
     if @user.save
       initialize_non_admin(@user) 
 
@@ -18,7 +17,40 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       flash[:alert] = "Error! You may have entered entered an invalid email or password."
-      redirect_to '/signup'
+      redirect_to new_user_path
+    end
+  end
+
+  def show
+    @user = User.find(session[:user_id])
+  end
+
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    if @user.update user_params
+      @user.name.strip!
+      @user.name.capitalize!
+      @user.save!
+      flash[:notice] = "Profile Updated!"
+      render :show  
+    else
+      flash[:alert] = "Error in updating your profile"
+      render :show
+    end
+  end
+
+  def destroy
+    @user = User.find(session[:user_id])
+    if @user.destroy
+      flash[:alert] = "Account deleted successfully!"
+      redirect_to '/logout'
+    else 
+      flash[:alert] = "Error in deleting your account"
+      render :show
     end
   end
 
