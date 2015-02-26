@@ -1,5 +1,6 @@
 class PreferencesController < ApplicationController
   before_action :authenticate_user!
+
   def show
     @preference = current_user.preference
     @ingredients = current_user.recipe.ingredients
