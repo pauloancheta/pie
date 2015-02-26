@@ -12,11 +12,12 @@
 
 <center>
   <% @menu.dishes.each do |dish| %>
-    <% if user_signed_in? && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
-      <div class="well allergy showRecipe" style="display:none;">
-    <% else %>
-      <div class="well showRecipe">
-    <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.allergic_to?(dish) || current_user.diet_restriction?(dish) %>
+        <div class="well allergy showRecipe" style="display:none;">
+      <% else %>
+        <div class="well showRecipe">
+      <% end %>
 
       <div class="dish">
         <h4>
@@ -35,5 +36,6 @@
         <% end %>
       </div>
     </div>
+    <% end %>
   <% end %>
 </center>

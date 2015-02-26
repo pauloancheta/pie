@@ -56,7 +56,9 @@ class User < ActiveRecord::Base
   end
 
   #cross reference diet to ingredient categories
-  def diet_restriction?(user)
+  def diet_restriction?(dish)
+    ingredients = dish.ingredients.map(&:category)
+
     vegan_array = ["Poultry", "Beef", "Pork", "Seafood", "Dairy/Eggs"]
     vegetarian_array = ["Poultry", "Beef", "Pork", "Seafood"]
     pesq_array = ["Poultry", "Beef", "Pork"]
@@ -64,23 +66,60 @@ class User < ActiveRecord::Base
     dairy_array = ["Dairy/Eggs"]
     gluten_array = ["Grains/Wheat"]
 
-
-    case self.preference.diet
-    when "Vegan"
-      return check_ingredients(vegan_array)
-    when "Vegetarian"
-      return check_ingredients(vegetarian_array)
-    when "Pesquitarian"
-      return check_ingredients(pesq_array)
-    when "Muslim"
-      return check_ingredients(muslim_array)
-    when "Dairy-free"
-      return check_ingredients(dairy_array)
-    when "Gluten-free"
-      return check_ingredients(gluten_array)
-    else
-      return false
+    if self.preference.diet == "Vegan"
+      vegan_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
+    elsif self.preference.diet == "Vegetarian"
+      vegetarian_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
+    elsif self.preference.diet == "Pesquitarian"
+      pesq_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
+    elsif self.preference.diet == "Muslim"
+      muslim_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
+    elsif self.preference.diet == "Dairy-free"
+      dairy_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
+    elsif self.preference.diet == "Gluten-free"
+      gluten_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
     end
+    false
+    # case self.preference.diet
+    # when "Vegan"
+    #   return check_ingredients(vegan_array)
+    # when "Vegetarian"
+    #   return check_ingredients(vegetarian_array)
+    # when "Pesquitarian"
+    #   return check_ingredients(pesq_array)
+    # when "Muslim"
+    #   return check_ingredients(muslim_array)
+    # when "Dairy-free"
+    #   return check_ingredients(dairy_array)
+    # when "Gluten-free"
+    #   return check_ingredients(gluten_array)
+    # else
+    #   return false
+    # end
   end
 
   #loop through the ingredient categories and match an ingredient
