@@ -1,7 +1,6 @@
 <h2><%= @menu.name %></h2>
 
-
-<% if user_signed_in? && current_user.is_admin %>
+<% if user_signed_in? && (current_user == @user) %>
   <a class="addDish">Add New Dish</a>
   <div class="dishForm" style="display:none;">
     <%= render "dishes/new" %>
