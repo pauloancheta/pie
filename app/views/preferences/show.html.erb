@@ -24,10 +24,11 @@
   </thead>
   <tbody>
     <% @ingredients.each do |i| %>
-    <tr>
-      <td><%= i.name %></td>
-      <td><%= link_to "Delete" %></td>
-    </tr>
+      <% next if i.new_record? %>
+      <tr>
+        <td><%= i.name %></td>
+        <td><%= link_to "Delete", recipe_ingredient_path(current_user.recipe, current_user.recipe.ingredients.find(i)), method: :delete %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

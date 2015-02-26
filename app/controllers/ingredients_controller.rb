@@ -32,8 +32,12 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient.destroy
-    redirect_to recipes_path
+    if @ingredient.destroy
+      flash[:notice] = "Deleted!"
+    else
+      flash[:alert] = "Error in deleting!"
+    end
+    redirect_to preference_path
   end
 
   private
