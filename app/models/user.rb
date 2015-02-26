@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
     when "Gluten-free"
       return check_ingredients(gluten_array)
     else
-      false
+      return false
     end
   end
 

@@ -20,11 +20,9 @@
       <% end %>
     <% end %>
     <div class="card_title">
-      <% if user_signed_in? && current_user.is_admin %>
+      <%# if user_signed_in? && current_user.is_admin %>
         <h1><%= link_to restaurant.name, user_menus_path(restaurant) %></h1>
-      <% else %>
-        <h1><%= restaurant.name %></h1>
-      <% end %>
+
     </div>
   </div>
   <div class="card_footer">
