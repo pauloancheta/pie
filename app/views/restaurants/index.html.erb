@@ -5,39 +5,35 @@
   </p>
 <% end %>
 
-  <% @restaurants.each do |restaurant| %>
-    <div class="row">
-    <div class="col-md-4">
-      <div class="restaurant_card">
-        <div class="darken"> </div>
-        <div class="restaurant_logo">
-          <%= link_to restaurant.name, user_menus_path(restaurant) %>
-        </div>
+<% @restaurants.each do |restaurant| %>
+  <div class="restaurant_card">
+    <div class="darken"> </div>
+    <div class="restaurant_logo">
+      <%= link_to restaurant.name, user_menus_path(restaurant) %>
+    </div>
 
 
-        <div class="restaurant_info text-center">
-          <div>
-            <a>
-              <%= restaurant.address %><br>
-              <%= restaurant.phone_number %><br>
-              <%= restaurant.email %><br>
-            </a>
-          </div>
-          
-          <% if user_signed_in?  %>
-            <% if !current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>
-              <%= link_to "Favourite This Restaurant", 
-                user_favourites_path(current_user,favourited_user_id: restaurant.id), 
-                method: :post, class: "btn btn-info btn-xs" %>
-            <% else %>
-              <%= link_to "Favourited", 
-              user_favourite_path(current_user, restaurant.id), 
-              method: :delete, class: "btn btn-success btn-xs" %>
-            <% end %>
-          <% end %>
-        </div>
+    <div class="restaurant_info text-center">
+      <div>
+        <a>
+          <%= restaurant.address %><br>
+          <%= restaurant.phone_number %><br>
+          <%= restaurant.email %><br>
+        </a>
       </div>
+      
+      <% if user_signed_in?  %>
+        <% if !current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>
+          <%= link_to "Favourite This Restaurant", 
+            user_favourites_path(current_user,favourited_user_id: restaurant.id), 
+            method: :post, class: "btn btn-info btn-xs" %>
+        <% else %>
+          <%= link_to "Favourited", 
+          user_favourite_path(current_user, restaurant.id), 
+          method: :delete, class: "btn btn-success btn-xs" %>
+        <% end %>
+      <% end %>
     </div>
-    </div>
+  </div>
 <% end %>
 
