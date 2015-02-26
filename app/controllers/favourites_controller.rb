@@ -5,10 +5,10 @@ class FavouritesController < ApplicationController
     @favourite = current_user.favourites.build(:favourited_user_id => params[:favourited_user_id])
     if @favourite.save
       flash[:notice] = 'Added to favourites'
-      redirect_to root_path
+      redirect_to restaurants_path
     else
       flash[:alert] = 'Unable to favourite'
-      redirect_to root_path
+      redirect_to restaurants_path
     end
   end
   
@@ -17,7 +17,7 @@ class FavouritesController < ApplicationController
     @favourite = current_user.favourites.where(user_id: current_user, favourited_user_id: @restaurant).first
     @favourite.destroy 
     flash[:notice] = 'Removed from favourites'
-    redirect_to root_path
+    redirect_to restaurants_path
   end
 
   private

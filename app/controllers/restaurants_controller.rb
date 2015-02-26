@@ -10,4 +10,7 @@ class RestaurantsController < ApplicationController
   def favourite
     @user = User.find(session[:user_id])
   end
+
+  def main
+  end
 end

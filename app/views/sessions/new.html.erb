@@ -1,30 +1,39 @@
-<h1>Login</h1>
-
-<%= form_tag '/login' do %>
-  <p>Email: <%= text_field_tag :email %></p>
-  <p>Password: <%= password_field_tag :password %></p> 
-  <%= submit_tag "Submit" %>
-<% end %>
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-  <h1>Sign Up</h1>
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-      </div>
-      <div class="modal-body">
-        <%= render 'users/new' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
+<% content_for :sign_in do %>
+<div class="jumbotron">
 </div>
+<div class="jumbo_darken">
+</div>
+<div class="sign_in">
+    <!-- <div class="container"> -->
+      <h2>Login</h2>
+
+      <%= form_tag '/login' do %>
+        <p>Email:<span> <%= text_field_tag :email %></span></p>
+        <p>Password:<span> <%= password_field_tag :password %></span></p> 
+        <%= submit_tag "Submit" %>
+      <% end %>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn-link" data-toggle="modal" data-target="#myModal">
+        <h1>Sign Up</h1>
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'users/new' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<% end %>

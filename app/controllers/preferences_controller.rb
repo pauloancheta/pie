@@ -11,7 +11,7 @@ class PreferencesController < ApplicationController
     if @preference.update preference_params
       redirect_to preference_path(@preference)
     else
-      redirect_to root_path
+      redirect_to restaurants_path
     end
   end
 

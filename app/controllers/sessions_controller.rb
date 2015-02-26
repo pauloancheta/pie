@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       if user.is_admin
         redirect_to user_menus_path(user)
       else 
-        redirect_to root_path
+        redirect_to restaurants_path
       end
     else
       flash[:alert] = "Wrong email or password"
