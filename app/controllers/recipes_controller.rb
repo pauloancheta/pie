@@ -43,6 +43,7 @@ class RecipesController < ApplicationController
     d = Dish.find params[:dish_id]
     r = Recipe.find params[:id]
     d.recipes << r
+    render json: {success: true}
   end 
 
   private
