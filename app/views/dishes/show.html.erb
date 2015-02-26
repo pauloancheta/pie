@@ -15,7 +15,6 @@
     </div>
 </div>
 
-
 <div class="col-md-6">
   <h2>Add from list of recipes</h2><hr>
   <% @recipes.each do |r| %>
@@ -26,19 +25,20 @@
   <% end %>
 </div>
 
-
 <script>
 $(function() {
   $( ".draggable" ).draggable();
   $( "#droppable" ).droppable({
     drop: function( event, ui ) {
       var recipeId = $(ui.draggable).data('recipe-id'),
-          name     = $(ui.draggable).data('name');
-
+          name     = $(ui.draggable).data('name'),
+          url      = '/dishes/' + <%= @dish.id %> + '/add_recipe/' + recipeId;
 
       $('.recipe-list').append("<li>" + name + "</li>");
 
-      // $.post('/add-recipe-path-for-this-thing', {recipe_id: recipeId});
+      $.post(url, function(data){
+        alert(data);
+      });
     }
   });
 });
