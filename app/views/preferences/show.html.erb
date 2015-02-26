@@ -1,14 +1,16 @@
-<h2>Preferences for: <%= current_user.name %></h2>
-<a class="edit_preference">Edit preferences</a>
-<div class="preference_form hidden">
+<h2>My Preferences</h2>
+<a class="add_preference_ingredient">Add an Ingredient that you dont like</a><br>
+<a class="edit_diet">Change your diet</a>
+<div class="well preference_ingredient_form" style="display:none;">
   <%= simple_form_for [current_user.recipe, @ingredient] do |i| %>
     <%= i.input :name %>
-    <%= i.submit %>
+    <%= i.submit "Add Ingredient" %>
   <% end %>
-
+</div>
+<div class="well diet_form" style="display:none;">
   <%= simple_form_for @preference do |d| %>
-    <%= d.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Muslim", "Dairy-free", "Gluten-free"] %>
-    <%= d.submit %>
+    <%= d.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Pesquitarian", "Muslim", "Dairy-free", "Gluten-free", "Default"] %>
+    <%= d.submit "Edit Diet" %>
   <% end %>
 </div>
 

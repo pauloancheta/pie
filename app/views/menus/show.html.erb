@@ -1,7 +1,6 @@
 <h2><%= @menu.name %></h2>
 
-
-<% if user_signed_in? && current_user.is_admin %>
+<% if user_signed_in? && (current_user == @user) %>
   <a class="addDish">Add New Dish</a>
   <div class="dishForm" style="display:none;">
     <%= render "dishes/new" %>
@@ -12,28 +11,17 @@
 
 <center>
   <% @menu.dishes.each do |dish| %>
-    <% if user_signed_in? && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
-      <div class="well allergy showRecipe" style="display:none;">
-    <% else %>
-      <div class="well showRecipe">
-    <% end %>
+    
+      <% if user_signed_in? && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
+        <div class="well allergy showRecipe" style="display:none;">
+      <% else %>
+        <div class="well showRecipe">
+      <% end %>
 
       <div class="dish">
-        <h4>
-          <% if user_signed_in? && current_user.is_admin %>
-            <%= link_to dish.name, menu_dish_path(@menu, dish) %>
-          <% else %>
-            <%= dish.name %>
-          <% end %>
-        </h4>
-        <p><%= dish.description %></p>
-        <p><%= dish.price %></p>
-
-        <% if user_signed_in? && (current_user.id == @menu.user_id) %>
-          <%= link_to "EDIT", edit_menu_dish_path(@menu, dish) %> |
-          <%= link_to "DELETE", menu_dish_path(@menu, dish), method: :delete %>
-        <% end %>
+        <%= render 'dishes/index', dish: dish %>
       </div>
     </div>
-  <% end %>
+    <% end %>
+  
 </center>

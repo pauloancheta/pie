@@ -1,5 +1,9 @@
 $(document).ready(function() {
-  $('.edit_preference').on('click', function(){
-    $('.preference_form').toggleClass('hidden')
+  $('.add_preference_ingredient').on('click', function(){
+    $('.preference_ingredient_form').fadeToggle()
+  });
+
+  $('.edit_diet').on('click', function(){
+    $('.diet_form').fadeToggle()
   });
 });
