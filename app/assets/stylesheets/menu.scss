@@ -19,9 +19,14 @@ $pie_background_color: #edecec;
       text-decoration: none;
       padding: 30px;
       text-transform: uppercase;
-      color: #e87e37;
+      color: #8a8c8c;
       margin-left: 10px;
       font-size: 1.3em;
+    }
+
+    a:hover {
+      color: $pie_orange_color;
+      transition: .2s;
     }
   }
 
