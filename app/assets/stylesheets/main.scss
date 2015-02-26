@@ -16,13 +16,14 @@ body {
 .jumbotron {
   background-image: url('jumbotron_pic.jpg');
   background-size: 100%;
-  height: 550px;
+  height: 600px;
+  margin: 0;
 }
 
 .sign_in {
   position: absolute;
   top: 0;
-  margin-top: 250px;
+  margin-top: 300px;
   margin-left: 800px;
   text-align: right;
   h2 {
@@ -51,7 +52,11 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   height: 280px;
   width: 100%;
-  margin-top: 240px;
+  margin-top: 290px;
 }
 
 
+.flash {
+  background-color: $pie_orange_color;
+  height: 18px;
+}
