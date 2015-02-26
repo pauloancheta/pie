@@ -28,12 +28,13 @@
     <% end %>
   </div>
 </div>
-  
+<div class="flash">
+<%= flash[:alert] || flash[:notice] %>
+</div>
   <% if content_for(:sign_in) %>
     <%= yield (:sign_in)%>
   <% else %>
     <div class="container container-fluid">
-    <span class="flash"><%= flash[:alert] || flash[:notice] %></span>
       <%= yield %>
     </div>
   <% end %>
