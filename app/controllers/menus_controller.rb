@@ -28,6 +28,7 @@ class MenusController < ApplicationController
   def show 
     @dish = Dish.new
     @dishes = @menu.dishes.all
+    @user = User.find(session[:user_id])
   end 
 
 
