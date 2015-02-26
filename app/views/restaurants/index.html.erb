@@ -1,4 +1,4 @@
-<%= form_tag root_path, :method => 'get' do %>
+<%= form_tag restaurants_path, :method => 'get' do %>
   <p style="margin-top:10px;">
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
@@ -13,12 +13,14 @@
     </div>
 
 
-    <div class="restaurant_info">
-      <a>
-      <%= restaurant.address %>
-      <%= restaurant.phone_number %>
-      <%= restaurant.email %>
-      </a>
+    <div class="restaurant_info text-center">
+      <div>
+        <a>
+          <%= restaurant.address %><br>
+          <%= restaurant.phone_number %><br>
+          <%= restaurant.email %><br>
+        </a>
+      </div>
       
       <% if user_signed_in?  %>
         <% if !current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>

@@ -9,7 +9,7 @@
 <body>
 
 <div class="menu">
-  <%= link_to image_tag('pie_logo.jpg'), root_path, class: "logo" %>
+  <%= link_to image_tag('pie_logo.jpg'), restaurants_path, class: "logo" %>
   <div class="menu_button">
     <% if user_signed_in? %>
       <% if current_user.is_admin != true %>
@@ -18,21 +18,25 @@
         <%= link_to "View My Menus", user_menus_path(current_user) %>
         <%= link_to 'Recipes', recipes_path %>
       <% end %>
+      <%= link_to 'Restaurants', restaurants_path %>
       <%= link_to "Favourites", '/restaurants/favourites' %>
       <%= link_to "Logout", '/logout' %>
     <% else %>
+      <%#= link_to "Home", restaurants_path %>
+      <%= link_to 'Restaurants', restaurants_path %>
       <%= link_to 'Login', '/login' %>
     <% end %>
   </div>
 </div>
-
-<div class="container container-fluid">
   
-  <%= flash[:alert] || flash[:notice] %>
-  <div class="container">
-    <%= yield %>
-  </div>
-</div>
+  <% if content_for(:sign_in) %>
+    <%= yield (:sign_in)%>
+  <% else %>
+    <div class="container container-fluid">
+    <span class="flash"><%= flash[:alert] || flash[:notice] %></span>
+      <%= yield %>
+    </div>
+  <% end %>
 
 </body>
 </html>

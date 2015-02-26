@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'sessions#new'
+
   #LOG IN
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -12,7 +14,8 @@ Rails.application.routes.draw do
 
   get '/dishes/:dish_id/add_recipe/:id' => 'recipes#add_recipe', as: :add_recipe 
 
-  root 'restaurants#index'
+  get '/restaurants' => 'restaurants#index'
+
   get '/restaurants/favourites' => 'restaurants#favourite'
 
   resources :users do

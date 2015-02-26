@@ -21,7 +21,7 @@ class MenusController < ApplicationController
       end 
     else
       flash[:alert] = "You dont have permissions to create a menu"
-      redirect_to root_path
+      redirect_to restaurants_path
     end
   end 
 
