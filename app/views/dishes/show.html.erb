@@ -15,7 +15,6 @@
     </div>
 </div>
 
-
 <div class="col-md-6">
   <h2>Add from list of recipes</h2><hr>
   <% @recipes.each do |r| %>
@@ -26,7 +25,6 @@
   <% end %>
 </div>
 
-
 <script>
 $(function() {
   $( ".draggable" ).draggable();
@@ -35,7 +33,6 @@ $(function() {
       var recipeId = $(ui.draggable).data('recipe-id'),
           name     = $(ui.draggable).data('name'),
           url      = '/dishes/' + <%= @dish.id %> + '/add_recipe/' + recipeId;
-
 
       $('.recipe-list').append("<li>" + name + "</li>");
 
