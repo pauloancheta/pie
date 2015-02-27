@@ -42,13 +42,13 @@
               name = $(ui.draggable).data('name'),
                url = '/dishes/' + <%= @dish.id %> + '/remove_recipe/' + recipeId;
 
-        $.ajax({
-            url: url,
-            type: 'DELETE',
-            success: function(result) {
-                alert("removed successfully");
-            }
-        });
+      $.ajax({
+          url: url,
+          type: 'DELETE',
+          success: function(result) {
+              alert("removed successfully");
+          }
+      });
     },
 
       drop: function(event, ui) {
