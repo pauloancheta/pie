@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
 
   post '/dishes/:dish_id/add_recipe/:id' => 'recipes#add_recipe', as: :add_recipe 
+  delete '/dishes/:dish_id/remove_recipe/:id' => 'recipes#remove_recipe', as: :remove_recipe
+  # delete '/dish_recipes/:id' => 'recipes#remove_recipe', as: :remove_recipe
+
 
   get '/restaurants' => 'restaurants#index'
 
