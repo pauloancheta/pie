@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       initialize_non_admin(@user) 
 
-      UserMailer.welcome_email(@user).deliver 
+      UserMailer.welcome_email(@user).deliver_now 
 
       session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
