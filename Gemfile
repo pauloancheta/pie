@@ -23,11 +23,13 @@ group :development do
   gem 'awesome_print'
   gem 'rails-erd'
   gem 'letter_opener'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'rspec-rails', '~> 3.0'
 end
 
