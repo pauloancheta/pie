@@ -13,7 +13,7 @@
   <% @menu.dishes.each do |dish| %>
     
       <% if user_signed_in? %>
-        <% if current_user.allergic_to?(dish) || current_user.diet_restriction?(dish) %>
+        <% if !current_user.is_admin && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
           <div class="well allergy showRecipe" style="display:none;">
             <%= render 'dishes/index', dish: dish %>
           </div>
