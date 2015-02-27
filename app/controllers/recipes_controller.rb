@@ -40,9 +40,18 @@ class RecipesController < ApplicationController
   end
 
   def add_recipe
-    d = Dish.find params[:dish_id]
-    r = Recipe.find params[:id]
-    d.recipes << r
+    dish = Dish.find params[:dish_id]
+    recipe = Recipe.find params[:id]
+    dish.recipes << recipe
+
+    render json: {success: true}
+  end 
+
+  def remove_recipe
+    dish = Dish.find params[:dish_id]
+    recipe = Recipe.find params[:id]
+    dish.recipes.delete(recipe)
+
     render json: {success: true}
   end 
 
