@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   root 'sessions#new'
-
+  # facebook callback
+  get '/auth/:provider/callback' => 'sessions#auth_hash', as: :omni_auth
   #LOG IN
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

@@ -13,6 +13,9 @@
         <%= submit_tag "Submit" %>
       <% end %>
 
+      <!-- omniauth link -->
+      <%= link_to 'Sign in omni', omni_auth_path(provider: :facebook) %>
+
       <!-- Button trigger modal -->
       <button type="button" class="btn-link" data-toggle="modal" data-target="#myModal">
         Not yet part of Picky Eater? Sign up here!

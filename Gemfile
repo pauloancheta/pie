@@ -15,7 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'thin'
-
+gem 'omniauth-facebook'
 
 group :development do
   gem 'hirb'
