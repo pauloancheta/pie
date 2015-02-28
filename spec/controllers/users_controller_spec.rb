@@ -90,14 +90,14 @@ RSpec.describe UsersController, type: :controller do
         expect(flash[:alert]).to be
       end
 
-      it "redirects to new user path when trying to create invalid regular user" do
+      it "redirects to sign up page when trying to create invalid regular user" do
         invalid_request_user
-        expect(response).to redirect_to new_user_path
+        expect(response).to redirect_to root_path
       end
 
-      it "redirects to new user path when trying to create invalid admin user" do
+      it "redirects to sign up page when trying to create invalid admin user" do
         invalid_request_admin
-        expect(response).to redirect_to new_user_path
+        expect(response).to redirect_to root_path
       end
     end
   end
