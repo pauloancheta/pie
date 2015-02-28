@@ -10,13 +10,17 @@ class IngredientsController < ApplicationController
 
   def create
     if current_user.is_admin == false
-      @ingredient = current_user.recipe.ingredients.new ingredient_params
-      @ingredient.save
-      redirect_to preference_path(current_user.preference.id)
-    elsif @recipe.ingredients.create ingredient_params
-      redirect_to recipes_path
+      if current_user.recipe.ingredients.create ingredient_params
+        redirect_to preference_path(current_user.preference.id)
+      else
+        render :new
+      end
     else
-      render :new
+      if @recipe.ingredients.create ingredient_params
+        redirect_to recipes_path
+      else
+        render :new
+      end
     end
   end
 
@@ -37,7 +41,11 @@ class IngredientsController < ApplicationController
     else
       flash[:alert] = "Error in deleting!"
     end
-    redirect_to preference_path
+    if current_user.is_admin
+      redirect_to recipes_path
+    else
+      redirect_to preference_path
+    end
   end
 
   private

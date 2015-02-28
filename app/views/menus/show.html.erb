@@ -14,7 +14,11 @@
     
       <% if user_signed_in? %>
         <% if !current_user.is_admin && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
-          <div class="well allergy showRecipe" style="display:none;">
+          <div class="well allergy" style="display:none;">
+            <%= render 'dishes/index', dish: dish %>
+          </div>
+        <% else %>
+          <div class="well dish">
             <%= render 'dishes/index', dish: dish %>
           </div>
         <% end %>
