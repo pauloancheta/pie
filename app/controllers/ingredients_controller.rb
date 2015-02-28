@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
 
   def create
     if current_user.is_admin == false
-      @ingredient = current_user.recipe.ingredients.create ingredient_params
+      @ingredient = current_user.recipe.ingredients.new ingredient_params
       @ingredient.save
       redirect_to preference_path(current_user.preference.id)
     elsif @recipe.ingredients.create ingredient_params
