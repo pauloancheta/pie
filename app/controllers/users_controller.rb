@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       flash[:alert] = "Error! You may have entered entered an invalid email or password."
-      redirect_to new_user_path
+      redirect_to '/'
     end
   end
 
