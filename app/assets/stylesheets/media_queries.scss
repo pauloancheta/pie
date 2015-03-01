@@ -1,0 +1,46 @@
+@media only screen 
+and (min-device-width : 360px) 
+and (max-device-width : 640px) { 
+
+  .menu .container-fluid{
+    height: 12em;
+    .logo img{
+      height: 150px;
+    }
+    .menu_button a{
+      font-size: 2.5em;
+    }
+  }
+
+  .jumbotron{
+    background-image: url('http://www.topshops.az/image/data/oboi/--------------------------------cena.jpg');
+    background-position: center;
+    background-size: 200%;
+    height: 100em;
+    margin: 0 auto;
+     h2 {
+      font-size: 4em;
+    }
+    p {
+      font-size: 3em;
+    }
+
+    a{
+      font-size: 3em;
+    }
+
+    button {
+      font-size: 3em;
+    }
+
+    .jumbo_darken {
+      height: 33em;
+      margin-top: 20em;
+      .sign_in{
+        margin-top: 1.5em
+      }
+    }
+  }
+
+
+}

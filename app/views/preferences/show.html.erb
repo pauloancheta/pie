@@ -16,16 +16,17 @@
 
 <h3>Diet:</h3>
 <%= current_user.preference.diet %>
-
+<br>
+<h3>I can eat anything except:</h3>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Food that you dont like:</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @ingredients.each do |i| %>
+    <%  @ingredients.each do |i| %>
       <% next if i.new_record? %>
       <tr>
         <td><%= i.name %></td>
