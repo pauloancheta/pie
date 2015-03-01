@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Facebook vars
+/config/initializers/facebook_vars.rb
