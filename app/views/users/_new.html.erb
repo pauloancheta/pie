@@ -1,1 +1,10 @@
-<%= render 'users/form' %>
+<%= simple_form_for @user, remote: true do |f| %>
+  <%= f.input :is_admin, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :name, placeholder: "Name", label: false %>
+  <%= f.input :address, placeholder: "Address", label: false %>
+  <%= f.input :phone_number, placeholder: "Phone Number", label: false %>
+  <%= f.input :email, placeholder: "Email", label: false %>
+  <%= f.input :password, placeholder: "Password", label: false %>
+  <%= f.input :password_confirmation, placeholder: "Confirm Password", label: false %>
+  <%= f.button :submit %>
+<% end %>

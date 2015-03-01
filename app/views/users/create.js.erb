@@ -1,0 +1,36 @@
+// alert('hi sexy!')
+
+$('form input[type=submit] ').on('click', function() {
+  if( $('#user_name').val().length === 0 ){
+    $('#user_name').attr('placeholder', 'You have to put in your name');
+  }
+
+  // if( $('#user_address').val().length === 0 ){
+  //   $('#user_address').attr('placeholder', 'You have to put in your name');
+  // }
+
+  // if( $('#user_phone_number').val().length === 0 ){
+  //   $('#user_phone_number').attr('placeholder', 'You have to put in your name');
+  // }
+
+  if( $('#user_email').val().length === 0 ){
+    $('#user_email').attr('placeholder', 'You have to put in your email');
+  }
+
+  if( $('#user_password').val().length === 0 ){
+    $('#user_password').attr('placeholder', 'You have to put in a password');
+  }
+
+
+  if( $('#user_password_confirmation').val().length === 0 ){
+    $('#user_password_confirmation').attr('placeholder', 'You have to confirm your password');
+  }
+
+  if(!( $('#user_password').val() === $('#user_password_confirmation').val() )){
+    $('#user_password').val('')
+    $('#user_password_confirmation').val('')
+    $('#user_password_confirmation').attr('placeholder', 'Your passwords did not match'); 
+    $('#user_password').attr('placeholder', 'Your passwords did not match');
+  }  
+
+});
