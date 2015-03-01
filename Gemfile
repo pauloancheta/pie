@@ -18,6 +18,8 @@ gem 'thin'
 gem 'omniauth-facebook'
 gem 'responders', '~> 2.0'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   gem 'hirb'
   gem 'interactive_editor'
