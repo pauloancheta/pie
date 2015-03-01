@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  has_secure_password validations: false
 
   #not being used or not supposed to be used?
   has_many :dishes
@@ -23,9 +23,35 @@ class User < ActiveRecord::Base
   has_one :recipe, through: :preference
 
   #validations  
-  validates :name, :email, :password, :password_confirmation, presence: true
+  validates :name, :email, :password, :password_confirmation, presence: true unless :uid_provided?
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+
+
+  def self.find_or_create_from_auth_hash(auth_hash)
+    user = User.where(uid: auth_hash["uid"]).first
+    unless user
+      #create user
+      user = User.new(provider: auth_hash["provider"],
+                         uid: auth_hash["uid"],
+                         name: auth_hash["info"]["name"],
+                         email: auth_hash["info"]["email"],
+                         omniauth_raw_data: auth_hash,
+                         is_admin: false
+                         )                  
+      user.save!
+
+      r = Recipe.new
+      r.name = "Allergy for user #{user.id}"
+      r.save!
+
+      p = Preference.new
+      p.user_id = user.id
+      p.recipe_id = r.id
+      p.save
+    end
+    user
+  end
 
   #show the current_users' favorite admin users
   def favourite_for(user)
@@ -104,22 +130,6 @@ class User < ActiveRecord::Base
       end
     end
     false
-    # case self.preference.diet
-    # when "Vegan"
-    #   return check_ingredients(vegan_array)
-    # when "Vegetarian"
-    #   return check_ingredients(vegetarian_array)
-    # when "Pesquitarian"
-    #   return check_ingredients(pesq_array)
-    # when "Muslim"
-    #   return check_ingredients(muslim_array)
-    # when "Dairy-free"
-    #   return check_ingredients(dairy_array)
-    # when "Gluten-free"
-    #   return check_ingredients(gluten_array)
-    # else
-    #   return false
-    # end
   end
 
   #loop through the ingredient categories and match an ingredient
@@ -133,4 +143,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
+  def uid_provided?
+    uid 
+  end
 end
