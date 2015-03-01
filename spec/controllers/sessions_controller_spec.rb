@@ -18,10 +18,10 @@ RSpec.describe SessionsController, type: :controller do
                                password: user.password}
       end
 
-      # it "sets the user_id session variable for a regular user" do
-      #   valid_user_request
-      #   expect(session[:user_id]).to eq(user.id)
-      # end
+      it "sets the user_id session variable for a regular user" do
+        valid_user_request
+        expect(session[:user_id]).to eq(user.id)
+      end
       
     end
   end
