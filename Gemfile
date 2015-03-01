@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'thin'
 gem 'omniauth-facebook'
+gem 'responders', '~> 2.0'
 
 group :development do
   gem 'hirb'

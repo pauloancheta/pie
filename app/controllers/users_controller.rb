@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  respond_to :js  
   def new
     @user = User.new
   end
@@ -14,10 +14,9 @@ class UsersController < ApplicationController
 
       session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
-      redirect_to '/'
+      render js: "window.location = '#{restaurants_path}'"
     else
-      flash[:alert] = "Error! You may have entered entered an invalid email or password."
-      redirect_to '/'
+      respond_with()
     end
   end
 

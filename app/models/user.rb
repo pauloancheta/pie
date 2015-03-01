@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password validations: false
+  serialize :omniauth_raw_data
 
   #not being used or not supposed to be used?
   has_many :dishes
@@ -23,7 +24,9 @@ class User < ActiveRecord::Base
   has_one :recipe, through: :preference
 
   #validations  
-  validates :name, :email, :password, :password_confirmation, presence: true unless :uid_provided?
+  validates :name, :email, presence: true
+  validates :password, presence: true, :unless => :uid_provided?
+  # validates :password_confirmation, presence: true, :unless => :uid_provided?
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
