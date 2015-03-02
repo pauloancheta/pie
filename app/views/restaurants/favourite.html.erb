@@ -1,18 +1,11 @@
 <h1>Favourited Restaurants</h1>
 
-<%# @user.favourited_users.each do |restaurant| %>
-<!--   <p>Name: <%#= restaurant.name %></p> -->
-<!--   <p>Address: <%#= restaurant.address %></p>
-  <p>Phone:<%#= restaurant.phone_number %></p>
-  <hr>
- --><%# end %>
-
 <% if @user.favourited_users.length < 1 %>
   <%# if user has no favourites, displays a message %>
   <p>You haven't added any restaurants to your favourites yet!</p>
 <% end %>
 
-<% @restaurants.each do |restaurant| %>
+<% @user.favourited_users.each do |restaurant| %>
   <div class="card">
     <div class="card_container">
       <% if user_signed_in?  %>
@@ -39,3 +32,4 @@
     </div>
   </div>
 <% end %>
+
