@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to restaurants_path
     else
       # respond_to :js
+      flash[:alert] = "Sorry, an error occured while registering."
       redirect_to root_path
     end
   end
