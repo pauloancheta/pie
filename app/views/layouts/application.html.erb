@@ -24,6 +24,7 @@
         <% end %>
         <%= link_to 'Restaurants', restaurants_path %>
         <%= link_to "Favourites", '/restaurants/favourites' %>
+        <%= link_to "My Profile", user_path(current_user) %>
         <%= link_to "Logout", '/logout' %>
       <% else %>
         <%#= link_to "Home", restaurants_path %>
