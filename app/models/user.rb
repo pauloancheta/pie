@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   #validations  
   validates :name, :email, presence: true
   validates :password, presence: true, :unless => :uid_provided?
-  # validates :password_confirmation, presence: true, :unless => :uid_provided?
+  validates_confirmation_of :password, :unless => :uid_provided?
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
