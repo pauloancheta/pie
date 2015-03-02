@@ -1,9 +1,9 @@
 <h1><%= @user.name %></h1>
-<h2>
+<h3>
   <% if @user == current_user %> 
     <%= link_to "Edit Profile", edit_user_path(@user) %>
   <% end %>
-</h2>
+</h3>
 
 <p><%= @user.address %></p>
 <p><%= @user.phone_number %></p>
