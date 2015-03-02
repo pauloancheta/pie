@@ -9,12 +9,10 @@ class UsersController < ApplicationController
     user_name_format(@user)
     if @user.save
       initialize_non_admin(@user) 
-
-      UserMailer.welcome_email(@user).deliver_now 
-
       session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
       render js: "window.location = '/restaurants'"
+      UserMailer.welcome_email(@user).deliver_now 
       # redirect_to restaurants_path
     else
       respond_with()
