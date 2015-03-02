@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
       render js: "window.location = '/restaurants'"
-      UserMailer.welcome_email(@user).deliver_now 
+      # UserMailer.welcome_email(@user).deliver_now 
       # redirect_to restaurants_path
     else
       respond_with()
