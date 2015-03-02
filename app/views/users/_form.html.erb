@@ -7,4 +7,5 @@
   <%= f.input :password, placeholder: "Password", label: false %>
   <%= f.input :password_confirmation, placeholder: "Confirm Password", label: false %>
   <%= f.button :submit %>
-<% end %>
+<% end %> 
+<%= link_to "Delete Account", user_path(@user), method: :delete, class: 'btn btn-link' %>

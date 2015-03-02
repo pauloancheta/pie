@@ -24,12 +24,11 @@
     </div>
   </div>
   <div class="card_footer">
-    <a>
+    <%= link_to(restaurant) do %>
       <%= restaurant.address %><br>
       <%= restaurant.phone_number %><br>
       <%= restaurant.email %><br>
-    </a>
-    
+    <% end %>  
   </div>
 </div>
 
