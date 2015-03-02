@@ -38,7 +38,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "redirects to home page" do
         valid_request_user
-        expect(response).to redirect_to '/'
+        expect(response).to redirect_to '/restaurants'
       end
       
       it "sets a flash message when a new regular user is created" do
@@ -72,7 +72,7 @@ RSpec.describe UsersController, type: :controller do
                               password_confirmation: 'lol'}}
       end
     
-      it "doesn't create a new record in database as a invalid regular user" do
+      it "doesn't create a new record in database as a invalid regular user", :js => true do
         expect {invalid_request_user}.not_to change {User.count}
       end 
 

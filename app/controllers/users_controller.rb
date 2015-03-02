@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
       session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
-      render js: "window.location = '#{restaurants_path}'"
+      render js: "window.location = '/restaurants'"
+      # redirect_to restaurants_path
     else
       respond_with()
     end
