@@ -1,4 +1,4 @@
-<%= simple_form_for @user, remote: true do |f| %>
+<%= simple_form_for @user do |f| %>
   <%= f.input :is_admin, as: :boolean, checked_value: true, unchecked_value: false %>
   <%= f.input :name, placeholder: "Name", label: false %>
   <%= f.input :address, placeholder: "Address", label: false %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  respond_to :js  
+  # respond_to :js  
   def new
     @user = User.new
   end
@@ -11,11 +11,12 @@ class UsersController < ApplicationController
       initialize_non_admin(@user) 
       session[:user_id] = @user.id
       flash[:alert] = "Registration successful"
-      render js: "window.location = '/restaurants'"
+      # render js: "window.location = '/restaurants'"
       # UserMailer.welcome_email(@user).deliver_now 
-      # redirect_to restaurants_path
+      redirect_to restaurants_path
     else
-      respond_with()
+      # respond_to :js
+      redirect_to root_path
     end
   end
 
