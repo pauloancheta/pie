@@ -12,9 +12,9 @@
         <p>Password:<span> <%= password_field_tag :password %></span></p> 
         <%= submit_tag "Submit" %>
       <% end %>
-
+      <br>
       <!-- omniauth link -->
-      <a href='/auth/facebook'>Sign in with facebook</a><br>
+      <a href='/auth/facebook'> <%= image_tag('connect_with_facebook.png') %> </a><br>
 
       <!-- Button trigger modal -->
       <button type="button" class="btn-link" data-toggle="modal" data-target="#myModal">
