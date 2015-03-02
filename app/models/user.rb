@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  geocoded_by :address   # can also be an IP address
+  after_validation :geocode          # auto-fetch coordinates
+
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user = User.where(uid: auth_hash["uid"]).first

@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find params[:id]
+    # end
   end
 
   def edit
@@ -61,8 +62,9 @@ class UsersController < ApplicationController
 
   private
 
+
   def user_params
-    params.require(:user).permit(:name, :address, :phone_number, :email, :password, :password_confirmation, :is_admin)
+    params.require(:user).permit(:name, :address, :phone_number, :email, :password, :password_confirmation, :is_admin, :latitude, :longitude)
   end
 
   def user_name_format(user)
