@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
 
   def favourite
     @user = User.find(session[:user_id])
+    @restaurants = User.all.where(is_admin: true)
   end
 
   def main
