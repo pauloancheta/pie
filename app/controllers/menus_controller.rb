@@ -18,7 +18,7 @@ class MenusController < ApplicationController
     if current_user.is_admin
       if @menu.save
         respond_with()
-        #redirect_to user_menus_path(@user)
+        # redirect_to user_menus_path(@user)
       else
         render :new
       end 
