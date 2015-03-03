@@ -1,5 +1,8 @@
-
-<nav class="navbar navbar-static-top menu">
+<% if user_signed_in? %>
+  <nav class="navbar navbar-static-top menu signed_in">
+<% else %>
+  <nav class="navbar navbar-static-top menu ">
+<% end %>
   <!-- <div class="container-fluid"> -->
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

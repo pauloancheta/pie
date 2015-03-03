@@ -1,6 +1,15 @@
 @media only screen 
 and (min-device-width : 360px) 
 and (max-device-width : 640px) { 
+  .signed_in{
+    height: 19em;
+  }
+    .menu .menu_button{
+      li a {
+        font-size: 2.5em;
+      }
+
+    }
   
   .menu .container-fluid{
     height: 12em;
