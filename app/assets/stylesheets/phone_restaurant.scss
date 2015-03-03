@@ -1,0 +1,47 @@
+@media only screen 
+and (min-device-width : 360px) 
+and (max-device-width : 640px) { 
+  div.card {
+    margin-bottom: 7em;
+    h2 {
+      font-size: 4em;
+    }
+    p {
+      font-size: 3em;
+    }
+    a{
+      font-size: 3em;
+    }
+    button {
+      font-size: 3em;
+    }
+
+    .card_title {
+      height: 8em;
+      margin-top: 10em;
+    }
+
+    height: 45em;
+    width: 45em;
+    
+    .card_footer {
+      margin-top: 25em;
+      height: 8em;
+      a {
+        font-size: 1.5em;
+      }
+
+    }
+  }
+
+  form {
+    font-size: 2.5em;
+    margin-right: -3em;
+    margin-bottom: 1em;
+
+    input#search {
+      width: 19em;
+    }
+  }
+  
+}
