@@ -1,6 +1,8 @@
-class MenusController < ApplicationController
+class MenusController < ApplicationController 
   before_action :menu_id, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  respond_to :js 
+  
   def index 
     @user = User.find params[:user_id]
     @menus = @user.menus.all
@@ -15,7 +17,8 @@ class MenusController < ApplicationController
     @menu = current_user.menus.new menu_params
     if current_user.is_admin
       if @menu.save
-        redirect_to user_menus_path(@user)
+        respond_with()
+        #redirect_to user_menus_path(@user)
       else
         render :new
       end 
@@ -46,8 +49,12 @@ class MenusController < ApplicationController
 
   def destroy
     @user = User.find params[:user_id]
-    @menu.destroy
-    redirect_to user_menus_path(@user)
+    if @menu.destroy
+      flash[:alert] = "Menu deleted"
+      redirect_to user_menus_path(@user)
+    else
+      flash[:alert] = "Unable to delete menu"
+    end
   end 
 
 
