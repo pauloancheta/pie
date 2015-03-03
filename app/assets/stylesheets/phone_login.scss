@@ -1,8 +1,9 @@
 @media only screen 
 and (min-device-width : 360px) 
 and (max-device-width : 640px) { 
+
   .signed_in{
-    height: 19em;
+    height: 22em;
   }
     .menu .menu_button{
       li a {
@@ -43,11 +44,18 @@ and (max-device-width : 640px) {
     }
 
     .jumbo_darken {
-      height: 40em;
+      height: 48em;
       margin-top: 20em;
+      .banner {
+        padding-top: 4em
+      }
       .sign_in{
-        margin-top: 1.5em;
+        margin-top: 12.5em;
         padding-right: 4.5em;
+        img {
+          height: 2em;
+          width: 15em;
+        }
       }
     }
   }

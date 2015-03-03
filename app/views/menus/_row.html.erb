@@ -3,7 +3,7 @@
     <h3><%= link_to menu.name, user_menu_path(@user, menu) %></h3>
     <%= link_to "Edit", edit_user_menu_path(@user, menu) %>
     |
-    <%= link_to "Delete", user_menu_path(@user, menu), method: :delete %><hr>
+    <%= link_to "Delete", user_menu_path(@user, menu), method: :delete, remote: true  %><hr>
   <% else %>
     <h3><%= link_to menu.name, user_menu_path(@user, menu) unless !menu.dishes.present? %></h3>
   <% end %>

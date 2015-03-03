@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.7)
+    animate-rails (1.0.7)
+      rails
     arel (6.0.0)
     autoprefixer-rails (5.1.7)
       execjs
@@ -295,6 +297,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  animate-rails
   awesome_print
   bcrypt (~> 3.1.7)
   bootstrap-sass
