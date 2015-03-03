@@ -1,4 +1,6 @@
 $pie_background_color: #edecec;
+$pie_charcoal_grey: #383838;
+$pie_orange_color: #e87e37;
 
 html {
   height: 100%;
@@ -18,3 +20,19 @@ body {
 .allergy {
   background-color: red;
 }
+
+.pie_button {
+    background-color: $pie_orange_color;
+    box-shadow: 1px 1px 1px $pie_charcoal_grey;
+    color: $pie_background_color;
+    font-family:'Helvetica Neue',sans-serif;
+    font-size:18px;
+    line-height:30px;
+    border-radius:20px;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    border: 2px solid $pie_charcoal_grey;
+    text-shadow: $pie_charcoal_grey 0 1px 0;
+    width:120px;
+    height:32px
+}      

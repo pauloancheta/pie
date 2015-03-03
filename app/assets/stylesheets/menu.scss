@@ -2,6 +2,22 @@ $pie_orange_color: #e87e37;
 $pie_charcoal_grey: #383838;
 $pie_background_color: #edecec;
 
+.banner{
+  padding-top: 5em;
+  padding-left: 6em;
+  img.pie_banner {
+    height: 10em;
+  }
+
+  img.ball {
+    position: absolute;
+    top: 4em;
+    left: 12.5em;
+    display: inline;
+    height: 4em;
+  }
+}
+
 .menu {
   background-color: $pie_charcoal_grey;
   margin: 0;
@@ -15,7 +31,7 @@ $pie_background_color: #edecec;
 
   a.logo img{
     margin-left: 20px;
-    height: 100px;
+    height: 8em;
     display: inline-block;
   }
 
@@ -23,6 +39,7 @@ $pie_background_color: #edecec;
     
     display: inline-block;
     height: 0px;
+    margin-top: 1em;
     li a {
       text-decoration: none;
       padding: 30px;
