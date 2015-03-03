@@ -2,7 +2,10 @@
 <div class="jumbotron">
   <div class="container">
   <div class="jumbo_darken">
-
+    <div class="banner">
+      <%= image_tag('ball.png', class: "ball animated infinite bounce") %>  
+      <%= image_tag('banner.png', class: "pie_banner")  %>
+    </div>
     <div class="sign_in">
     <!-- <div class="container"> -->
       <h2>Login</h2>
@@ -10,7 +13,7 @@
       <%= form_tag '/login' do %>
         <p>Email:<span> <%= text_field_tag :email %></span></p>
         <p>Password:<span> <%= password_field_tag :password %></span></p> 
-        <%= submit_tag "Submit" %>
+        <%= submit_tag "Submit", class: "pie_button" %>
       <% end %>
       <br>
       <!-- omniauth link -->
