@@ -17,6 +17,11 @@ gem 'simple_form'
 gem 'thin'
 gem 'omniauth-facebook'
 gem 'responders', '~> 2.0'
+gem 'gmaps4rails'
+gem 'underscore-rails'
+gem "geocoder"
+
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'hirb'

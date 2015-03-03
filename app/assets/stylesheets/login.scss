@@ -12,12 +12,10 @@ $pie_charcoal_grey: #383838;
     position: absolute;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 17.5em;
+    height: 20em;
     width: 100%;
     margin-top: 18.6em;
     left: 0;
-
-
     .sign_in {
       position: absolute;
       top: 0;
@@ -35,6 +33,11 @@ $pie_charcoal_grey: #383838;
         }
       }
 
+      img {
+        height: 3em;
+        width: 20em;
+      }
+
       button {
         color: $pie_orange_color;
       }
@@ -42,9 +45,9 @@ $pie_charcoal_grey: #383838;
         text-decoration: none;
         color: #aaa;
       }
+    
     }
   }
-
   .modal {
     text-align: left;
   }

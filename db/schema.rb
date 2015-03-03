@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228230231) do
+ActiveRecord::Schema.define(version: 20150301224451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,8 @@ ActiveRecord::Schema.define(version: 20150228230231) do
     t.string   "uid"
     t.string   "consumer_token"
     t.string   "omniauth_raw_data"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_foreign_key "dish_recipes", "dishes"
