@@ -50,8 +50,9 @@ class MenusController < ApplicationController
   def destroy
     @user = User.find params[:user_id]
     if @menu.destroy
+      respond_with()
       flash[:alert] = "Menu deleted"
-      redirect_to user_menus_path(@user)
+      #redirect_to user_menus_path(@user)
     else
       flash[:alert] = "Unable to delete menu"
     end
