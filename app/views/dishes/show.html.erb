@@ -4,22 +4,25 @@
   <p><%= @dish.price %></p><hr>
 </center>
   
-<div class="col-md-6">
-  <h3>Recipes for <%= @dish.name %></h3><hr>
-  <ul id="sortable1" class="connectedSortable" style="min-height:50px;">
+<div class="col-md-5">
+  <h3><center>Recipes for <%= @dish.name %></center></h3><hr>
+  <ul id="sortable1" class="connectedSortable">
     <% @dish.recipes.each do |dr| %>
-      <li class="ui-state-default" data-recipe-id="<%= dr.id %>" data-name="<%= dr.name %>"><%= dr.name %></li>
+      <div class="ui-state" data-recipe-id="<%= dr.id %>" data-name="<%= dr.name %>"><center><%= dr.name %></center></div>
     <% end %>
   </ul>
 </div>
 
-<div class="col-md-6">
-  <h3>Add from list of recipes</h3><hr>
-  <ul id="sortable2" class="connectedSortable" style="min-height:50px;">
+<div class="col-md-2">
+</div>
+
+<div class="col-md-5">
+  <h3><center>Add from list of recipes</center></h3><hr>
+  <ul id="sortable2" class="connectedSortable">
       <% @recipes.each do |r| %>
-        <%# unless @dish.recipes.include?(@recipe) %>
-          <li class="ui-state-highlight" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>"><%= r.name %></li>
-        <%# end %>
+        <% unless @dish.recipes.include?(r) %> 
+          <div class="ui-state" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>"><center><%= r.name %></center></div>
+        <% end %>
       <% end %>
   </ul>
 </div>
@@ -31,7 +34,7 @@
                url = '/dishes/' + <%= @dish.id %> + '/add_recipe/' + recipeId;
 
       $.post(url, function(data){
-        alert("Added Successfully");
+        // alert("Added Successfully");
       });
   });
 
@@ -44,7 +47,7 @@
           url: url,
           type: 'DELETE',
           success: function(result) {
-            alert("Removed");
+            // alert("Removed");
           }
       });
   });
