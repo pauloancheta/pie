@@ -1,15 +1,12 @@
 class FavouritesController < ApplicationController
+  respond_to :js
   before_action :authenticate_user!
 
   def create
     @favourite = current_user.favourites.build(:favourited_user_id => params[:favourited_user_id])
-    if @favourite.save
-      flash[:notice] = 'Added to favourites'
-      redirect_to restaurants_path
-    else
-      flash[:alert] = 'Unable to favourite'
-      redirect_to restaurants_path
-    end
+    @favourite.save
+    flash[:notice] = 'Added to favourites'
+    respond_with(@favourite)
   end
   
   def destroy 
@@ -17,7 +14,7 @@ class FavouritesController < ApplicationController
     @favourite = current_user.favourites.where(user_id: current_user, favourited_user_id: @restaurant).first
     @favourite.destroy 
     flash[:notice] = 'Removed from favourites'
-    redirect_to restaurants_path
+    respond_with()
   end
 
   private
