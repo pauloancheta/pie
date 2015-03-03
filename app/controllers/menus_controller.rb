@@ -17,7 +17,7 @@ class MenusController < ApplicationController
     @menu = current_user.menus.new menu_params
     if current_user.is_admin
       if @menu.save
-        respond_with ()
+        respond_with()
         #redirect_to user_menus_path(@user)
       else
         render :new
@@ -49,8 +49,12 @@ class MenusController < ApplicationController
 
   def destroy
     @user = User.find params[:user_id]
-    @menu.destroy
-    redirect_to user_menus_path(@user)
+    if @menu.destroy
+      flash[:alert] = "Menu deleted"
+      redirect_to user_menus_path(@user)
+    else
+      flash[:alert] = "Unable to delete menu"
+    end
   end 
 
 
