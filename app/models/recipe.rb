@@ -12,4 +12,5 @@ class Recipe < ActiveRecord::Base
   has_many :users, through: :preferences
 
   validates :name, presence: true
+  
 end
