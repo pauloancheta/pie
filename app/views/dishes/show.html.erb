@@ -5,64 +5,55 @@
 </center>
   
 <div class="col-md-6">
-  <!-- <div id="droppable" class="ui-widget-header"> -->
   <h3>Recipes for <%= @dish.name %></h3><hr>
-  <div id="droppable" class="well">
-      <p>Drop here to add recipe</p>
-  </div> 
-    
-    <div class="recipe-list">
-      <% @dish.recipes.each do |dr| %>
-        <li><%= dr.name %></li>
-      <% end %>
-    </div>
+  <ul id="sortable1" class="connectedSortable">
+    <li></li>
+    <% @dish.recipes.each do |dr| %>
+      <li data-recipe-id="<%= dr.id %>" data-name="<%= dr.name %>"><%= dr.name %></li>
+    <% end %>
+  </ul>
 </div>
 
 <div class="col-md-6">
   <h3>Add from list of recipes</h3><hr>
-    <div id="droppable" class="well">
-      <p>Drop here to remove recipe</p>
-
+  <ul id="sortable2" class="connectedSortable">
+    <li></li>
       <% @recipes.each do |r| %>
-        <div id="draggable" class="ui-widget-content draggable" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>">
-          <p><%= r.name %></p>
-        </div>
+        <%# unless @dish.recipes.include?(@recipe) %>
+          <li data-recipe-id="<%= r.id %>" data-name="<%= r.name %>"><%= r.name %></li>
+        <%# end %>
       <% end %>
-
-  </div>
+  </ul>
 </div>
 
 <script>
   $(function() {
-  $( ".draggable" ).draggable();
-  $( "#droppable" ).droppable( {
-    out: function( event, ui ) {
+    $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable",
+    }).disableSelection();
+  });
 
-      var recipeId = $(ui.draggable).data('recipe-id'),
-              name = $(ui.draggable).data('name'),
+  $( "#sortable1" ).on( "sortreceive", function( event, ui ) {
+      var recipeId = $('li').data('recipe-id'),
+              name = $('li').data('name'),
+               url = '/dishes/' + <%= @dish.id %> + '/add_recipe/' + recipeId;
+
+      $.post(url, function(data){
+        alert("Added Successfully");
+      });
+  });
+
+  $( "#sortable1" ).on( "sortrecieve", function( event, ui ) {
+      var recipeId = $('li').data('recipe-id'),
+              name = $('li').data('name'),
                url = '/dishes/' + <%= @dish.id %> + '/remove_recipe/' + recipeId;
 
       $.ajax({
           url: url,
           type: 'DELETE',
           success: function(result) {
-              alert("removed successfully");
+            alert("Removed");
           }
       });
-    },
-
-      drop: function(event, ui) {
-        $(ui.draggable).offset($(this).offset());
-        var recipeId = $(ui.draggable).data('recipe-id'),
-                name = $(ui.draggable).data('name'),
-                url  = '/dishes/' + <%= @dish.id %> + '/add_recipe/' + recipeId;
-
-        $('.recipe-list').append("<li>" + name + "</li>");
-
-        $.post(url, function(data){
-          alert("Added Successfully");
-        });
-      }
-    });
   });
 </script>
