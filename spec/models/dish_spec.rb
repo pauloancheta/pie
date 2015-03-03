@@ -7,7 +7,7 @@ RSpec.describe Dish, type: :model do
     it { should have_many(:recipes).through(:dish_recipes) }
 
     it { should have_many(:likes) }
-    it { should have_many(:liking_users).through(:likes) }
+    it { should have_many(:liking_users).through(:likes).source(:user) }
 
     it { should have_many(:menu_dishes).dependent(:destroy) }
     it { should have_many(:menus).through(:menu_dishes) }
@@ -21,7 +21,7 @@ RSpec.describe Dish, type: :model do
     it { should validate_length_of(:description).is_at_most(100) }
   end
 
-  context 'column_specification' do
+  context 'column specification' do
     it { should have_db_column(:name).of_type(:string) }
     it { should have_db_column(:price).of_type(:float) }
     it { should have_db_column(:description).of_type(:string) }

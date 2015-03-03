@@ -7,7 +7,7 @@ RSpec.describe Favourite, type: :model do
     it { should belong_to(:favourited_user).class_name(:User) }
   end
 
-  context 'column_specification' do
+  context 'column specification' do
     it { should have_db_column(:user_id).of_type(:integer) }
     it { should have_db_column(:favourited_user_id).of_type(:integer) }
   end
