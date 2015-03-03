@@ -25,12 +25,6 @@
 </div>
 
 <script>
-  $(function() {
-    $( "#sortable1, #sortable2" ).sortable({
-      connectWith: ".connectedSortable",
-    }).disableSelection();
-  });
-
   $( "#sortable1" ).on( "sortreceive", function( event, ui ) {
       var recipeId = $(ui.item).data('recipe-id'),
               name = $(ui.item).data('name'),
