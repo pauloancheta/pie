@@ -1,0 +1,3 @@
+$("#<%= @favourite.favourited_user_id %>").html('<%= link_to "Favourite This Restaurant", 
+            user_favourites_path(current_user,favourited_user_id: @favourite.favourited_user_id) , remote: true, 
+            method: :post, class: "btn btn-info btn-xs" %>')

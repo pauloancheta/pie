@@ -41,11 +41,8 @@
       <div class="modal-body">
         <%= simple_form_for [current_user.recipe, @ingredient] do |i| %>
           <%= i.input :name %>
-          <%= i.submit "Add Ingredient" %>
+          <%= i.submit "Confirm" %>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -61,11 +58,8 @@
       <div class="modal-body">
         <%= simple_form_for @preference do |d| %>
           <%= d.input :diet, as: :radio_buttons, collection: ["Vegan", "Vegetarian", "Pesquitarian", "Muslim", "Dairy-free", "Gluten-free", "Default"] %>
-          <%= d.submit "Edit Diet" %>
+          <%= d.submit "Confirm" %>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
