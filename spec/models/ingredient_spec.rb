@@ -10,5 +10,10 @@ RSpec.describe Ingredient, type: :model do
   context 'validations' do
     it { should validate_presence_of(:name) }
   end 
+
+  context 'column specification' do
+    it { should have_db_column(:name).of_type(:string) }
+    it { should have_db_column(:category).of_type(:string) }
+  end
   
 end

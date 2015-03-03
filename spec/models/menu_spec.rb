@@ -13,4 +13,9 @@ RSpec.describe Menu, type: :model do
     it { should have_many(:dishes).through(:menu_dishes) }
   end 
 
+  context 'column specification' do
+    it { should have_db_column(:name).of_type(:string) }
+    it { should have_db_column(:user_id).of_type(:integer) }
+  end
+
 end
