@@ -18,10 +18,6 @@ RSpec.describe User, type: :model do
     it "is invalid without a password" do
       expect(FactoryGirl.build(:user, password: nil)).to be_invalid
     end
-
-    it "is invalid without a password confirmation" do
-      expect(FactoryGirl.build(:user, password_confirmation: nil)).to be_invalid
-    end
   end
 
   describe "hashing the password" do
