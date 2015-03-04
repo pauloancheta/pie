@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
     vegan_array = ["Poultry", "Beef", "Pork", "Seafood", "Dairy/Eggs"]
     vegetarian_array = ["Poultry", "Beef", "Pork", "Seafood"]
     pesq_array = ["Poultry", "Beef", "Pork"]
-    muslim_array = ["Pork"]
+    kosher_array = ["Pork"]
     dairy_array = ["Dairy/Eggs"]
     gluten_array = ["Grains/Wheat"]
 
@@ -116,8 +116,8 @@ class User < ActiveRecord::Base
           return true
         end
       end
-    elsif self.preference.diet == "Muslim"
-      muslim_array.each do |a|
+    elsif self.preference.diet == "Kosher"
+      kosher_array.each do |a|
         if ingredients.include?(a)
           return true
         end
