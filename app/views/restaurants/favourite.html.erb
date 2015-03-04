@@ -6,17 +6,13 @@
 <% end %>
 
 <% @user.favourited_users.each do |restaurant| %>
-  <div class="card">
+  <div class="card" id="<%= restaurant.id%>_favourites_page">
     <div class="card_container">
       <% if user_signed_in?  %>
-        <% if !current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>
-          <%= link_to "Favourite This Restaurant", 
-            user_favourites_path(current_user,favourited_user_id: restaurant.id), 
-            method: :post, class: "btn btn-info btn-xs" %>
-        <% else %>
+        <% if current_user.favourites.map(&:favourited_user_id).include?(restaurant.id) %>
           <%= link_to "Favourited", 
           user_favourite_path(current_user, restaurant.id), 
-          method: :delete, class: "btn btn-success btn-xs" %>
+          method: :delete, class: "btn btn-success btn-xs", remote: true %>
         <% end %>
       <% end %>
       <div class="card_title">
