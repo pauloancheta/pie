@@ -18,7 +18,7 @@ body {
 }
 
 .allergy {
-  background-color: red;
+  border: 1px solid red;
 }
 
 .pie_button {
@@ -42,4 +42,8 @@ a {
 }
 a:hover {
   color: $pie_orange_color;
+}
+
+.pie_divider {
+  background-color: $pie_orange_color;
 }
