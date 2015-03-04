@@ -2,6 +2,22 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe User, type: :model do
+
+  describe 'associations' do 
+    it { should have_many(:favourites).dependent(:destroy) }
+    it { should have_many(:favourited_users).through(:favourites) }
+
+    it { should have_many(:menus).dependent(:destroy) }
+    it { should have_many(:recipes).dependent(:destroy) }
+
+    it { should have_many(:likes).dependent(:nullify) }
+    it { should have_many(:liked_dishes).through(:likes).source(:dish) }
+
+    it { should have_one(:preference).dependent(:destroy) }
+    it { should have_one(:recipe).through(:preference) }
+  end 
+
+
   describe "validations" do
     it "has a valid factory" do
       expect(FactoryGirl.create(:user)).to be_valid
