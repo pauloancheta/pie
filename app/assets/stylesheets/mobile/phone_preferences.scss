@@ -1,0 +1,25 @@
+$pie_orange_color: #e87e37;
+@media only screen 
+and (min-device-width : 360px) 
+and (max-device-width : 640px) { 
+  .btn-link {
+    color: #8a8c8c;
+    font-size: 2em;  
+  }
+  .btn-link:hover {
+    color: $pie_orange_color;
+    font-size: 2em;
+  }
+  .modal-content {
+    font-size: 2em;
+    #ingredient_name {
+      height: 4em;
+    }
+  }
+
+  .pie_button {
+    height: 1.2em;
+    font-size: 1.5em;
+    width: 5em;
+  }
+}
