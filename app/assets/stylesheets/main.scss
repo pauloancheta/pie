@@ -35,4 +35,11 @@ body {
     text-shadow: $pie_charcoal_grey 0 1px 0;
     width:120px;
     height:32px
-}      
+}
+
+a {
+  color: #8a8c8c;
+}
+a:hover {
+  color: $pie_orange_color;
+}
