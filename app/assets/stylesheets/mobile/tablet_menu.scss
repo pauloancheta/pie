@@ -1,0 +1,10 @@
+@media only screen 
+and (min-device-width : 640px) 
+and (max-device-width : 1144px) { 
+  .navbar-header {
+    display: none; 
+  }
+  .navbar-nav.menu_button {
+    margin-top: -1em;
+  }
+}
