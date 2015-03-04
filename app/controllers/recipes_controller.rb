@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-
   before_action :authenticate_user!
+  respond_to :js
 
   def index
     @recipe = current_user.recipes.new
@@ -9,12 +9,8 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.new recipe_params
-    if @recipe.save
-      redirect_to recipes_path
-    else 
-      flash[:alert] = @recipe.errors.full_messages.join(', ')
-      render :new
-    end 
+    @recipe.save!
+    respond_with()
   end
 
   def show

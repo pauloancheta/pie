@@ -22,7 +22,7 @@
       </div>
     <% end %>
     <div class="card_title">
-      <h3 class="restaurant_name"><%= link_to restaurant.name, user_menus_path(restaurant) %></h3>
+      <h3 class="restaurant_name"><%= link_to restaurant.name.split.map(&:capitalize).join(' '), user_menus_path(restaurant) %></h3>
     </div>
   </div>
   <div class="card_footer">

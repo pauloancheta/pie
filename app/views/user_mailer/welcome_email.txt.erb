@@ -1,4 +1,4 @@
-Welcome to Picky Eater, <%= @user.name %>
+Welcome to Picky Eater, <%= @user.name.split.map(&:capitalize).join(' ') %>
 ===============================================
 
 You have successfully signed up for Picky Eater,
