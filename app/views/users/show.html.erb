@@ -1,4 +1,4 @@
-<h1><%= @user.name %></h1>
+<h1><%= @user.name.split.map(&:capitalize).join(' ') %></h1>
 <h3>
   <% if @user == current_user %> 
     <%= link_to "Edit Profile", edit_user_path(@user) %>
@@ -9,7 +9,7 @@
 <p><%= @user.phone_number %></p>
 <p><%= @user.email %></p>
 <% if @user.is_admin == true %>
-  <p><%= @user.name %> is open for business!<p>
+  <p><%= @user.name.split.map(&:capitalize).join(' ') %> is open for business!<p>
 <% end %>
 
 <% if current_user.address.present? %>
