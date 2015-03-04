@@ -12,7 +12,7 @@
   <p><%= @user.name.split.map(&:capitalize).join(' ') %> is open for business!<p>
 <% end %>
 
-<% if current_user.address.present? %>
+<% if @user.address.present? %>
   <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'>
     </div>
