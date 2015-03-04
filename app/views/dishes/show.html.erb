@@ -5,7 +5,7 @@
 </center>
   
 <div class="col-md-5">
-  <h3><center>Recipes for <%= @dish.name %></center></h3><hr>
+  <h3><center><%= @dish.name %> Recipes</center></h3><hr>
   <ul id="sortable1" class="connectedSortable">
     <% @dish.recipes.each do |dr| %>
       <div class="ui-state" data-recipe-id="<%= dr.id %>" data-name="<%= dr.name %>"><center><%= dr.name %></center></div>
