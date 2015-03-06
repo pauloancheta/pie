@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find params[:id]
     @recipe.destroy
-    redirect_to recipes_path
+    respond_with(@recipe)
   end
 
   def add_recipe

@@ -1,15 +1,17 @@
-<div class="panel panel-default">
-  <div class="panel-heading" role="tab" id="headingOne">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= index+1 %>" aria-expanded="true" aria-controls="collapseOne">
-      <div id= "recipeRow" class="row">
-        <%= render '/recipes/show', r: r %>
-      </div>
-    </a>
-  </div>
+<div class="<%= dom_id(r) %> ">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= index+1 %>" aria-expanded="true" aria-controls="collapseOne">
+        <div id= "recipeRow" class="row">
+          <%= render '/recipes/show', r: r %>
+        </div>
+      </a>
+    </div>
 
-  <div id="collapseOne<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-    <div class="panel-body">
-      <%= render 'ingredients/index', r: r %>
+    <div id="collapseOne<%= index+1 %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <%= render 'ingredients/index', r: r %>
+      </div>
     </div>
   </div>
 </div>
