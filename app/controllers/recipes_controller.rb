@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipe = current_user.recipes.new
-    @recipes = current_user.recipes.all
+    @recipes = current_user.recipes.order(:id)
   end
 
   def create
@@ -13,8 +13,6 @@ class RecipesController < ApplicationController
     respond_with()
   end
 
-  def show
-  end
 
   def edit
     @recipe = Recipe.find params[:id]
