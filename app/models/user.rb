@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true
   validates :password, presence: true, :unless => :uid_provided?
   validates_confirmation_of :password, :unless => :uid_provided?
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, :unless => :uid_provided?
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
   geocoded_by :address   # can also be an IP address
