@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipe = current_user.recipes.new
-    @recipes = current_user.recipes.order(:id)
+    @recipes = current_user.recipes.order(:id).limit(5)
   end
 
   def create
