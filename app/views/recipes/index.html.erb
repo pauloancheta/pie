@@ -2,13 +2,67 @@
 
 <!-- Renders Recipe form -->
 <a class="addRecipe">Add a recipe</a>
+
 <div class="recipeForm" style="display: none;">
   <%= render "form" %>
-</div><hr>
+</div>
+<hr>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#line" aria-controls="line" role="tab" data-toggle="tab">Line</a>
+    </li>
+    <li role="presentation">
+      <a href="#dry_mix" aria-controls="dry_mix" role="tab" data-toggle="tab">Dry Mixer</a>
+    </li>
+    <li role="presentation">
+      <a href="#wet_mix" aria-controls="wet_mix" role="tab" data-toggle="tab">Wet Mixer</a>
+    </li>
+    <li role="presentation">
+      <a href="#sauce" aria-controls="sauce" role="tab" data-toggle="tab">Sauce</a>
+    </li>
+    <li role="presentation">
+      <a href="#stew" aria-controls="stew" role="tab" data-toggle="tab">Stew</a>
+    </li>
+    <li role="presentation">
+      <a href="#other" aria-controls="other" role="tab" data-toggle="tab">Other</a>
+    </li>
+</ul>
 
 <!-- Recipe Accordion begins -->
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <% @recipes.each_with_index do |r, index| %>
-    <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
-  <% end %>
+<div class="tab-content panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div role="tabpanel" class="tab-pane active" id="line">
+    <% @line.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="dry_mix">
+    <% @dry.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="wet_mix">
+    <% @wet.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="sauce">
+    <% @sauce.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="stew">
+    <% @stew.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="other">
+    <% @other.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+    <% @none.each_with_index do |r, index| %>
+      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% end %>
+  </div>
 </div>
+

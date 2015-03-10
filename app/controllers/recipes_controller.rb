@@ -4,7 +4,14 @@ class RecipesController < ApplicationController
 
   def index
     @recipe = current_user.recipes.new
-    @recipes = current_user.recipes.order(:id).limit(5)
+    @recipes = current_user.recipes.order(:id)
+    @line = current_user.recipes.where(category: "Line")
+    @dry = current_user.recipes.where(category: "Dry Mix")
+    @wet = current_user.recipes.where(category: "Wet Mix")
+    @sauce = current_user.recipes.where(category: "Sauce")
+    @stew = current_user.recipes.where(category: "Stew")
+    @other = current_user.recipes.where(category: "Other")
+    @none = current_user.recipes.where(category: nil)
   end
 
   def create
@@ -52,7 +59,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name)
+    params.require(:recipe).permit(:name, :category)
   end
 
 end
