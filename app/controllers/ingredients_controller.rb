@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   
-  before_action :recipe_id, only: [:new, :create, :edit, :update, :destroy]
-  before_action :ingredient_id, only: [:edit, :update, :destroy]
+  before_action :find_recipe, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_ingredient, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   
   def new
@@ -9,18 +9,13 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    if current_user.is_admin == false
-      if current_user.recipe.ingredients.create ingredient_params
-        redirect_to preference_path(current_user.preference.id)
-      else
-        render :new
-      end
+    ingredient = Ingredient.find_or_create(ingredient_params)
+    if current_user.is_admin
+      ingredient.recipes.push(@recipe)
+      ingredient.save!
+      redirect_to recipes_path
     else
-      if @recipe.ingredients.create ingredient_params
-        redirect_to recipes_path
-      else
-        render :new
-      end
+      redirect_to preference_path(current_user.preference.id)
     end
   end
 
@@ -54,11 +49,11 @@ class IngredientsController < ApplicationController
     params.require(:ingredient).permit(:name, :category)
   end
 
-  def recipe_id
+  def find_recipe
     @recipe = Recipe.find params[:recipe_id]
   end
 
-  def ingredient_id
+  def find_ingredient
     @ingredient = Ingredient.find params[:id]
   end
 
