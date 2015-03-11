@@ -13,10 +13,10 @@
       <a href="#line" aria-controls="line" role="tab" data-toggle="tab">Line</a>
     </li>
     <li role="presentation">
-      <a href="#dry_mix" aria-controls="dry_mix" role="tab" data-toggle="tab">Dry Mixer</a>
+      <a href="#spices" aria-controls="spices" role="tab" data-toggle="tab">Spices</a>
     </li>
     <li role="presentation">
-      <a href="#wet_mix" aria-controls="wet_mix" role="tab" data-toggle="tab">Wet Mixer</a>
+      <a href="#vinaigrette" aria-controls="vinaigrette" role="tab" data-toggle="tab">Vinaigrette</a>
     </li>
     <li role="presentation">
       <a href="#sauce" aria-controls="sauce" role="tab" data-toggle="tab">Sauce</a>
@@ -36,12 +36,12 @@
       <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
     <% end %>
   </div>
-  <div role="tabpanel" class="tab-pane" id="dry_mix">
+  <div role="tabpanel" class="tab-pane" id="spices">
     <% @dry.each_with_index do |r, index| %>
       <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
     <% end %>
   </div>
-  <div role="tabpanel" class="tab-pane" id="wet_mix">
+  <div role="tabpanel" class="tab-pane" id="vinaigrette">
     <% @wet.each_with_index do |r, index| %>
       <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
     <% end %>

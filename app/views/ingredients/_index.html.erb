@@ -1,4 +1,24 @@
-<p><%= link_to "Add Ingredients", new_recipe_ingredient_path(r, @ingredient) %></p>
+<button type="button" class="btn-link" data-toggle="modal" data-target="#ingredient">
+  Add an Ingredient
+</button>
+<div class="modal fade" id="ingredient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add an Ingredient</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @ingredient, url: recipe_ingredients_path(r) do |i| %>
+          <%= i.input :name %>
+          <%= i.input :category, as: :radio_buttons, 
+                      collection: ["Beef", "Pork", "Poultry", "Seafood", "Grains/Wheat", "Vegetable", "Dairy/Eggs" ] %>
+          <%= i.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Recipe ingredient table begins -->
 <h4><%= r.name %> Ingredients</h4>
