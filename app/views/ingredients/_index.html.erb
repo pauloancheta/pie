@@ -1,7 +1,7 @@
-<button type="button" class="btn-link" data-toggle="modal" data-target="#ingredient">
+<button type="button" class="btn-link" data-toggle="modal" data-target="#ingredient_<%= dom_id(r) %>">
   Add an Ingredient
 </button>
-<div class="modal fade" id="ingredient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="ingredient_<%= dom_id(r) %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
