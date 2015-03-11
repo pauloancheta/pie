@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   
-  before_action :find_recipe, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_recipe, only: [ :new, :create, :edit, :update, :destroy]
   before_action :find_ingredient, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   

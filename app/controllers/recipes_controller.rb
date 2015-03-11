@@ -3,8 +3,11 @@ class RecipesController < ApplicationController
   respond_to :js
 
   def index
+    @ingredient = Ingredient.new
     @recipe = current_user.recipes.new
+
     @recipes = current_user.recipes.order(:id)
+
     @line = current_user.recipes.where(category: "Line")
     @dry = current_user.recipes.where(category: "Spices")
     @wet = current_user.recipes.where(category: "Vinaigrette")
