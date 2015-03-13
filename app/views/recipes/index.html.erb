@@ -35,47 +35,42 @@
 <!-- Recipe Accordion begins -->
 <div class="tab-content panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div role="tabpanel" class="tab-pane active" id="line">
-    <% @line.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @line.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane" id="spices">
-    <% @dry.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @dry.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane" id="vinaigrette">
-    <% @wet.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @vin.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane" id="sauce">
-    <% @sauce.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @sauce.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane" id="stew">
-    <% @stew.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @stew.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane" id="other">
-    <% @other.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
-    <% end %>
-    <% @none.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @other.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane" id="all">
-    <%= form_tag restaurants_path, :method => 'get' do %>
-      <p class="search-box">
-        <%= text_field_tag :search_recipes, params[:search]  %>
-      </p>
+    <%= form_tag remote: true do %>
+      <%= text_field_tag :search_recipes, params[:search], placeholder: "Search recipes" %>
     <% end %>
 
-    <% @recipes.each_with_index do |r, index| %>
-      <%= render partial: 'recipes/row', locals: {r: r, index: index} %>
+    <% @recipes.each do |r| %>
+      <%= render partial: 'recipes/row', locals: {r: r, seed: rand(10000)} %>
     <% end %>
   </div>
 

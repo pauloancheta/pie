@@ -1,14 +1,14 @@
-<div class="<%= dom_id(r) %>" id="<%= r.name %>">
+<div class="<%= "#{dom_id(r)}-#{seed}" %>" id="<%= r.name %>">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= dom_id(r) %>" aria-expanded="true" aria-controls="collapseOne">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= "#{dom_id(r)}-#{seed}" %>" aria-expanded="true" aria-controls="collapseOne">
         <div id= "recipeRow" class="row">
           <%= render '/recipes/show', r: r %>
         </div>
       </a>
     </div>
 
-    <div id="collapseOne<%= dom_id(r) %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne<%= "#{dom_id(r)}-#{seed}" %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <%= render 'ingredients/index', r: r %>
       </div>
