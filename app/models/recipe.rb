@@ -12,5 +12,12 @@ class Recipe < ActiveRecord::Base
   has_many :users, through: :preferences
 
   validates :name, presence: true
-  
+
+  def self.search(search)
+    if search
+      where("name ILIKE '%#{search}%' ")
+    else
+      unscoped
+    end
+  end  
 end
