@@ -5,23 +5,15 @@ class RecipesController < ApplicationController
   def index
     @ingredient = Ingredient.new
     @recipe = current_user.recipes.new
-
-    # @recipes = current_user.recipes.order(:id)
+    @recipes = current_user.recipes.order(:id)
 
     @line = current_user.recipes.where(category: "Line")
     @dry = current_user.recipes.where(category: "Spices")
-    @wet = current_user.recipes.where(category: "Vinaigrette")
+    @vin = current_user.recipes.where(category: "Vinaigrette")
     @sauce = current_user.recipes.where(category: "Sauce")
     @stew = current_user.recipes.where(category: "Stew")
     @other = current_user.recipes.where(category: "Other")
     @none = current_user.recipes.where(category: nil)
-
-    if params[:search].present?
-      # @restaurants = User.all.where(is_admin: true).search params[:search]
-      @recipes = current_user.recipes.order(:id).search params[:search]
-    else
-      @recipes = current_user.recipes.order(:id)
-    end
   end
 
   def create

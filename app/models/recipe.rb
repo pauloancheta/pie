@@ -13,11 +13,4 @@ class Recipe < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def self.search(search)
-    if search
-      where("name ILIKE '%#{search}%' ")
-    else
-      unscoped
-    end
-  end  
 end

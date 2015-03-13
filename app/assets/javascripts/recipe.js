@@ -15,4 +15,9 @@ $(document).ready(function() {
     }
   });
 
+  if ( $('a[href="#all"]').parent().hasClass('active') ) {
+    // $('a[data-parent="#accordion"]').attr('href', '#collapseOne<%= dom_id(r) %>')
+    // $('a[href="#all"]').attr('href', 'a')
+  }
+
 });
