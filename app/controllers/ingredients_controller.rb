@@ -15,6 +15,7 @@ class IngredientsController < ApplicationController
       ingredient.save!
       redirect_to recipes_path
     else
+      current_user.recipe.ingredients.push(ingredient)
       redirect_to preference_path(current_user.preference.id)
     end
   end
