@@ -30,6 +30,7 @@ group :development do
   gem 'awesome_print'
   gem 'rails-erd'
   gem 'letter_opener'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
