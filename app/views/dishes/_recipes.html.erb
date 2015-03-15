@@ -1,0 +1,5 @@
+<% @recipes.each do |r| %>
+  <% unless @dish.recipes.include?(r) %> 
+    <div class="ui-state" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>"><center><%= r.name %></center></div>
+  <% end %>
+<% end %>

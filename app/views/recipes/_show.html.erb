@@ -3,10 +3,10 @@
 </h4>      
 
 <div class="col-md-4">
-  <a class="btn btn-default" data-toggle="modal" data-target="#<%= dom_id(r) %>">
+  <a class="btn btn-default" data-toggle="modal" data-target="#<%= "#{dom_id(r)}-#{seed}" %>">
     Edit Recipe
   </a>
-  <div class="modal fade" id="<%= dom_id(r) %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="<%= "#{dom_id(r)}-#{seed}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
