@@ -5,49 +5,15 @@
 </center>
   
 <div class="col-md-5">
-  <h3><center><%= @dish.name %> Recipes</center></h3><hr>
-  <ul id="sortable1" class="connectedSortable">
+  <h3><%= @dish.name %> Recipes</h3>
+  <div class="dish_recipe_container">
     <% @dish.recipes.each do |dr| %>
-      <div class="ui-state" data-recipe-id="<%= dr.id %>" data-name="<%= dr.name %>"><center><%= dr.name %></center></div>
+      <div class="dish_recipes" data-recipe-id="<%= dr.id %>" data-dish-id="<%= @dish.id %>"><%= dr.name %></div>
     <% end %>
-  </ul>
+  </div>
 </div>
 
-<div class="col-md-2">
+<div class="col-md-7 recipe_list_container">
+  <h3>Add from list of recipes</h3>
+    <%= render 'dishes/recipes' %>
 </div>
-
-<div class="col-md-5">
-  <h3><center>Add from list of recipes</center></h3><hr>
-  <ul id="sortable2" class="connectedSortable">
-      <% @recipes.each do |r| %>
-        <% unless @dish.recipes.include?(r) %> 
-          <div class="ui-state" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>"><center><%= r.name %></center></div>
-        <% end %>
-      <% end %>
-  </ul>
-</div>
-
-<script>
-$( "#sortable1" ).on( "sortreceive", function( event, ui ) {
-    var recipeId = $(ui.item).data('recipe-id'),
-            name = $(ui.item).data('name'),
-             url = '/dishes/' + <%= @dish.id %> + '/add_recipe/' + recipeId;
-    $.post(url, function(data){
-      // alert("Added Successfully");
-    });
-});
-
-$( "#sortable1" ).on( "sortremove", function( event, ui ) {
-    var recipeId = $(ui.item).data('recipe-id'),
-            name = $(ui.item).data('name'),
-             url = '/dishes/' + <%= @dish.id %> + '/remove_recipe/' + recipeId;
-
-    $.ajax({
-        url: url,
-        type: 'DELETE',
-        success: function(result) {
-          // alert("Removed");
-        }
-    });
-});
-</script>

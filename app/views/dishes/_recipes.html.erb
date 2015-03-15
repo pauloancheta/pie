@@ -1,0 +1,75 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#line" aria-controls="line" role="tab" data-toggle="tab">Line</a>
+    </li>
+    <li role="presentation">
+      <a href="#spices" aria-controls="spices" role="tab" data-toggle="tab">Spices</a>
+    </li>
+    <li role="presentation">
+      <a href="#vinaigrette" aria-controls="vinaigrette" role="tab" data-toggle="tab">Vinaigrette</a>
+    </li>
+    <li role="presentation">
+      <a href="#sauce" aria-controls="sauce" role="tab" data-toggle="tab">Sauce</a>
+    </li>
+    <li role="presentation">
+      <a href="#stew" aria-controls="stew" role="tab" data-toggle="tab">Stew</a>
+    </li>
+    <li role="presentation">
+      <a href="#other" aria-controls="other" role="tab" data-toggle="tab">Other</a>
+    </li>
+    <li role="presentation">
+      <a href="#all" aria-controls="other" role="tab" data-toggle="tab">All</a>
+    </li>
+</ul>
+
+<div class="tab-content panel-group" role="tablist">
+  <div role="tabpanel" class="tab-pane active" id="line">
+    <% @line.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+    <div role="tabpanel" class="tab-pane" id="spices">
+    <% @dry.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="vinaigrette">
+    <% @vin.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="sauce">
+    <% @sauce.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="stew">
+    <% @stew.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="other">
+    <% @other.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="all">
+    <% @recipes.each do |r| %>
+      <% unless @dish.recipes.include?(r) %> 
+        <div class="recipe_list" data-recipe-id="<%= r.id %>" data-name="<%= r.name %>" data-dish-id="<%= @dish.id %>"><%= r.name %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

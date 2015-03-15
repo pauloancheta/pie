@@ -3,14 +3,14 @@
     <div class="panel-heading" role="tab" id="headingOne">
       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= "#{dom_id(r)}-#{seed}" %>" aria-expanded="true" aria-controls="collapseOne">
         <div id= "recipeRow" class="row">
-          <%= render '/recipes/show', r: r %>
+          <%= render partial: '/recipes/show', locals: {r: r, seed: rand(10000)}  %>
         </div>
       </a>
     </div>
 
     <div id="collapseOne<%= "#{dom_id(r)}-#{seed}" %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        <%= render 'ingredients/index', r: r %>
+        <%= render partial: 'ingredients/index',locals: {r: r, seed: rand(10000)}  %>
       </div>
     </div>
   </div>

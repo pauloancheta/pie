@@ -14,6 +14,13 @@ class DishesController < ApplicationController
 
   def show
     @recipes = current_user.recipes.all
+    @line = current_user.recipes.where(category: "Line")
+    @dry = current_user.recipes.where(category: "Spices")
+    @vin = current_user.recipes.where(category: "Vinaigrette")
+    @sauce = current_user.recipes.where(category: "Sauce")
+    @stew = current_user.recipes.where(category: "Stew")
+    @other = current_user.recipes.where(category: "Other")
+    @none = current_user.recipes.where(category: nil)
   end
 
   def edit
