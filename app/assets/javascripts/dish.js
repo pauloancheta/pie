@@ -5,9 +5,9 @@ $(document).ready(function() {
 
   $('.recipe_list').on('click', function() {
     var recipeId = $(this).data('recipe-id'),
-            name = $(this).data('name');
+            name = $(this).data('name'),
              url = '/dishes/' + $(this).data('dish-id') + '/add_recipe/' + recipeId;
-    $(this).hide();
+    $(this).hide;
     
     $('.dish_recipe_container').prepend($(this));
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
   $('.dish_recipes').on('click', function() {
     var recipeId = $(this).data('recipe-id'),
-            name = $(this).data('name');
+            name = $(this).data('name'),
              url = '/dishes/' + $(this).data('dish-id') + '/remove_recipe/' + recipeId;
     $(this).hide();
     $.ajax({
