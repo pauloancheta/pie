@@ -17,10 +17,12 @@ Rails.application.routes.draw do
   delete '/dishes/:dish_id/remove_recipe/:id' => 'recipes#remove_recipe', as: :remove_recipe
   # delete '/dish_recipes/:id' => 'recipes#remove_recipe', as: :remove_recipe
 
-
   get '/restaurants' => 'restaurants#index'
 
   get '/restaurants/favourites' => 'restaurants#favourite'
+
+  # create a route for add substitutions
+  post '/ingredients/:id' => 'ingredients#substitution', as: :substitute_ingredient
 
   resources :users do
     resources :favourites, only:[:create, :destroy] 

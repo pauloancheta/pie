@@ -1,0 +1,26 @@
+<button type="button" class="btn-link" data-toggle="modal" data-target="#ingredient_<%= "#{dom_id(i)}-#{seed}" %>">
+  Add a Substitute Ingredient
+</button>
+<div class="modal fade" id="ingredient_<%= "#{dom_id(i)}-#{seed}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add an Ingredient</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @substitute, url: substitute_ingredient_path(i) do |i| %>
+          <%= i.input :name %>
+          <%= i.input :category, as: :radio_buttons, 
+                      collection: ["Beef", "Pork", "Poultry", "Seafood", "Grains/Wheat", "Vegetable", "Dairy/Eggs" ] %>
+          <%= i.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<% i.substitution.each do |s| %>
+  <%= s.name %>,
+<% end %>

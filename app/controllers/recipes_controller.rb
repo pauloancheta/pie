@@ -4,6 +4,8 @@ class RecipesController < ApplicationController
 
   def index
     @ingredient = Ingredient.new
+    @substitute = Ingredient.new
+
     @recipe = current_user.recipes.new
     @recipes = current_user.recipes.order(:id)
 

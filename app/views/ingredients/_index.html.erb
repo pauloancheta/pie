@@ -34,11 +34,7 @@
     <tr>
       <td><%= i.name %></td>
       <td><%= i.category %></td> 
-      <td><%= link_to "Add substitution" %><br>
-        <% i.substitution.each do |s| %>
-          <%= s.name %>
-        <% end %>
-       </td>
+      <td><%= render partial: '/ingredients/substitution_modal', locals: {r: r, i: i,  seed: rand(10000)} %></td>
       <td>
         <%= link_to "Edit", edit_recipe_ingredient_path(r, i), class: "btn btn-default" %>
         <%= link_to "Delete", recipe_ingredient_path(r, i), method: :delete, class: "btn btn-default"  %>

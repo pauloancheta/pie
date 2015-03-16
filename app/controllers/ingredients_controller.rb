@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   
   before_action :find_recipe, only: [ :new, :create, :edit, :update, :destroy]
-  before_action :find_ingredient, only: [:edit, :update, :destroy]
+  before_action :find_ingredient, only: [:edit, :update, :destroy, :substitution]
   before_action :authenticate_user!
   
   def new
@@ -42,6 +42,13 @@ class IngredientsController < ApplicationController
     else
       redirect_to preference_path
     end
+  end
+
+  def substitution
+    @substitute = Ingredient.find_or_create(ingredient_params)
+    @ingredient.substitution.push(@substitute)
+    @ingredient.save!
+    redirect_to recipes_path
   end
 
   private
