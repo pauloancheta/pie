@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('.dishForm').fadeToggle();
   });
 
-  $('.recipe_list').on('click', function(event) {
+  $('.recipe_list_container').on('click','.recipe_list', function(event) {
     var recipeId = $(this).data('recipe-id'),
             name = $(this).data('name'),
              url = '/dishes/' + $(this).data('dish-id') + '/add_recipe/' + recipeId;
@@ -31,6 +31,8 @@ $(document).ready(function() {
         
       }
     });
+
+    $('.recipe_list_container').append('<div class="recipe_list" data-recipe-id="' + recipeId.toString() + '" data-name="' +  name.toString() + '">'+name+'</div>');    
   });
 
 });
