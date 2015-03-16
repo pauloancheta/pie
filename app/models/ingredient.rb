@@ -1,4 +1,5 @@
 class Ingredient < ActiveRecord::Base
+  serialize :substitution, Array
   before_save :format_name
   has_many :inclusions, dependent: :destroy
   has_many :recipes, through: :inclusions
