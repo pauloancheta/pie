@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   
   resources :preferences, only: [:show, :edit, :update]
   
+  delete '/recipes/:recipe_id/ingredients/:id' => 'inclusions#destroy', as: :inclusion
 end
 

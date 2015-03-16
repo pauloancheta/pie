@@ -17,9 +17,9 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @ingredient = Ingredient.new
     @recipe = current_user.recipes.new recipe_params
     @recipe.save!
-    respond_with()
   end
 
 
