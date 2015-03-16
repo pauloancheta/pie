@@ -1,2 +1,2 @@
 // alert('hi')
-$('.<%= dom_id(@recipe) %>').fadeOut();
+$('#<%= @recipe.name %>').fadeToggle();

@@ -1,7 +1,7 @@
-<button type="button" class="btn-link" data-toggle="modal" data-target="#ingredient_<%= dom_id(r) %>">
+<button type="button" class="btn-link" data-toggle="modal" data-target="#<%= "#{dom_id(r)}-#{seed}" %>">
   Add an Ingredient
 </button>
-<div class="modal fade" id="ingredient_<%= dom_id(r) %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="<%= "#{dom_id(r)}-#{seed}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,7 +35,7 @@
       <td><%= i.category %></td> 
       <td>
         <%= link_to "Edit", edit_recipe_ingredient_path(r, i), class: "btn btn-default" %>
-        <%= link_to "Delete", recipe_ingredient_path(r, i), method: :delete, class: "btn btn-default"  %>
+        <%= link_to "Delete this Ingredient", inclusion_path(r, i), method: :delete, class: "btn btn-default"  %>
       </td>
     </tr>
   <% end %>
