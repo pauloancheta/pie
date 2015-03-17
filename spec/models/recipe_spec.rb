@@ -9,7 +9,7 @@ RSpec.describe Recipe, type: :model do
     it { should have_many(:dish_recipes).dependent(:destroy) }
     it { should have_many(:dishes).through(:dish_recipes) }
 
-    it { should have_many(:inclusions).dependent(:destroy) }
+    it { should have_many(:inclusions).dependent(:nullify) }
     it { should have_many(:ingredients).through(:inclusions) }
 
     it { should have_many(:preferences).dependent(:destroy) }
