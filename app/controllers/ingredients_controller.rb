@@ -31,19 +31,6 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def destroy
-    if @ingredient.destroy
-      flash[:notice] = "Deleted!"
-    else
-      flash[:alert] = "Error in deleting!"
-    end
-    if current_user.is_admin
-      redirect_to recipes_path
-    else
-      redirect_to preference_path
-    end
-  end
-
   private
 
   def ingredient_params

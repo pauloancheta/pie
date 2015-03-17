@@ -1,7 +1,7 @@
 class Ingredient < ActiveRecord::Base
   before_save :format_name
-  has_many :inclusions, dependent: :destroy
-  has_many :recipes, through: :inclusions
+  has_many :inclusions, dependent: :nullify
+  has_many :recipes, through: :inclusions, dependent: :nullify
 
   belongs_to :dish
 
