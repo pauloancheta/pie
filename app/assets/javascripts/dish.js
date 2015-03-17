@@ -7,10 +7,11 @@ $(document).ready(function() {
   $('.recipe_list_container').on('click','.recipe_list', function(event) {
     var recipeId = $(this).data('recipe-id'),
             name = $(this).data('name'),
-             url = '/dishes/' + $(this).data('dish-id') + '/add_recipe/' + recipeId;
+          dishId = $(this).data('dish-id'),
+             url = '/dishes/' + dishId + '/add_recipe/' + recipeId;
 
     $(this).hide();
-    $('.dish_recipe_container').append('<div class="dish_recipes" data-recipe-id="' + recipeId.toString() + '" data-name="' +  name.toString() + '">'+name+'</div>');
+    $('.dish_recipe_container').append('<div class="dish_recipes" data-dish-id=" ' + dishId + ' " data-recipe-id="' + recipeId.toString() + '" data-name="' +  name.toString() + '">'+name+'</div>');
 
 
 
@@ -22,7 +23,9 @@ $(document).ready(function() {
   $('.dish_recipe_container').on('click', '.dish_recipes', function() {
     var recipeId = $(this).data('recipe-id'),
             name = $(this).data('name'),
-             url = '/dishes/' + $(this).data('dish-id') + '/remove_recipe/' + recipeId;
+          dishId = $(this).data('dish-id'),
+             url = '/dishes/' + dishId + '/remove_recipe/' + recipeId;
+    $('.recipe_list_container').append('<div class="recipe_list" data-dish-id=" ' + dishId + ' " data-recipe-id="' + recipeId.toString() + '" data-name="' +  name.toString() + '">'+name+'</div>');    
     $(this).hide();
     $.ajax({
       url: url,
@@ -32,7 +35,6 @@ $(document).ready(function() {
       }
     });
 
-    $('.recipe_list_container').append('<div class="recipe_list" data-recipe-id="' + recipeId.toString() + '" data-name="' +  name.toString() + '">'+name+'</div>');    
   });
 
 });

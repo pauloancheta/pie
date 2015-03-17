@@ -8,7 +8,7 @@
   <h3><%= @dish.name %> Recipes</h3>
   <div class="dish_recipe_container">
     <% @dish.recipes.each do |dr| %>
-      <div class="dish_recipes" data-recipe-id="<%= dr.id %>" data-dish-id="<%= @dish.id %>"><%= dr.name %></div>
+      <div class="dish_recipes" data-recipe-id="<%= dr.id %>" data-name="<%= dr.name %>" data-dish-id="<%= @dish.id %>"><%= dr.name %></div>
     <% end %>
   </div>
 </div>
