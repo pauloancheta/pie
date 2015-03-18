@@ -3,18 +3,19 @@ $pie_charcoal_grey: #383838;
 $pie_background_color: #edecec;
 
 .banner{
-  padding-top: 5em;
-  padding-left: 6em;
+  display: inline-block;
+  margin-top: 5em;
+  margin-left: auto;
+  margin-right: auto;
   img.pie_banner {
-    height: 10em;
+    height: 8em;
   }
 
   img.ball {
     position: absolute;
-    top: 4em;
-    left: 12.5em;
+    margin-left: 5.3em;
     display: inline;
-    height: 4em;
+    height: 3em;
   }
 }
 

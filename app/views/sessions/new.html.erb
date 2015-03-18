@@ -1,12 +1,13 @@
 <% content_for :sign_in do %>
 <div class="jumbotron">
-  <div class="container">
-  <div class="jumbo_darken">
-    <div class="banner">
-      <%= image_tag('ball.png', class: "ball animated infinite bounce") %>  
+  <div class="jumbo_darken container">
+    <div class="row">
+    <div class="banner col-md-6 text-center">
+      <%= image_tag('ball.png', class: "ball animated bounce infinite") %>  
       <%= image_tag('banner.png', class: "pie_banner")  %>
     </div>
-    <div class="sign_in">
+
+    <div class="sign_in col-md-6">
     <!-- <div class="container"> -->
       <h2>Login</h2>
 
@@ -26,7 +27,7 @@
       <%= render '/sessions/modal' %>
     </div>
     <!-- Sign in ends -->
+    </div>
   </div>
-</div>
 </div>
 <% end %>
