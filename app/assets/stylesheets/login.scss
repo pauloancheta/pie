@@ -2,25 +2,24 @@ $pie_orange_color: #e87e37;
 $pie_charcoal_grey: #383838;
 
 .jumbotron {
-  background-image: url('jumbotron_pic.jpg');
+  background-image: url('lunch_table2.jpg');
   background-size: 100%;
-  height: 100vh;
+  height: 80vh;
   margin: 0;
   background-repeat: no-repeat;
 
   .jumbo_darken{
+    margin: 0;
     position: absolute;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 20em;
+    height: 80vh;
     width: 100%;
-    margin-top: 18.6em;
+    padding-top: 9em;
     left: 0;
     .sign_in {
-      position: absolute;
-      top: 0;
       right: 0;
-      margin-top: 0;
+      display: inline-block;
       padding-right: 10em;
       text-align: right;
       h2 {
