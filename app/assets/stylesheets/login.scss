@@ -4,7 +4,7 @@ $pie_charcoal_grey: #383838;
 .jumbotron {
   background-image: url('lunch_table2.jpg');
   background-size: 100%;
-  height: 80vh;
+  height: 70vh;
   margin: 0;
   background-repeat: no-repeat;
 
@@ -13,9 +13,10 @@ $pie_charcoal_grey: #383838;
     position: absolute;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 80vh;
+    height: 70vh;
     width: 100%;
-    padding-top: 9em;
+    padding-top: 6em;
+    padding-left: 5em;
     left: 0;
     .sign_in {
       right: 0;
