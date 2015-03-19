@@ -1,7 +1,8 @@
 <% content_for :sign_in do %>
-<div class="jumbotron slide">
-  <div class="jumbo_darken container">
-    <div class="row">
+
+<div class="jumbotron">
+  <div class="jumbo_darken">
+    <div class="row container">
     <div class="banner col-md-6 text-center">
       <%= image_tag('ball.png', class: "ball animated bounce infinite") %>  
       <%= image_tag('banner.png', class: "pie_banner")  %>
@@ -31,30 +32,8 @@
   </div>
 </div>
 
-
-<!-- articles starts -->
 <div class="container container-fluid">
-  <div class="row">
-    <div class="col-md-4">
-      <h1>For Restaurants</h1>
-      <p>
-        Picky Eater will make it easier to have your mobile and web menu. It is also really easy to add your recipes and add recipes to your dishes. Contact us for more details!
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h1>For Diners</h1>
-      <p>
-        Still gazing at the old paper menu? Picky Eater helps you to filter the menu to what you can eat. If you want to look at the whole menu,
-        all you have to do is click a button. See the menu in a whole new way with Picky Eater
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h1>Recommend Us!</h1>
-      <p>
-        Help us sign in restaurants! Contact us at picky.eater@gmail.com
-      </p>
-
-    </div>
-  </div>
+  <%= render 'articles/landing_page' %>
 </div>
+
 <% end %>

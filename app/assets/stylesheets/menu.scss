@@ -2,23 +2,6 @@ $pie_orange_color: #e87e37;
 $pie_charcoal_grey: #383838;
 $pie_background_color: #edecec;
 
-.banner{
-  display: inline-block;
-  margin-top: 5em;
-  margin-left: auto;
-  margin-right: auto;
-  img.pie_banner {
-    height: 8em;
-  }
-
-  img.ball {
-    position: absolute;
-    margin-left: 5.3em;
-    display: inline;
-    height: 3em;
-  }
-}
-
 .menu {
   background-color: $pie_charcoal_grey;
   margin: 0;

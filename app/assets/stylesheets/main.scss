@@ -2,7 +2,6 @@ $pie_background_color: #edecec;
 $pie_charcoal_grey: #383838;
 $pie_orange_color: #e87e37;
 
-
 html {
   box-sizing: border-box;
 }
@@ -41,11 +40,18 @@ body {
 
 a {
   color: #8a8c8c;
+  text-decoration: none;
 }
 a:hover {
+  text-decoration: none;
   color: $pie_orange_color;
 }
 
 .pie_divider {
   background-color: $pie_orange_color;
+}
+.flash {
+  background-color: $pie_orange_color;
+  height: 1.5em;
+  padding-left: 4em;
 }

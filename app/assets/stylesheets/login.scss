@@ -1,9 +1,9 @@
 $pie_orange_color: #e87e37;
-$pie_charcoal_grey: #383838;
 
 .jumbotron {
   background-image: url('lunch_table2.jpg');
   background-size: 100%;
+  background-position: center;
   height: 70vh;
   margin: 0;
   background-repeat: no-repeat;
@@ -18,45 +18,8 @@ $pie_charcoal_grey: #383838;
     padding-top: 6em;
     padding-left: 5em;
     left: 0;
-    .sign_in {
-      right: 0;
-      display: inline-block;
-      padding-right: 10em;
-      text-align: right;
-      h2 {
-        color: $pie_orange_color;
-      }
-      p {
-        color: white;
-        span {
-          color: black;
-        }
-      }
-
-      img {
-        height: 3em;
-        width: 20em;
-      }
-
-      button {
-        color: $pie_orange_color;
-      }
-      button:hover {
-        text-decoration: none;
-        color: #aaa;
-      }
-    
-    }
   }
   .modal {
     text-align: left;
   }
-}
-
-
-
-.flash {
-  background-color: $pie_orange_color;
-  height: 1.5em;
-  padding-left: 4em;
 }
