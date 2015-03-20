@@ -1,12 +1,20 @@
-<div class="row main_menu_bar">
-  <% if current_user.is_admin != true %>
-    <%= link_to "Preferences", preference_path(current_user.preference.id) %>
-  <% else %>
-    <%= link_to "View My Menus", user_menus_path(current_user) %>
-    <%= link_to 'Recipes', recipes_path %>
-  <% end %>
-  <%= link_to 'Restaurants', restaurants_path %>
-  <%= link_to "Favourites", '/restaurants/favourites' %>
-  <%= link_to "My Profile", user_path(current_user) %>
-  <%= link_to "Logout", '/logout' %>
+<div class="row menu_bar">
+  <div class="menu_bar__logo col-md-2">
+    PICKY EATER
+  </div>
+  <div class="menu_bar__links col-md-8">
+    <% if current_user.is_admin != true %>
+      <%= link_to "Preferences", preference_path(current_user.preference.id) %>
+    <% else %>
+      <%= link_to "View My Menus", user_menus_path(current_user) %>
+      <%= link_to 'Recipes', recipes_path %>
+    <% end %>
+    <%= link_to 'Restaurants', restaurants_path %>
+    <%= link_to "Favourites", '/restaurants/favourites' %>
+  </div>
+
+  <div class="col-md-2">
+    Welcome <%= link_to current_user.name, user_path(current_user) %>
+    <%= link_to "Logout", '/logout' %>
+  </div>
 </div>
