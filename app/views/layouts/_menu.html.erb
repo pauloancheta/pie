@@ -1,12 +1,12 @@
-<ul class="nav navbar-nav menu_button">
+<div class="row main_menu_bar">
   <% if current_user.is_admin != true %>
-    <li><%= link_to "Preferences", preference_path(current_user.preference.id) %></li>
+    <%= link_to "Preferences", preference_path(current_user.preference.id) %>
   <% else %>
-    <li><%= link_to "View My Menus", user_menus_path(current_user) %></li>
-    <li><%= link_to 'Recipes', recipes_path %></li>
+    <%= link_to "View My Menus", user_menus_path(current_user) %>
+    <%= link_to 'Recipes', recipes_path %>
   <% end %>
-  <li><%= link_to 'Restaurants', restaurants_path %></li>
-  <li><%= link_to "Favourites", '/restaurants/favourites' %></li>
-  <li><%= link_to "My Profile", user_path(current_user) %></li>
-  <li><%= link_to "Logout", '/logout' %></li>
-</ul>
+  <%= link_to 'Restaurants', restaurants_path %>
+  <%= link_to "Favourites", '/restaurants/favourites' %>
+  <%= link_to "My Profile", user_path(current_user) %>
+  <%= link_to "Logout", '/logout' %>
+</div>
