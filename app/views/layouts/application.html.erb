@@ -12,12 +12,12 @@
 
 </head>
 <body>
-<% if user_signed_in? %>
-  <%= render 'layouts/menu' %>
-  <div class="flash">
-    <%= flash[:alert] || flash[:notice] %>
-  </div>
-<% end %>
+  <% if user_signed_in? %>
+    <%= render 'layouts/menu' %>
+    <div class="flash">
+      <%= flash[:alert] || flash[:notice] %>
+    </div>
+  <% end %>
 
   <% if content_for(:sign_in) %>
     <%= yield (:sign_in)%>

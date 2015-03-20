@@ -26,14 +26,13 @@ body {
     background-color: $pie_orange_color;
     box-shadow: 1px 1px 1px $pie_charcoal_grey;
     color: $pie_background_color;
-    font-family:'Helvetica Neue',sans-serif;
     font-size:18px;
-    line-height:30px;
-    border-radius:20px;
-    -webkit-border-radius:20px;
-    -moz-border-radius:20px;
-    border: 2px solid $pie_charcoal_grey;
-    text-shadow: $pie_charcoal_grey 0 1px 0;
+    line-height: 28px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: 1px solid $pie_charcoal_grey;
+    text-shadow: $pie_charcoal_grey 3px 2px 10px;
     width:120px;
     height:32px
 }
