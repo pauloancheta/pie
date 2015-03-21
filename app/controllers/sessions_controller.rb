@@ -12,16 +12,17 @@ class SessionsController < ApplicationController
     if auth_hash
       user = User.find_or_create_from_auth_hash(auth_hash)
       session[:user_id] = user.id
-      flash[:alert] = "Logged In"
+      flash[:notice] = "Welcome #{current_user.name}"
       redirect_to restaurants_path
     else
       user = User.find_by_email(params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        flash[:alert] = "Logged In"
         if user.is_admin
+          flash[:notice] = "Welcome #{current_user.name}"
           redirect_to user_menus_path(user)
         else 
+          flash[:notice] = "Welcome #{current_user.name}"
           redirect_to restaurants_path
         end
       else
