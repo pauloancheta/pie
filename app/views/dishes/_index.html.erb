@@ -8,6 +8,10 @@
 <p><%= dish.description %></p>
 <p><%= dish.price %></p>
 
+<% if dish.likes.count > 0 %>
+  <p><%= dish.likes.count %> people like this dish!</p>
+<% end %>
+
 <div class="like_container">
   <% if current_user.likes.map(&:dish_id).include?(dish.id) %>
     <p class="unlike" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
@@ -15,7 +19,11 @@
     </p>
   <% else %>
     <p class="like" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
-      <a>Like This Dish!</a>
+      <% if dish.likes.count > 0 %>
+        <a>Like This Dish!</a>
+      <% else %>
+        <a>Be the first to like this dish!</a>
+      <% end %>
     </p>
   <% end %>
 </div>
