@@ -37,5 +37,33 @@ $(document).ready(function() {
 
   });
 
+  $('p.like').on('click', function() {
+    var dishId = $(this).data('dish-id'),
+        userId = $(this).data('user-id');
+           url = '/dish/' + dishId + '/add_like/' + userId;
+    $(this).hide();
+    $('.like_container').append('<p class="unlike" data-recipe-id="' + dishId + '" data-user-id="' + userId + '"><a>Unlike This Dish</a></p>');
+
+    $.post(url, function(data){
+      alert('like added');
+    });
+  });
+
+  $('p.unlike').on('click', function() {
+    var dishId = $(this).data('dish-id'),
+        userId = $(this).data('user-id');
+           url = '/dish/' + dishId + '/remove_like/' + userId;
+    $(this).hide();
+    $('.like_container').append('<p class="like" data-recipe-id="' + dishId + '" data-user-id="' + userId + '"><a>Like This Dish</a></p>');
+
+    $.ajax({
+      url: url,
+      type: 'DELETE',
+      success: function(data){
+        alert('Like removed!');
+      }
+    });
+  });
+
 });
 

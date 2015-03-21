@@ -4,7 +4,7 @@ class FavouritesController < ApplicationController
 
   def create
     @favourite = current_user.favourites.build(:favourited_user_id => params[:favourited_user_id])
-    @favourite.save
+    @favourite.save!
     flash[:notice] = 'Added to favourites'
     respond_with(@favourite)
   end
@@ -12,7 +12,7 @@ class FavouritesController < ApplicationController
   def destroy 
     @restaurant = User.find params[:id]
     @favourite = current_user.favourites.where(user_id: current_user, favourited_user_id: @restaurant).first
-    @favourite.destroy 
+    @favourite.destroy!
     flash[:notice] = 'Removed from favourites'
     respond_with()
   end
