@@ -7,7 +7,6 @@
     <%= f.input :password_confirmation, placeholder: "Confirm Password", label: false %>
     <%= f.button :submit %>
   <% end %> 
-  <%= link_to "Delete Account", user_path(@user), method: :delete, class: 'btn btn-link' %>
 <% else %>
   <%= simple_form_for @user do |f| %>
     <%= f.input :name, placeholder: "Name", label: false %>
@@ -16,5 +15,5 @@
     <%= f.input :password_confirmation, placeholder: "Confirm Password", label: false %>
     <%= f.button :submit %>
   <% end %> 
-  <%= link_to "Delete Account", user_path(@user), method: :delete, class: 'btn btn-link' %>
 <% end %>
+  <%= link_to "Delete Account", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-link' %>

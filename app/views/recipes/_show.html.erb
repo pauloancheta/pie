@@ -20,5 +20,5 @@
     </div>
   </div>
 
-  <%= link_to "Delete", recipe_path(r), method: :delete, class: "btn btn-default", remote: true  %>
+  <%= link_to "Delete", recipe_path(r), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default", remote: true  %>
 </div>

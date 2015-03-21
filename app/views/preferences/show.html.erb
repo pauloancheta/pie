@@ -23,7 +23,7 @@
       <% next if i.new_record? %>
       <tr>
         <td><%= i.name %></td>
-        <td><%= link_to "Delete", recipe_ingredient_path(current_user.recipe, current_user.recipe.ingredients.find(i)), method: :delete %></td>
+        <td><%= link_to "Delete", inclusion_path(current_user.recipe, current_user.recipe.ingredients.find(i)), method: :delete, data: {confirm: "Are you sure?"} %></td>
       </tr>
     <% end %>
   </tbody>
