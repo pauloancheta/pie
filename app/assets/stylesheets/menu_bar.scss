@@ -9,25 +9,25 @@ $pie_background_color: #edecec;
   padding-top: 10px;
   padding-left: 20px;
  
- .menu_bar__logo {
-  // display: inline-block;
- }
+   .menu_bar__logo {
+    // display: inline-block;
+   }
 
   .menu_bar__links {
     text-align: center;
-    
     a {
       color: $pie_charcoal_grey;
       text-transform: uppercase;
       padding: 10px;
       margin-left: 10px;
-    }
-    
+    }    
     a:hover {
       color: $pie_orange_color;
     }
   }
 
-
+  .menu_bar__user {
+    text-align: right;
+  }
 }
 
