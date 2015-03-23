@@ -1,6 +1,6 @@
 <h4>
   <% if user_signed_in? && (current_user == @user) %>
-    <%= link_to dish.name, menu_dish_path(@menu, dish) %>
+    <%= link_to dish.name, menu_dish_path(menu, dish) %>
   <% else %>
     <%= dish.name %>
   <% end %>
@@ -12,23 +12,26 @@
   <p><%= dish.likes.count %> people like this dish!</p>
 <% end %>
 
-<div class="like_container">
-  <% if current_user.likes.map(&:dish_id).include?(dish.id) %>
-    <p class="unlike" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
-      <a>Unlike This Dish!</a>
-    </p>
-  <% else %>
-    <p class="like" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
-      <% if dish.likes.count > 0 %>
-        <a>Like This Dish!</a>
-      <% else %>
-        <a>Be the first to like this dish!</a>
-      <% end %>
-    </p>
-  <% end %>
-</div>
 
-<% if user_signed_in? && (current_user.id == @menu.user_id) %>
-  <%= link_to "EDIT", edit_menu_dish_path(@menu, dish) %> |
-  <%= link_to "DELETE", menu_dish_path(@menu, dish), method: :delete, data: {confirm: "Are you sure?"} %>
+<% if user_signed_in? && (current_user.id == menu.user_id) %>
+  <%= link_to "EDIT", edit_menu_dish_path(menu, dish) %> |
+  <%= link_to "DELETE", menu_dish_path(menu, dish), method: :delete, data: {confirm: "Are you sure?"} %>
+<% else %>
+  <div class="like_container">
+    <% if user_signed_in? %>
+    <% if current_user.likes.map(&:dish_id).include?(dish.id) %>
+      <p class="unlike" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
+        <a>Unlike This Dish!</a>
+      </p>
+    <% else %>
+      <p class="like" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
+        <% if dish.likes.count > 0 %>
+          <a>Like This Dish!</a>
+        <% else %>
+          <a>Be the first to like this dish!</a>
+        <% end %>
+      </p>
+    <% end %>
+    <% end %>
+  </div>
 <% end %>
