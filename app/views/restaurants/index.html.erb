@@ -1,11 +1,7 @@
-<div class="parallax-window" data-parallax="scroll" data-image-src="<%= asset_path 'leek_and_potato_soup.jpg' %>">
-  <div class="restaurant__jumbotron_darken">
-    <div class="restaurant__jumbotron_darken_search">
-      <%= form_tag restaurants_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search for restaurants" %>
-      <% end %>
-    </div>
-  </div>
+<div class="search_restaurant">
+<%= form_tag restaurants_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search for restaurants" %>
+<% end %>
 </div>
 
 <% @restaurants.each do |restaurant| %>

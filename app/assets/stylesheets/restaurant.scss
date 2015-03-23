@@ -2,42 +2,6 @@ $pie_orange_color: #e87e37;
 $pie_charcoal_grey: #383838;
 $pie_background_color: #edecec;
 
-.restaurant__jumbotron_darken {
-  height: 50vh;
-  margin-top: 0em;
-  background-color: rgba(0,0,0,0.3);
-  text-align: center;
-}
-
-.restaurant__jumbotron_darken_search {
-  input#search {
-    background: rgba(0,0,0,0);
-    border: 0;
-    height: 3em;
-    width: 30em;
-    text-align: center;
-  }
-
-  input {
-    color: #fff;
-  }
-  input:focus {
-    background: rgba(0,0,0,0.5);
-  }
-  ::-webkit-input-placeholder {
-    color: #fff;
-    font-size: 1.2em
-  }
-  :-moz-placeholder{ 
-      color: #fff; 
-  }
-  ::-moz-placeholder {
-      color: #fff;
-  }
-  :-ms-input-placeholder {  
-      color: #fff; 
-  }
-}
 
 .card {
   background-image: url("http://www.a-cphotography.com/data/photos/1887_1a_c_photography_restaurants___food_13.jpg");
