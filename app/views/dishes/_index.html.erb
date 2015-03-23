@@ -21,15 +21,15 @@
     <% if user_signed_in? %>
     <% if current_user.likes.map(&:dish_id).include?(dish.id) %>
       <p class="unlike" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
-        <a>Unlike This Dish!</a>
+        <a><span class="glyphicon glyphicon-star"></span></a>
       </p>
     <% else %>
       <p class="like" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
-        <% if dish.likes.count > 0 %>
-          <a>Like This Dish!</a>
-        <% else %>
-          <a>Be the first to like this dish!</a>
-        <% end %>
+        <%# if dish.likes.count > 0 %>
+          <a><span class="glyphicon glyphicon-star-empty"></span></a>
+        <%# else %>
+          <!-- <a>Be the first to like this dish!</a> -->
+        <%# end %>
       </p>
     <% end %>
     <% end %>

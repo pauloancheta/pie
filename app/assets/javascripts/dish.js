@@ -42,10 +42,9 @@ $(document).ready(function() {
         userId = $(this).data('user-id');
            url = '/dish/' + dishId + '/add_like/' + userId;
     $(this).hide();
-    $('.like_container').append('<p class="unlike" data-dish-id="' + dishId + '" data-user-id="' + userId + '"><a>Unlike This Dish</a></p>');
+    $(this).parent().append('<p class="unlike" data-dish-id="' + dishId + '" data-user-id="' + userId + '"><a><span class="glyphicon glyphicon-star"></span></a></p>');
 
     $.post(url, function(data){
-      alert('like added');
     });
   });
 
@@ -54,13 +53,12 @@ $(document).ready(function() {
         userId = $(this).data('user-id');
            url = '/dish/' + dishId + '/remove_like/' + userId;
     $(this).hide();
-    $('.like_container').append('<p class="like" data-dish-id="' + dishId + '" data-user-id="' + userId + '"><a>Like This Dish</a></p>');
+    $(this).parent().append('<p class="like" data-dish-id="' + dishId + '" data-user-id="' + userId + '"><a><span class="glyphicon glyphicon-star-empty"></span></a></p>');
 
     $.ajax({
       url: url,
       type: 'DELETE',
       success: function(data){
-        alert('Like removed!');
       }
     });
   });
