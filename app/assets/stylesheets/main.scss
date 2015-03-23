@@ -49,9 +49,21 @@ a:hover {
 .pie_divider {
   background-color: $pie_orange_color;
 }
-.flash {
+.flash__notice {
   background-color: #37E86A;
   text-align: center;
-  height: 1.5em;
-  padding-left: 4em;
+  height: 2em;
+  margin: 0;
+  padding-bottom: 0;
+  color: white;
+  padding-top: 5px;
+}
+.flash__alert {
+  background-color: rgb(246, 79, 71);
+  text-align: center;
+  height: 2em;
+  margin: 0;
+  padding-bottom: 0;
+  color: white;
+  padding-top: 5px;
 }

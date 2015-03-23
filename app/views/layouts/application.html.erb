@@ -12,11 +12,20 @@
 
 </head>
 <body>
+<!-- flash -->
+  <% if flash[:alert] %>
+    <div class="flash__alert">
+      <%= flash[:alert] %>
+    </div>
+  <% elsif flash[:notice] %>
+    <div class="flash__notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+<!-- flash ends -->
+
   <% if user_signed_in? %>
     <%= render 'layouts/menu' %>
-    <div class="flash">
-      <%= flash[:alert] || flash[:notice] %>
-    </div>
   <% end %>
 
   <% if content_for(:sign_in) %>

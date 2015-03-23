@@ -13,4 +13,9 @@ $(document).ready(function() {
   $('.show_allergy').on('click', function() {
     $('.allergy').fadeToggle();
   });
+
+  $('.flash').on('click', function() { 
+    $(this).css('height', '2em'); 
+    $('.search_restaurant').fadeIn();
+  });
 });

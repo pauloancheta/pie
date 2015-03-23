@@ -1,4 +1,4 @@
-<h1><%= @user.name.split.map(&:capitalize).join(' ') %></h1>
+<h1 class="restaurant_name"><%= @user.name.split.map(&:capitalize).join(' ') %></h1>
 
 <% if user_signed_in? && (current_user == @user)  %>
   <a class="addMenu">New Menu</a><br><br>
