@@ -96,61 +96,38 @@ class User < ActiveRecord::Base
     pesq_array = ["Poultry", "Beef", "Pork"]
     kosher_array = ["Pork"]
     dairy_array = ["Dairy/Eggs"]
-    gluten_array = ["Grains/Wheat"]
+    gluten_array = ["Wheat"]
 
-    if self.preference.diet == "Vegan"
-      vegan_array.each do |a|
-        if ingredients.include?(a)
-          return true
-        end
-      end
-    elsif self.preference.diet == "Vegetarian"
-      vegetarian_array.each do |a|
-        if ingredients.include?(a)
-          return true
-        end
-      end
-    elsif self.preference.diet == "Pesquitarian"
-      pesq_array.each do |a|
-        if ingredients.include?(a)
-          return true
-        end
-      end
-    elsif self.preference.diet == "Kosher"
-      kosher_array.each do |a|
-        if ingredients.include?(a)
-          return true
-        end
-      end
-    elsif self.preference.diet == "Dairy-free"
-      dairy_array.each do |a|
-        if ingredients.include?(a)
-          return true
-        end
-      end
-    elsif self.preference.diet == "Gluten-free"
-      gluten_array.each do |a|
-        if ingredients.include?(a)
-          return true
-        end
-      end
-    end
-    false
-  end
-
-  #loop through the ingredient categories and match an ingredient
-  def check_ingredients(ingredient_array)
-    ingredient_categories = recipe.ingredients.map(&:category)  
-
-    ingredient_array.each do |ingredient|
-      if ingredient_categories.include?(ingredient)
-        return true
-      end
-    end
+    if find_diet("Vegan", vegan_array, ingredients)
+      return true
+    elsif find_diet("Vegetarian", vegetarian_array, ingredients)
+      return true
+    elsif find_diet("Pesquitarian", pesq_array, ingredients)
+      return true
+    elsif find_diet("Kosher", kosher_array, ingredients)
+      return true
+    elsif find_diet("Dairy-free", dairy_array, ingredients)
+      return true
+    elsif find_diet("Gluten-free", gluten_array, ingredients)
+      return true
+    else
+      return false
+    end   
   end
 
   private
   def uid_provided?
     uid 
+  end
+
+  def find_diet(diet, diet_array, ingredients)
+    if self.preference.diet == diet
+      diet_array.each do |a|
+        if ingredients.include?(a)
+          return true
+        end
+      end
+    end
+    return false
   end
 end
