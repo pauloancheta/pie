@@ -1,0 +1,8 @@
+<h2>New Dish Page</h2>
+
+<%= simple_form_for @dish, url: menu_dishes_path(@menu) do |d| %>
+  <%= d.input :name %>
+  <%= d.input :description %>
+  <%= d.input :price %>
+  <%= d.submit %>
+<% end %>

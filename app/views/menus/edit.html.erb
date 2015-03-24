@@ -1,3 +1,6 @@
 <h1>Edit Menu</h1>
 
-<%= render "form" %>
+<%= simple_form_for [current_user, @menu] do |m| %> 
+  <%= m.input :name %>
+  <%= m.submit %>
+<% end %>

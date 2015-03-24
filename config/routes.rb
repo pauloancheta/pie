@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :favourites, only:[:create, :destroy] 
-    resources :menus
+    resources :menus, only: [:index, :create, :edit, :update, :destroy]
   end
 
   resources :menus, only:[] do
