@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310043702) do
+ActiveRecord::Schema.define(version: 20150324181449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20150310043702) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "menu_id"
   end
+
+  add_index "dishes", ["menu_id"], name: "index_dishes_on_menu_id", using: :btree
 
   create_table "favourites", force: :cascade do |t|
     t.integer  "user_id"
@@ -69,16 +72,6 @@ ActiveRecord::Schema.define(version: 20150310043702) do
 
   add_index "likes", ["dish_id"], name: "index_likes_on_dish_id", using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
-
-  create_table "menu_dishes", force: :cascade do |t|
-    t.integer  "menu_id"
-    t.integer  "dish_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "menu_dishes", ["dish_id"], name: "index_menu_dishes_on_dish_id", using: :btree
-  add_index "menu_dishes", ["menu_id"], name: "index_menu_dishes_on_menu_id", using: :btree
 
   create_table "menus", force: :cascade do |t|
     t.string   "name"
@@ -129,13 +122,12 @@ ActiveRecord::Schema.define(version: 20150310043702) do
 
   add_foreign_key "dish_recipes", "dishes"
   add_foreign_key "dish_recipes", "recipes"
+  add_foreign_key "dishes", "menus"
   add_foreign_key "favourites", "users"
   add_foreign_key "inclusions", "ingredients"
   add_foreign_key "inclusions", "recipes"
   add_foreign_key "likes", "dishes"
   add_foreign_key "likes", "users"
-  add_foreign_key "menu_dishes", "dishes"
-  add_foreign_key "menu_dishes", "menus"
   add_foreign_key "menus", "users"
   add_foreign_key "preferences", "recipes"
   add_foreign_key "preferences", "users"

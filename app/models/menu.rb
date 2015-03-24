@@ -3,7 +3,7 @@ class Menu < ActiveRecord::Base
 
   belongs_to :user
     
-  has_many :menu_dishes, dependent: :destroy
-  has_many :dishes, through: :menu_dishes
+  # has_many :menu_dishes, dependent: :destroy
+  has_many :dishes, dependent: :destroy
 
 end

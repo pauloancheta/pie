@@ -8,6 +8,9 @@ class DishesController < ApplicationController
     @dish = @menu.dishes.new
   end
   
+  # current user is used because the current user is always the owner of the menu
+  # if the user does not own the menu, the buttons would not show
+  # TODO: consider using a better alternative for current user. possibly 'owner'?
   def create
     @menu = Menu.find params[:menu_id]
     if @menu.dishes.create(dishes_params)
@@ -36,7 +39,7 @@ class DishesController < ApplicationController
     @user = current_user
     @menu = Menu.find params[:menu_id]
     if @dish.update dishes_params
-      redirect_to user_menu_path(@user, @menu)
+      redirect_to user_menus_path(current_user)
     else
       render :edit
     end
