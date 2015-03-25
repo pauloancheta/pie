@@ -5,31 +5,26 @@
     |
     <%= link_to "Delete", user_menu_path(@user, menu), method: :delete, remote: true, data: {confirm: "Are you sure?"}  %>
     |
-    <%= link_to "Add Dish", new_menu_dish_path(menu.id) %>
-  <% else %>
-    <a class="show_allergy"> Show all dishes </a>
+    <%= link_to "Add Dish", new_menu_dish_path(menu.id) %>    
   <% end %>
 
-  
-    <div class="row">
-      <% count = 0 %>
-      <% menu.dishes.each do |dish| %>
-        <div class="col-md-6">
-          <% if count%2 == 0 %>
-            <% if user_signed_in? && !current_user.is_admin && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
-              <div class="well allergy" style="display:none;">
-                <%= render partial: 'dishes/index', locals: {dish: dish, menu: menu} %>
-              </div>
-            <% else %>
-              <div class="well dish">
-                <%= render partial: 'dishes/index', locals: {dish: dish, menu: menu} %>
-              </div>
-            <% end %>
+  <div class="row">
+    <% count = 0 %>
+    <% menu.dishes.each do |dish| %>
+      <div class="col-md-6">
+          <% if user_signed_in? && !current_user.is_admin && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
+            <div class="well allergy" style="display:none;">
+              <%= render partial: 'dishes/index', locals: {dish: dish, menu: menu} %>
+            </div>
+          <% else %>
+            <div class="well dish">
+              <%= render partial: 'dishes/index', locals: {dish: dish, menu: menu} %>
+            </div>
           <% end %>
-        </div>
+      </div>
 
-      <% end %>
-    </div>
-    
+    <% end %>
   </div>
+    
+
 </div>
