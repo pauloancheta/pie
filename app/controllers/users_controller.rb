@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.is_admin = false
     user_name_format(@user)
     if @user.save
       initialize_non_admin(@user) 
