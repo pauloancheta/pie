@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
     allergies = recipe.ingredients.map(&:name)
 
     allergies.each do |allergy| 
-      if desccription.include?(allergy)
+      if description.include?(allergy)
         return true
       end
     end
