@@ -1,5 +1,5 @@
 <div id="<%= dom_id(menu)%>">
-  <h1 class="menu_name"><%= menu.name %></h1>
+  <h1 class="menu_name" ><%= menu.name %></h1>
   <% if user_signed_in? && (current_user == @user) %>
     <%= link_to "Edit", edit_user_menu_path(@user, menu) %>
     |
@@ -8,11 +8,11 @@
     <%= link_to "Add Dish", new_menu_dish_path(menu.id) %>    
   <% end %>
 
-  <div class="row">
+  <div class="row row__ingredients_index">
     <% count = 0 %>
     <% menu.dishes.each do |dish| %>
       <div class="col-md-6">
-          <% if user_signed_in? && !current_user.is_admin && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) %>
+          <% if user_signed_in? && !current_user.is_admin && (current_user.allergic_to?(dish) || current_user.diet_restriction?(dish)) || current_user.find_by_description(dish) %>
             <div class="well allergy" style="display:none;">
               <%= render partial: 'dishes/index', locals: {dish: dish, menu: menu} %>
             </div>

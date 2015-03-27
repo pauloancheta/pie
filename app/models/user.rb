@@ -115,6 +115,18 @@ class User < ActiveRecord::Base
     end   
   end
 
+  def find_by_description(dish)
+    description = dish.description.split
+    allergies = recipe.ingredients.map(&:name)
+
+    allergies.each do |allergy| 
+      if desccription.include?(allergy)
+        return true
+      end
+    end
+    return false
+  end
+
   private
   def uid_provided?
     uid 

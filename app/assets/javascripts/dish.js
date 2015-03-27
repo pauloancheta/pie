@@ -63,5 +63,9 @@ $(document).ready(function() {
     });
   });
 
+  $('.menu_name').on('click', function() {
+    $(this).find('div.row__ingredients_index').fadeToggle();
+  });
+
 });
 
