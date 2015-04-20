@@ -116,14 +116,21 @@ class User < ActiveRecord::Base
   end
 
   def find_by_description(dish)
-    description = dish.description.split
+    description = dish.description.downcase.split
     allergies = recipe.ingredients.map(&:name)
+    diet = preference.diet
 
     allergies.each do |allergy| 
       if description.include?(allergy)
         return true
       end
     end
+
+    case diet
+    when "Vegan"
+      return true if description.include?("chicken" || "duck" || "beef" || "fish" || "bass" || "cream")
+    end
+
     return false
   end
 
@@ -142,4 +149,5 @@ class User < ActiveRecord::Base
     end
     return false
   end
+
 end
