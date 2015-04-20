@@ -116,7 +116,7 @@ class User < ActiveRecord::Base
   end
 
   def find_by_description(dish)
-    description = dish.description.downcase.split
+    description = dish.description.downcase.gsub(',', '').split(' ')
     allergies = recipe.ingredients.map(&:name)
     diet = preference.diet
 
