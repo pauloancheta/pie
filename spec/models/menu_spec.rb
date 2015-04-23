@@ -9,8 +9,8 @@ RSpec.describe Menu, type: :model do
   context 'association' do
     it { should belong_to(:user) }
 
-    it { should have_many(:menu_dishes).dependent(:destroy) }
-    it { should have_many(:dishes).through(:menu_dishes) }
+    # it { should have_many(:menu_dishes).dependent(:destroy) }
+    # it { should have_many(:dishes).through(:menu_dishes) }
   end 
 
   context 'column specification' do

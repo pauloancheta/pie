@@ -44,12 +44,12 @@ RSpec.describe SessionsController, type: :controller do
 
       it "sets a flash alert as a regular user" do
         valid_user_request
-        expect(flash[:alert]).to be
+        expect(flash[:notice]).to be
       end
 
        it "sets a flash alert as an admin user" do
         valid_admin_request
-        expect(flash[:alert]).to be
+        expect(flash[:notice]).to be
       end
     end
 

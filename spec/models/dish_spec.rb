@@ -9,8 +9,8 @@ RSpec.describe Dish, type: :model do
     it { should have_many(:likes) }
     it { should have_many(:liking_users).through(:likes).source(:user) }
 
-    it { should have_many(:menu_dishes).dependent(:destroy) }
-    it { should have_many(:menus).through(:menu_dishes) }
+    # it { should have_many(:menu_dishes).dependent(:destroy) }
+    # it { should have_many(:menus).through(:menu_dishes) }
 
     it { should have_many(:ingredients).through(:recipes).dependent(:destroy) }
   end

@@ -9,8 +9,8 @@ class Dish < ActiveRecord::Base
   has_many :dish_recipes, dependent: :destroy
   has_many :recipes, through: :dish_recipes
 
-  # has_many :menu_dishes, dependent: :nullify
-  # has_many :menus, through: :menu_dishes, dependent: :nullify
+  # has_many :menu_dishes, dependent: :destroy
+  # has_many :menus, through: :menu_dishes, dependent: :destroy
 
   #added to make it easier to sesarch for all the ingredients of a dish
   has_many :ingredients, through: :recipes, dependent: :destroy

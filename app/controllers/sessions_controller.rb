@@ -19,8 +19,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         if user.is_admin
-          flash[:notice] = "Welcome #{current_user.name}"
-          redirect_to user_menus_path(user)
+          redirect_to user_menus_path(user), notice: "Welcome #{current_user.name}"
         else 
           flash[:notice] = "Welcome #{current_user.name}"
           redirect_to restaurants_path
