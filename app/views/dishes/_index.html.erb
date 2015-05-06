@@ -1,23 +1,11 @@
-<h4>
-  <% if user_signed_in? && (current_user == @user) %>
-    <%= link_to dish.name, menu_dish_path(menu, dish) %>
-  <% else %>
-    <%= dish.name %>
-  <% end %>
-</h4>
-<p><%= dish.description %></p>
-<p><%= dish.price %></p>
+<div class="row">
+  <div class="col-md-6">
+    <h4>
+      <%= current_user == @user ? ( link_to dish.name, menu_dish_path(menu, dish) ): dish.name %>
+    </h4>
+  </div>
 
-<% if dish.likes.count > 0 %>
-  <p><%= dish.likes.count %> people like this dish!</p>
-<% end %>
-
-
-<% if user_signed_in? %>
-  <% if (current_user.id == menu.user_id) %>
-    <%= link_to "EDIT", edit_menu_dish_path(menu, dish) %> |
-    <%= link_to "DELETE", menu_dish_path(menu, dish), method: :delete, data: {confirm: "Are you sure?"} %>
-  <% else %>
+  <div class="col-md-6">
     <div class="like_container">
       <% if current_user.likes.map(&:dish_id).include?(dish.id) %>
         <p class="unlike" data-dish-id="<%= dish.id %>" data-user-id="<%= current_user.id %>">
@@ -29,5 +17,24 @@
         </p>
       <% end %>
     </div>
-  <% end %>
-<% end %>
+  </div>
+  
+</div>
+
+<p><%= dish.description %></p>
+<p><%= dish.price %></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <% if dish.likes.count > 0 %>
+      <p><%= dish.likes.count %> people like this dish!</p>
+    <% end %>
+  </div>
+
+  <div class="col-md-6 dish_buttons">
+    <% if user_signed_in? && (current_user.id == menu.user_id) %>
+      <%= link_to "EDIT", edit_menu_dish_path(menu, dish) %> |
+      <%= link_to "DELETE", menu_dish_path(menu, dish), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </div>
+</div>
