@@ -1,5 +1,5 @@
 class MenusController < ApplicationController 
-  before_action :menu_id, only: [:show, :edit, :update, :destroy]
+  before_action :find_menu, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   respond_to :js 
   
@@ -27,13 +27,6 @@ class MenusController < ApplicationController
       redirect_to restaurants_path
     end
   end 
-
-  def show 
-    @user = User.find params[:user_id]
-    @dish = Dish.new
-    @dishes = @menu.dishes.all
-  end 
-
 
   def edit
   end 
@@ -65,7 +58,7 @@ class MenusController < ApplicationController
     params.require(:menu).permit(:name)
   end 
 
-  def menu_id
+  def find_menu
     @menu = Menu.find params[:id]
   end 
 

@@ -2,5 +2,5 @@
   <%= r.input :name %>
   <%= r.input :category, as: :select, selected: ["Line"],
                collection: ["Line", "Spices", "Vinaigrette", "Sauce", "Stew", "Other"] %>
-  <%= r.submit %>
+  <%= r.submit "Submit", class: "btn btn-default"  %><hr>
 <% end %>
